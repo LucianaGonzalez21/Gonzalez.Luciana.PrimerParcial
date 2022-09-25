@@ -1,0 +1,50 @@
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Aerolineas.exe
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Aerolineas.deps.json
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Aerolineas.runtimeconfig.json
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Aerolineas.runtimeconfig.dev.json
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Aerolineas.dll
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\ref\Aerolineas.dll
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Aerolineas.pdb
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.csproj.AssemblyReference.cache
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.FrmLogin.resources
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.csproj.GenerateResource.cache
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.AssemblyInfoInputs.cache
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.AssemblyInfo.cs
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.dll
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\ref\Aerolineas.dll
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.pdb
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.genruntimeconfig.cache
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Entidades.dll
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Entidades.pdb
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.FrmPrincipal.resources
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.csproj.CopyComplete
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.AltaVuelo.resources
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.AltaCliente.resources
+C:\Users\Dell\Desktop\Laboratorio II\Primer parcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.AltaPasaje.resources
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Aerolineas.exe
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Aerolineas.deps.json
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Aerolineas.runtimeconfig.json
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Aerolineas.runtimeconfig.dev.json
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Aerolineas.dll
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\ref\Aerolineas.dll
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Aerolineas.pdb
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Entidades.dll
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\bin\Debug\net5.0-windows\Entidades.pdb
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.csproj.AssemblyReference.cache
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.AltaCliente.resources
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.AltaPasaje.resources
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.AltaVuelo.resources
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.FrmLogin.resources
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.FrmPrincipal.resources
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.csproj.GenerateResource.cache
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.AssemblyInfoInputs.cache
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.AssemblyInfo.cs
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.csproj.CopyComplete
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.dll
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\ref\Aerolineas.dll
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.pdb
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.genruntimeconfig.cache

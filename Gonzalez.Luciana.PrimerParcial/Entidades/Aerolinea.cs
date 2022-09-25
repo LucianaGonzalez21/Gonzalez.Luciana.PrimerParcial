@@ -1,0 +1,150 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Entidades
+{
+    
+    public static class Aerolinea
+    {
+        public static Avion[] listaAviones;
+        public static List<Vuelo> listaVuelos;
+        public static List<Pasajero> listaPasajeros;
+        public static List<Usuario> listaUsuarios;
+        public static List<Pasaje> listaPasajes;
+        public static List<Cliente> listaClientes;
+
+        static Aerolinea()
+        {
+            listaAviones = new Avion[7];
+            listaPasajeros = new List<Pasajero>();
+            listaUsuarios = new List<Usuario>();
+            listaVuelos = new List<Vuelo>();
+            listaPasajes = new List<Pasaje>();
+            listaClientes = new List<Cliente>();
+
+            AgregarAviones();
+            AgregarUsuarios();
+            AgregarVuelos();
+            AgregarPasajeros();
+            AgregarPasajes();
+            AgregarClientes();
+        }
+
+        private static void AgregarClientes()
+        {
+            listaClientes.Add(new Cliente("Martin", "Martinez", 30123456, "Masculino", 30));
+            listaClientes.Add(new Cliente("Emiliano", "Gomez", 36123456, "Masculino", 30));
+            listaClientes.Add(new Cliente("Rosa", "Martinez", 15155406, "Femenino", 60));
+        }
+
+        private static void AgregarPasajes()
+        {
+            listaPasajes.Add(new Pasaje(listaPasajeros[0], listaVuelos[0], "Turista"));
+            listaPasajes.Add(new Pasaje(listaPasajeros[2], listaVuelos[3], "Turista"));
+            listaPasajes.Add(new Pasaje(listaPasajeros[1], listaVuelos[2], "Premium"));
+        }
+
+        private static void AgregarPasajeros()
+        {
+            listaPasajeros.Add(new Pasajero("Emiliano", "Gomez", nameof(Generos.Masculino), 36123456, 30, true, 20));
+            listaPasajeros.Add(new Pasajero("Laura", "Fabiani", nameof(Generos.Femenino), 40123456, 22, true, 15));
+            listaPasajeros.Add(new Pasajero("David", "Gutierrez", nameof(Generos.No_Binario), 20153956, 22, false));
+            listaPasajeros.Add(new Pasajero("Rosa", "Martinez", nameof(Generos.Femenino), 15155406, 60, false));
+        }
+
+        private static void AgregarAviones()
+        {
+            listaAviones[0] = new Avion("ABC123", 300, 6, 300000, true, true);
+            listaAviones[1] = new Avion("DEF456", 350, 8, 280000, true, true);
+            listaAviones[2] = new Avion("GHI789", 250, 8, 300000, true, true);
+            listaAviones[3] = new Avion("JKL321", 350, 6, 290000, false, true);
+            listaAviones[4] = new Avion("MNO654", 250, 6, 310000, false, true);
+            listaAviones[5] = new Avion("PQR987", 300, 6, 280000, true, true);
+            listaAviones[6] = new Avion("STU147", 200, 6, 300000, false, false);
+        }
+
+        private static void AgregarVuelos()
+        {
+            listaVuelos.Add(new Vuelo(nameof(DestinosInternacionales.Acapulco), nameof(Origen.Buenos_Aires), Convert.ToDateTime("10/21/2022"), listaAviones[0]));
+            listaVuelos.Add(new Vuelo(nameof(DestinosInternacionales.Miami), nameof(Origen.Buenos_Aires), Convert.ToDateTime("12/15/2022"), listaAviones[2]));
+            listaVuelos.Add(new Vuelo(nameof(DestinosNacionales.Cordoba), nameof(Origen.Iguazu), Convert.ToDateTime("11/13/2023"), listaAviones[4]));
+            listaVuelos.Add(new Vuelo(nameof(DestinosNacionales.Jujuy), nameof(Origen.Neuquen), Convert.ToDateTime("10/16/2022"), listaAviones[5]));
+        }
+
+        private static void AgregarUsuarios()
+        {
+            listaUsuarios.Add(new Usuario("lucas", "1234", "Lucas", "Rodriguez"));
+            listaUsuarios.Add(new Usuario("ornella", "1234", "Ornella", "Curcio"));
+            listaUsuarios.Add(new Usuario("Ignacio", "1234", "Ignacio", "Smirlian"));
+            listaUsuarios.Add(new Usuario("Esteban", "1234", "Esteban", "Prieto"));
+        }
+
+        public static Usuario ValidarUsuario(string usuario, string clave)
+        {
+            if(Validadora.ValidarCadena(usuario) && Validadora.ValidarCadena(clave))
+            {
+                foreach (Usuario item in listaUsuarios)
+                {
+                    if(item.usuario == usuario && item.clave == clave)
+                    {
+                        return item;
+                    }
+                }
+            }
+            return null;
+        }
+
+        public static double CalcularCostoPasaje(Vuelo vuelo, string clase)
+        {
+            double costoPasaje = 0;
+            int duracion = CalcularDuracionVuelo(vuelo);
+
+            switch (vuelo.Destino)
+            {
+                case nameof(DestinosInternacionales.Acapulco):
+                case nameof(DestinosInternacionales.Miami):
+                case nameof(DestinosInternacionales.Recife):
+                case nameof(DestinosInternacionales.Roma):
+                    costoPasaje = duracion * 100;
+                    break;
+                default:
+                    costoPasaje = duracion * 50;
+                    break;
+
+            }
+
+            if (clase == "Premium")
+            {
+                double recargoPremium = costoPasaje * .15;
+                costoPasaje += recargoPremium;
+            }
+
+            return costoPasaje;
+
+        }
+
+        public static int CalcularDuracionVuelo(Vuelo vuelo)
+        {
+            Random numeroAleatorio = new Random();
+            int duracion = 0;
+
+            switch (vuelo.Destino)
+            {
+                case nameof(DestinosInternacionales.Acapulco):
+                case nameof(DestinosInternacionales.Miami):
+                case nameof(DestinosInternacionales.Recife):
+                case nameof(DestinosInternacionales.Roma):
+                    duracion = numeroAleatorio.Next(8, 13);
+                    break;
+                default:
+                    duracion = numeroAleatorio.Next(2, 5);
+                    break;
+            }
+
+            return duracion;
+        }
+    }
+}
