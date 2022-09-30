@@ -46,10 +46,19 @@ namespace Aerolineas
         {
             if (ValidarDatos())
             {
-                nuevoCliente = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDNI.Text), cmbGenero.Text, Cliente.CalcularEdad(dtp_fechaNacimiento.Value));
-                MessageBox.Show(nuevoCliente.MostrarCliente());
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                nuevoCliente = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDNI.Text), cmbGenero.Text, Cliente.CalcularEdad(dtp_fechaNacimiento.Value.Date));
+                //MessageBox.Show(nuevoCliente.MostrarCliente());
+                if (Aerolinea.EsCliente(nuevoCliente))
+                {
+                    lblClienteRepetido.Text = "El cliente ya existe";
+                    lblClienteRepetido.ForeColor = Color.Red;
+                    lblClienteRepetido.Visible = true;
+                }
+                else
+                {
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
             }
             //else
             //{
@@ -81,6 +90,12 @@ namespace Aerolineas
             if (Validadora.ValidarCadenaSoloNumerosConRango(txtDNI.Text, 10000000, 45000000) == false)
             {
                 sb.AppendLine("DNI");
+                esValido = false;
+            }
+
+            if(Validadora.ValidarFechaNacimiento(dtp_fechaNacimiento.Value.Date) == false)
+            {
+                sb.AppendLine("Fecha de nacimiento");
                 esValido = false;
             }
 

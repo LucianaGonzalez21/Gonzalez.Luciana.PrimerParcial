@@ -102,5 +102,21 @@ namespace Entidades
                 return (comida) ? "SI" : "NO";
             }
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Matricula: {matricula}");
+            sb.AppendLine($"Cantidad asientos totales: {cantidadAsientos}");
+            sb.AppendLine($"Cantidad asientos turista: {cantidadAsientosTurista}");
+            sb.AppendLine($"Cantidad asientos premium: {cantidadAsientosPremium}");
+            sb.AppendLine($"Cantidad de banios: {cantidadBanios}");
+            sb.AppendLine($"Capacidad bodega: {capacidadBodega}");
+            sb.AppendLine($"Tiene wifi: {Wifi}");
+            sb.AppendLine($"Ofrece comida: {Comida}");
+
+            return base.ToString();
+        }
     }
 }

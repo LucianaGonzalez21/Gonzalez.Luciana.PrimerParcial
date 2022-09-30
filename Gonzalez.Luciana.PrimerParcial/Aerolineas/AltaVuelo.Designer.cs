@@ -45,6 +45,7 @@ namespace Aerolineas
             this.dgv_aviones = new System.Windows.Forms.DataGridView();
             this.lblAvionSeleccionado = new System.Windows.Forms.Label();
             this.lblMatriculaAvion = new System.Windows.Forms.Label();
+            this.lblAvionRepetido = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_aviones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -204,11 +205,22 @@ namespace Aerolineas
             this.lblMatriculaAvion.Text = "matricula";
             this.lblMatriculaAvion.Visible = false;
             // 
+            // lblAvionRepetido
+            // 
+            this.lblAvionRepetido.AutoSize = true;
+            this.lblAvionRepetido.Location = new System.Drawing.Point(514, 464);
+            this.lblAvionRepetido.Name = "lblAvionRepetido";
+            this.lblAvionRepetido.Size = new System.Drawing.Size(202, 20);
+            this.lblAvionRepetido.TabIndex = 19;
+            this.lblAvionRepetido.Text = "error avion repetido en fecha";
+            this.lblAvionRepetido.Visible = false;
+            // 
             // AltaVuelo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(819, 554);
+            this.Controls.Add(this.lblAvionRepetido);
             this.Controls.Add(this.lblMatriculaAvion);
             this.Controls.Add(this.lblAvionSeleccionado);
             this.Controls.Add(this.dgv_aviones);
@@ -253,5 +265,6 @@ namespace Aerolineas
         private System.Windows.Forms.DataGridView dgv_aviones;
         private System.Windows.Forms.Label lblAvionSeleccionado;
         private System.Windows.Forms.Label lblMatriculaAvion;
+        private System.Windows.Forms.Label lblAvionRepetido;
     }
 }

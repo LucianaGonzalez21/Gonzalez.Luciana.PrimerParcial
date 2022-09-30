@@ -52,12 +52,6 @@ public enum EstadoDeVuelo
     Cancelado
 }
 
-public enum Respuestas
-{
-    Si, 
-    No
-}
-
 public enum Generos
 {
     Femenino,

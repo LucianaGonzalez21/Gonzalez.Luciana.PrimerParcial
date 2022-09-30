@@ -40,5 +40,14 @@ namespace Entidades
             }
             return false;
         }
+
+        public static bool ValidarFechaNacimiento(DateTime fechaNacimiento)
+        {
+            if(fechaNacimiento < DateTime.Now.Date)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

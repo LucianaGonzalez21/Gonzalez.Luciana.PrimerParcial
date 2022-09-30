@@ -12,6 +12,7 @@ namespace Entidades
         public static Avion[] listaAviones;
         public static List<Vuelo> listaVuelos;
         public static List<Pasajero> listaPasajeros;
+        public static List<PasajeroPremium> listaPasajerosPremium;
         public static List<Usuario> listaUsuarios;
         public static List<Pasaje> listaPasajes;
         public static List<Cliente> listaClientes;
@@ -24,6 +25,7 @@ namespace Entidades
             listaVuelos = new List<Vuelo>();
             listaPasajes = new List<Pasaje>();
             listaClientes = new List<Cliente>();
+            listaPasajerosPremium = new List<PasajeroPremium>();
 
             AgregarAviones();
             AgregarUsuarios();
@@ -35,9 +37,17 @@ namespace Entidades
 
         private static void AgregarClientes()
         {
-            listaClientes.Add(new Cliente("Martin", "Martinez", 30123456, "Masculino", 30));
-            listaClientes.Add(new Cliente("Emiliano", "Gomez", 36123456, "Masculino", 30));
-            listaClientes.Add(new Cliente("Rosa", "Martinez", 15155406, "Femenino", 60));
+            listaClientes.Add(new Cliente("Martin", "Martinez", 30123456, nameof(Generos.Masculino), 30));
+            listaClientes.Add(new Cliente("Emiliano", "Gomez", 36123456, nameof(Generos.Masculino), 30));
+            listaClientes.Add(new Cliente("Rosa", "Martinez", 15155406, nameof(Generos.Femenino), 60));
+            listaClientes.Add(new Cliente("Morena", "Rodriguez", 15159159, nameof(Generos.Femenino), 30));
+            listaClientes.Add(new Cliente("Jose", "Lopez", 15259159, nameof(Generos.Masculino), 40));
+            listaClientes.Add(new Cliente("Maria", "Ramirez", 15159459, nameof(Generos.Femenino), 30));
+            listaClientes.Add(new Cliente("Pedro", "Gutierrez", 38159159, nameof(Generos.No_Binario), 30));
+            listaClientes.Add(new Cliente("Pablo", "Garcia", 15299159, nameof(Generos.Femenino), 40));
+            listaClientes.Add(new Cliente("Micaela", "Gomez", 15157159, nameof(Generos.No_Binario), 32));
+            listaClientes.Add(new Cliente("Mariela", "Gomez", 35157159, nameof(Generos.Femenino), 23));
+            listaClientes.Add(new Cliente("German", "Gomez", 20157159, nameof(Generos.Masculino), 29));
         }
 
         private static void AgregarPasajes()
@@ -51,19 +61,19 @@ namespace Entidades
         {
             listaPasajeros.Add(new Pasajero("Emiliano", "Gomez", nameof(Generos.Masculino), 36123456, 30, true, 20));
             listaPasajeros.Add(new Pasajero("Laura", "Fabiani", nameof(Generos.Femenino), 40123456, 22, true, 15));
-            listaPasajeros.Add(new Pasajero("David", "Gutierrez", nameof(Generos.No_Binario), 20153956, 22, false));
+            listaPasajeros.Add(new Pasajero("David", "Gutierrez", nameof(Generos.No_Binario), 12123123, 22, false));
             listaPasajeros.Add(new Pasajero("Rosa", "Martinez", nameof(Generos.Femenino), 15155406, 60, false));
         }
 
         private static void AgregarAviones()
         {
-            listaAviones[0] = new Avion("ABC123", 300, 6, 300000, true, true);
-            listaAviones[1] = new Avion("DEF456", 350, 8, 280000, true, true);
-            listaAviones[2] = new Avion("GHI789", 250, 8, 300000, true, true);
-            listaAviones[3] = new Avion("JKL321", 350, 6, 290000, false, true);
-            listaAviones[4] = new Avion("MNO654", 250, 6, 310000, false, true);
-            listaAviones[5] = new Avion("PQR987", 300, 6, 280000, true, true);
-            listaAviones[6] = new Avion("STU147", 200, 6, 300000, false, false);
+            listaAviones[0] = new Avion("ABC123", 10, 6, 30000, true, true);
+            listaAviones[1] = new Avion("DEF456", 350, 8, 28000, true, true);
+            listaAviones[2] = new Avion("GHI789", 250, 8, 30000, true, true);
+            listaAviones[3] = new Avion("JKL321", 350, 6, 20000, false, true);
+            listaAviones[4] = new Avion("MNO654", 250, 6, 31000, false, true);
+            listaAviones[5] = new Avion("PQR987", 300, 6, 28000, true, true);
+            listaAviones[6] = new Avion("STU147", 200, 6, 30000, false, false);
         }
 
         private static void AgregarVuelos()
@@ -97,34 +107,34 @@ namespace Entidades
             return null;
         }
 
-        public static double CalcularCostoPasaje(Vuelo vuelo, string clase)
-        {
-            double costoPasaje = 0;
-            int duracion = CalcularDuracionVuelo(vuelo);
+        //public static double CalcularCostoPasaje(Vuelo vuelo, string clase)
+        //{
+        //    double costoPasaje = 0;
+        //    int duracion = CalcularDuracionVuelo(vuelo);
 
-            switch (vuelo.Destino)
-            {
-                case nameof(DestinosInternacionales.Acapulco):
-                case nameof(DestinosInternacionales.Miami):
-                case nameof(DestinosInternacionales.Recife):
-                case nameof(DestinosInternacionales.Roma):
-                    costoPasaje = duracion * 100;
-                    break;
-                default:
-                    costoPasaje = duracion * 50;
-                    break;
+        //    switch (vuelo.Destino)
+        //    {
+        //        case nameof(DestinosInternacionales.Acapulco):
+        //        case nameof(DestinosInternacionales.Miami):
+        //        case nameof(DestinosInternacionales.Recife):
+        //        case nameof(DestinosInternacionales.Roma):
+        //            costoPasaje = duracion * 100;
+        //            break;
+        //        default:
+        //            costoPasaje = duracion * 50;
+        //            break;
 
-            }
+        //    }
 
-            if (clase == "Premium")
-            {
-                double recargoPremium = costoPasaje * .15;
-                costoPasaje += recargoPremium;
-            }
+        //    if (clase == "Premium")
+        //    {
+        //        double recargoPremium = costoPasaje * .15;
+        //        costoPasaje += recargoPremium;
+        //    }
 
-            return costoPasaje;
+        //    return costoPasaje;
 
-        }
+        //}
 
         public static int CalcularDuracionVuelo(Vuelo vuelo)
         {
@@ -145,6 +155,31 @@ namespace Entidades
             }
 
             return duracion;
+        }
+
+        public static bool EsCliente(Cliente unCliente)
+        {
+            foreach (Cliente item in listaClientes)
+            {
+                if(unCliente.DNI == item.DNI)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static bool EsAvionDisponible(Vuelo unVuelo)
+        {
+            foreach (Vuelo item in listaVuelos)
+            {
+                if (unVuelo.Matricula_Avion == item.Matricula_Avion //mismo avion
+                    && unVuelo.Fecha_Partida == item.Fecha_Partida)   // MISMA FECHA?
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

@@ -13,13 +13,14 @@ namespace Aerolineas
 {
     public partial class AltaPasaje : Form
     {
-        Pasaje nuevoPasaje;
-        int indiceCliente;
-        int indiceVuelo;
-        string clase;
-        Pasajero unPasajero;
-        Cliente unCliente;
-        bool bolsoMano;
+        private Pasaje nuevoPasaje;
+        private int indiceCliente;
+        private int indiceVuelo;
+        private string clase;
+        private Pasajero unPasajero;
+        private PasajeroPremium unPasajeroPremium;
+        private Cliente unCliente;
+        private bool bolsoMano;
 
         public AltaPasaje()
         {
@@ -85,29 +86,63 @@ namespace Aerolineas
             if (ValidarDatos())
             {
 
-                if(rdPremium.Checked)
+                if (rdPremium.Checked)
                 {
                     clase = rdPremium.Text;
                 }
-                else if(rdTurista.Checked)
+                else if (rdTurista.Checked)
                 {
                     clase = rdTurista.Text;
                 }
-                
-                if(rdEquipajeManoSi.Checked)
+
+                if (rdEquipajeManoSi.Checked)
                 {
                     bolsoMano = true;
                 }
-                else if(rdEquipajeManoNo.Checked)
+                else if (rdEquipajeManoNo.Checked)
                 {
                     bolsoMano = false;
                 }
                 unCliente = Aerolinea.listaClientes[indiceCliente];
-                unPasajero = new Pasajero(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value);
-                nuevoPasaje = new Pasaje(unPasajero, Aerolinea.listaVuelos[indiceVuelo], clase);
-                //MessageBox.Show(nuevoPasaje.MostrarVuelo());
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                //unPasajero = new Pasajero(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value);
+
+                if (clase == "Turista" && Aerolinea.listaVuelos[indiceVuelo].Asientos_Turista>0)
+                {
+                    unPasajero = new Pasajero(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value);
+                    Aerolinea.listaVuelos[indiceVuelo].Asientos_Turista--;
+                    nuevoPasaje = new Pasaje(unPasajero, Aerolinea.listaVuelos[indiceVuelo], clase);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else if(clase == "Premium" && Aerolinea.listaVuelos[indiceVuelo].Asientos_Premium>0)
+                {
+                    unPasajeroPremium = new PasajeroPremium(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value,(int)numValijaDos.Value);
+                    Aerolinea.listaVuelos[indiceVuelo].Asientos_Premium--;
+                    nuevoPasaje = new Pasaje(unPasajeroPremium, Aerolinea.listaVuelos[indiceVuelo], clase);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    lbl_textoError.Text = "El vuelo seleccionado no cuenta con asientos disponibles";
+                    lbl_textoError.ForeColor = Color.Red;
+                    lbl_textoError.Visible = true;
+                }
+
+                //if (Aerolinea.listaVuelos[indiceVuelo].Asientos_Disponibles>0)
+                //{
+                //    nuevoPasaje = new Pasaje(unPasajero, Aerolinea.listaVuelos[indiceVuelo], clase);
+                //    this.DialogResult = DialogResult.OK;
+                //    this.Close();
+                //}
+                //else
+                //{
+                //    lbl_textoError.Text = "El vuelo seleccionado no cuenta con asientos disponibles";
+                //    lbl_textoError.ForeColor = Color.Red;
+                //    lbl_textoError.Visible = true;
+                //}
+
+                //MessageBox.Show(nuevoPasaje.ToString());
             }
         }
 

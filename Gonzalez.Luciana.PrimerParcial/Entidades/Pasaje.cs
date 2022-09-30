@@ -20,7 +20,7 @@ namespace Entidades
             this.pasajero=pasajero;
             this.vuelo=vuelo;
             this.clase=clase;
-            this.costo= Aerolinea.CalcularCostoPasaje(vuelo, clase);
+            this.costo= pasajero.CalcularCostoPasaje(vuelo, clase); //cuando es de tipo premium?
         }
 
         public int CodigoPasaje
@@ -28,6 +28,10 @@ namespace Entidades
             set
             {
                 codigoPasaje = value;
+            }
+            get
+            {
+                return codigoPasaje;
             }
         }
 
@@ -111,59 +115,26 @@ namespace Entidades
             }
         }
 
-        //public double CalcularCostoPasaje(string destino, string clase)  
-        //{
-        //    double costoPasaje = 0;
-        //    int duracion = CalcularDuracionVuelo(destino);
+        public string Matricula_Avion
+        {
+            get
+            {
+                return vuelo.Matricula_Avion;
+            }
+        }
 
-        //    switch(destino)
-        //    {
-        //        //case nameof(DestinosInternacionales.Acapulco):
-        //        //case nameof(DestinosInternacionales.Miami):
-        //        //case nameof(DestinosInternacionales.Recife):
-        //        //case nameof(DestinosInternacionales.Roma):
-        //        case "Acapulco":
-        //        case "Miami":
-        //        case "Recife":
-        //        case "Roma":
-        //            costoPasaje = duracion * 100;
-        //            break;
-        //        default:
-        //            costoPasaje = duracion * 50;
-        //            break;
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
 
-        //    }
+            sb.AppendLine($"Codigo: {codigoPasaje}");
+            sb.AppendLine($"Pasajero: {pasajero.Nombre} {pasajero.Apellido}");
+            sb.AppendLine($"Origen: {vuelo.Origen}");
+            sb.AppendLine($"Destino {vuelo.Destino}");
+            sb.AppendLine($"Precio: {costo}");
 
-        //    if(clase == "Premium")
-        //    {
-        //        double recargoPremium = costoPasaje * .15;
-        //        costoPasaje += recargoPremium;                
-        //    }
-
-        //    return costoPasaje;
-
-        //}
-
-        //public int CalcularDuracionVuelo(string destino)
-        //{
-        //    Random numeroAleatorio = new Random();
-        //    int duracion = 0;
-
-        //    switch(destino)
-        //    {
-        //        case nameof(DestinosInternacionales.Acapulco):
-        //        case nameof(DestinosInternacionales.Miami):
-        //        case nameof(DestinosInternacionales.Recife):
-        //        case nameof(DestinosInternacionales.Roma):
-        //            duracion = numeroAleatorio.Next(8, 13);
-        //            break;
-        //        default:
-        //            duracion = numeroAleatorio.Next(2, 5);
-        //            break;
-        //    }
-
-        //    return duracion;
-        //}
+            return sb.ToString();
+        }
 
     }
 }

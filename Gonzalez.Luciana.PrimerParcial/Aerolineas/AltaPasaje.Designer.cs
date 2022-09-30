@@ -51,6 +51,7 @@ namespace Aerolineas
             this.lblClientes = new System.Windows.Forms.Label();
             this.lbl_clienteSeleccionado = new System.Windows.Forms.Label();
             this.lbl_vueloSeleccionado = new System.Windows.Forms.Label();
+            this.lbl_textoError = new System.Windows.Forms.Label();
             this.grpClase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_vuelos)).BeginInit();
             this.grpEquipajeMano.SuspendLayout();
@@ -287,11 +288,22 @@ namespace Aerolineas
             this.lbl_vueloSeleccionado.TabIndex = 14;
             this.lbl_vueloSeleccionado.Text = "Vuelo seleccionado";
             // 
+            // lbl_textoError
+            // 
+            this.lbl_textoError.AutoSize = true;
+            this.lbl_textoError.Location = new System.Drawing.Point(152, 691);
+            this.lbl_textoError.Name = "lbl_textoError";
+            this.lbl_textoError.Size = new System.Drawing.Size(81, 20);
+            this.lbl_textoError.TabIndex = 15;
+            this.lbl_textoError.Text = "Texto error";
+            this.lbl_textoError.Visible = false;
+            // 
             // AltaPasaje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(873, 728);
+            this.Controls.Add(this.lbl_textoError);
             this.Controls.Add(this.lbl_vueloSeleccionado);
             this.Controls.Add(this.lbl_clienteSeleccionado);
             this.Controls.Add(this.lblClientes);
@@ -349,5 +361,6 @@ namespace Aerolineas
         private System.Windows.Forms.Label lblClientes;
         private System.Windows.Forms.Label lbl_clienteSeleccionado;
         private System.Windows.Forms.Label lbl_vueloSeleccionado;
+        private System.Windows.Forms.Label lbl_textoError;
     }
 }

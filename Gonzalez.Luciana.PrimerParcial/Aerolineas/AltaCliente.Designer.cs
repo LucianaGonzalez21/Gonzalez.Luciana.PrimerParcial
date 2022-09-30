@@ -42,6 +42,7 @@ namespace Aerolineas
             this.label2 = new System.Windows.Forms.Label();
             this.cmbGenero = new System.Windows.Forms.ComboBox();
             this.lblDNI = new System.Windows.Forms.Label();
+            this.lblClienteRepetido = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblDatosCliente
@@ -156,11 +157,22 @@ namespace Aerolineas
             this.lblDNI.TabIndex = 3;
             this.lblDNI.Text = "DNI";
             // 
+            // lblClienteRepetido
+            // 
+            this.lblClienteRepetido.AutoSize = true;
+            this.lblClienteRepetido.Location = new System.Drawing.Point(22, 406);
+            this.lblClienteRepetido.Name = "lblClienteRepetido";
+            this.lblClienteRepetido.Size = new System.Drawing.Size(152, 20);
+            this.lblClienteRepetido.TabIndex = 14;
+            this.lblClienteRepetido.Text = "texto cliente repetido";
+            this.lblClienteRepetido.Visible = false;
+            // 
             // AltaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(499, 443);
+            this.Controls.Add(this.lblClienteRepetido);
             this.Controls.Add(this.cmbGenero);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCancelar);
@@ -198,5 +210,6 @@ namespace Aerolineas
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbGenero;
         private System.Windows.Forms.Label lblDNI;
+        private System.Windows.Forms.Label lblClienteRepetido;
     }
 }

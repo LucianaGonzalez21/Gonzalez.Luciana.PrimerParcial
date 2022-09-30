@@ -3,17 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//using Entidades;
 
 namespace Entidades
 {
     public class Pasajero:Persona
     {
-        //private string nombre;
-        //private string apellido;
-        //private string genero;
-        //private int dni;
-        //private int edad;
         protected bool bolsoMano;
         protected int pesoValijaUno;
 
@@ -62,6 +56,30 @@ namespace Entidades
             {
                 return pesoValijaUno;
             }
+        }
+
+        public virtual double CalcularCostoPasaje(Vuelo vuelo, string clase)
+        {
+            double costoPasaje = 0;
+            //int duracion = Aerolinea.CalcularDuracionVuelo(vuelo);  //calcular duracion o vuelo.duracion???
+            int duracion = vuelo.Duracion;
+
+            switch (vuelo.Destino)
+            {
+                case nameof(DestinosInternacionales.Acapulco):
+                case nameof(DestinosInternacionales.Miami):
+                case nameof(DestinosInternacionales.Recife):
+                case nameof(DestinosInternacionales.Roma):
+                    costoPasaje = duracion * 100;
+                    break;
+                default:
+                    costoPasaje = duracion * 50;
+                    break;
+
+            }
+
+            return costoPasaje;
+
         }
     }
 }

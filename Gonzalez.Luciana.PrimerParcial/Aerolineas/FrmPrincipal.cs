@@ -13,11 +13,24 @@ namespace Aerolineas
 {
     public partial class FrmPrincipal : Form
     {
-        private int codigoVuelo = 123;
+        private int codigoVuelo;
         public FrmPrincipal(Usuario usuario)
         {
             InitializeComponent();
             lblBienvenido.Text = usuario.ToString();
+            codigoVuelo = 123;
+        }
+
+        public int CodigoVuelo
+        {
+            set
+            {
+                codigoVuelo = value;
+            }
+            get
+            {
+                return codigoVuelo;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -65,7 +78,7 @@ namespace Aerolineas
 
             if(retorno == DialogResult.OK)
             {
-                (frmAltaPasaje.Pasaje).CodigoPasaje = GenerarCodigoPasaje(codigoVuelo);
+                (frmAltaPasaje.Pasaje).CodigoPasaje = GenerarCodigoPasaje();
                 Aerolinea.listaPasajes.Add(frmAltaPasaje.Pasaje);
                 dgv_clientes.DataSource = null;
                 dgv_clientes.DataSource = Aerolinea.listaPasajes;
@@ -73,10 +86,10 @@ namespace Aerolineas
             }
         }
 
-        private static int GenerarCodigoPasaje(int codigoVuelo)
+        private int GenerarCodigoPasaje()
         {
-            codigoVuelo++;
-            return codigoVuelo;
+            CodigoVuelo += 1;
+            return CodigoVuelo;
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

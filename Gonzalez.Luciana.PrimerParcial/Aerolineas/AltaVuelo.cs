@@ -63,30 +63,29 @@ namespace Aerolineas
         {
             if (ValidarDatos())
             {
-                if(cmbDestinosNacionales.Text != null)
+                if (cmbDestinosNacionales.Text != null)
                 {
                     destino = cmbDestinosNacionales.Text;
                 }
-                else if(cmbDestinosInternacionales.Text != null)
+                else if (cmbDestinosInternacionales.Text != null)
                 {
                     destino = cmbDestinosInternacionales.Text;
                 }
 
-                //MEJORAR -> DESTINO INTER Y NAC
-                //if (cmbDestinosNacionales.Enabled == true)
-                //{
-                    nuevoVuelo = new Vuelo(destino, cmbOrigen.Text, dtp_fechaPartida.Value, avionSeleccionado);
-                    MessageBox.Show(nuevoVuelo.MostrarVuelo());
+                nuevoVuelo = new Vuelo(destino, cmbOrigen.Text, dtp_fechaPartida.Value.Date, avionSeleccionado);
+                //MessageBox.Show(nuevoVuelo.MostrarVuelo());
+                if (Aerolinea.EsAvionDisponible(nuevoVuelo))
+                {
                     this.DialogResult = DialogResult.OK;
                     this.Close();
-                //}
-                //else if(cmbDestinosInternacionales.Enabled == true)
-                //{
-                //    nuevoVuelo = new Vuelo(cmbDestinosInternacionales.Text, cmbOrigen.Text, dtp_fechaPartida.Value, avionSeleccionado);
-                //    MessageBox.Show(nuevoVuelo.MostrarVuelo());
-                //    this.DialogResult = DialogResult.OK;
-                //    this.Close();
-                //}
+                }
+                else
+                {
+                    lblAvionRepetido.Text = "El avion ya registra un vuelo en esa fecha";
+                    lblAvionRepetido.ForeColor = Color.Red;
+                    lblAvionRepetido.Visible = true;
+                }
+
             }
         }
 
@@ -137,7 +136,7 @@ namespace Aerolineas
             if (respuesta == DialogResult.OK)
             {
                 this.Close();
-            }   
+            }
         }
     }
 }

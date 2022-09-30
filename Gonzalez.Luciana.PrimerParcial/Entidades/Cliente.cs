@@ -8,19 +8,10 @@ namespace Entidades
 {
     public class Cliente: Persona
     {
-        //string nombre;
-        //string apellido;
-        //int dni;
-        //string genero;
-        //int edad;
-
-        public Cliente(string nombre, string apellido, int dni, string genero, int edad):base(nombre, apellido, dni, genero, edad)
+        //int idCliente;
+        public Cliente(string nombre, string apellido, int dni, string genero, int edad/*, int idCliente*/):base(nombre, apellido, dni, genero, edad)
         {
-            //this.nombre=nombre;
-            //this.apellido=apellido;
-            //this.dni=dni;
-            //this.genero=genero;
-            //this.edad=edad;
+            //this.idCliente = idCliente;
         }
 
         public string Nombre
@@ -63,16 +54,7 @@ namespace Entidades
             }
         }
 
-        //public static int CalcularEdad(DateTime fechaNacimiento)
-        //{
-        //    DateTime fechaActual = DateTime.Now;
-
-        //    int diferenciaDeDias = (int)(fechaActual - fechaNacimiento).TotalDays;
-
-        //    return diferenciaDeDias / 360;
-        //}
-
-        public string MostrarCliente()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 

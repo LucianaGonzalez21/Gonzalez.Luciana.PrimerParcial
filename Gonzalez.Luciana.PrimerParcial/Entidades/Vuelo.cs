@@ -15,8 +15,11 @@ namespace Entidades
         private int duracion;   
         private string estadoVuelo;
         Avion avion;
+        int cantidadAsientosTurista;
+        int cantidadAsientosPremium;
+        int cantidadAsientosTotal;
         //CANTIDAD DE PASAJEROS DEL VUELO. INICIALIZO EN CERO Y VOY SUMANDO
-        
+
         public Vuelo(string destino, string origen, DateTime fechaInicio, Avion avion)
         {
             this.destino=destino;
@@ -25,6 +28,41 @@ namespace Entidades
             this.duracion=CalcularDuracionVuelo(destino);
             this.estadoVuelo = DefinirEstadoVuelo();
             this.avion = avion;
+            this.cantidadAsientosTurista = avion.AsientosTurista;   //cuantos pasajeros permite el vuelo
+            this.cantidadAsientosPremium = avion.AsientosPremium;
+            this.cantidadAsientosTotal = avion.Asientos;
+        }
+
+        public int Asientos_Disponibles
+        {
+            get
+            {
+                return cantidadAsientosPremium + cantidadAsientosTurista;
+            }
+        }
+
+        public int Asientos_Turista
+        {
+            set
+            {
+                cantidadAsientosTurista = value;
+            }
+            get
+            {
+                return cantidadAsientosTurista;
+            }
+        }
+
+        public int Asientos_Premium
+        {
+            set
+            {
+                cantidadAsientosPremium = value;
+            }
+            get
+            {
+                return cantidadAsientosPremium;
+            }
         }
 
         public string Origen
@@ -116,7 +154,7 @@ namespace Entidades
             return estadoVueloAleatorio.ToString();
         }
 
-        public string MostrarVuelo()
+        public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
 
