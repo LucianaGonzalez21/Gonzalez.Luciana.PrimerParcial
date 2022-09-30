@@ -154,6 +154,35 @@ namespace Entidades
             return estadoVueloAleatorio.ToString();
         }
 
+        public static bool operator ==(Vuelo vueloUno, Vuelo vueloDos)
+        {
+            if (vueloUno is null || vueloDos is null)
+            {
+                return false;
+            }
+
+            return vueloUno.GetType() == vueloDos.GetType()
+                && vueloUno.Fecha_Partida == vueloDos.Fecha_Partida
+                && vueloUno.Matricula_Avion == vueloDos.Matricula_Avion;
+        }
+
+        public static bool operator !=(Vuelo vueloUno, Vuelo vueloDos)
+        {
+            return !(vueloUno == vueloDos);
+        }
+
+        public override bool Equals(object obj)
+        {
+            Vuelo vuelo = obj as Vuelo;
+
+            return vuelo is not null && this == vuelo;
+        }
+
+        public override int GetHashCode()
+        {
+            return (avion.Matricula, fechaInicio).GetHashCode();  //propiedades?
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

@@ -42,11 +42,11 @@ namespace Entidades
             }
         }
 
-        public bool Bolso_De_Mano
+        public string Bolso_De_Mano
         {
             get
             {
-                return bolsoMano;
+                return bolsoMano ? "Si" : "No";
             }
         }
 
@@ -58,7 +58,7 @@ namespace Entidades
             }
         }
 
-        public virtual double CalcularCostoPasaje(Vuelo vuelo, string clase)
+        public virtual double CalcularCostoPasaje(Vuelo vuelo)
         {
             double costoPasaje = 0;
             //int duracion = Aerolinea.CalcularDuracionVuelo(vuelo);  //calcular duracion o vuelo.duracion???
@@ -77,9 +77,12 @@ namespace Entidades
                     break;
 
             }
-
             return costoPasaje;
+        }
 
+        public override string ToString()
+        {
+            return base.ToString() + $"Bolso de mano: {Bolso_De_Mano}{Environment.NewLine}Peso valija 1: {Peso_Valija}";
         }
     }
 }

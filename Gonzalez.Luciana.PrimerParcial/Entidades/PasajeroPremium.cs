@@ -10,14 +10,27 @@ namespace Entidades
     {
         protected int pesoValijaDos;
 
-        public PasajeroPremium(string nombre, string apellido, string genero, int dni, int edad, bool bolsoMano, int pesoValijaUno, int pesoValijaDos) : base(nombre, apellido, genero, dni, edad, bolsoMano)
+        public PasajeroPremium(string nombre, string apellido, string genero, int dni, int edad, bool bolsoMano, int pesoValijaUno, int pesoValijaDos) : base(nombre, apellido, genero, dni, edad, bolsoMano, pesoValijaUno)
         {
             this.pesoValijaDos = pesoValijaDos;
         }
 
-        public override double CalcularCostoPasaje(Vuelo vuelo, string clase)
+        public int Peso_Valija_2
         {
-            return base.CalcularCostoPasaje(vuelo, clase) * 1.15;
+            get
+            {
+                return pesoValijaDos;
+            }
+        }
+
+        public override double CalcularCostoPasaje(Vuelo vuelo)
+        {
+            return base.CalcularCostoPasaje(vuelo) * 1.15;
+        }
+
+        public override string ToString()
+        {
+            return base.ToString() + $"{Environment.NewLine}Peso valija 2: {pesoValijaDos}";
         }
     }
 }

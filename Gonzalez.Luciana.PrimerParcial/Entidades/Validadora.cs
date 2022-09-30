@@ -49,5 +49,10 @@ namespace Entidades
             }
             return false;
         }
+
+        public static bool ValidarFechaVuelo(DateTime fechaPartida)
+        {
+            return fechaPartida < DateTime.Now.Date;
+        }
     }
 }

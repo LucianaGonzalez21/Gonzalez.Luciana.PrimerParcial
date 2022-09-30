@@ -20,7 +20,7 @@ namespace Entidades
             this.pasajero=pasajero;
             this.vuelo=vuelo;
             this.clase=clase;
-            this.costo= pasajero.CalcularCostoPasaje(vuelo, clase); //cuando es de tipo premium?
+            this.costo= pasajero.CalcularCostoPasaje(vuelo);
         }
 
         public int CodigoPasaje
@@ -67,21 +67,29 @@ namespace Entidades
             }
         }
 
-        public string Bolso_De_Mano
-        {
-            get
-            {
-                return (pasajero.Bolso_De_Mano)? "Si" : "No";
-            }
-        }
+        //public string Bolso_De_Mano
+        //{
+        //    get
+        //    {
+        //        return (pasajero.Bolso_De_Mano)? "Si" : "No";
+        //    }
+        //}
 
-        public int Peso_Valija
-        {
-            get
-            {
-                return pasajero.Peso_Valija;
-            }
-        }
+        //public int Peso_Valija
+        //{
+        //    get
+        //    {
+        //        return pasajero.Peso_Valija;
+        //    }
+        //}
+
+        //public int Peso_Valija2
+        //{
+        //    get
+        //    {
+        //        return ((PasajeroPremium)pasajero).Peso_Valija_2;
+        //    }
+        //}
 
         public string Origen
         {

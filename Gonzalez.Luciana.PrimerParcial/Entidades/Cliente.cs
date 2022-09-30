@@ -54,17 +54,40 @@ namespace Entidades
             }
         }
 
+
+        public static bool operator ==(Cliente clienteUno, Cliente clienteDos)
+        {
+            if(clienteUno is null || clienteDos is null)
+            {
+                return false;
+            }
+
+            return clienteUno.GetType() == clienteDos.GetType()
+                && clienteUno.DNI == clienteDos.DNI;
+        }
+
+        public static bool operator !=(Cliente clienteUno, Cliente clienteDos)
+        {
+            return !(clienteUno == clienteDos);
+        }
+
+
+        //VER CLASE DE EQUALS!!!!!!!
+        public override bool Equals(object obj)
+        {
+            Cliente cliente = obj as Cliente;
+
+            return cliente is not null && this == cliente;
+        }
+
+        public override int GetHashCode()
+        {
+            return dni.GetHashCode();
+        }
+
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-
-            sb.AppendLine($"Nombre: {nombre}");
-            sb.AppendLine($"Apellido: {apellido}");
-            sb.AppendLine($"DNI: {dni}");
-            sb.AppendLine($"Genero: {genero}");
-            sb.AppendLine($"Edad: {edad}");
-
-            return sb.ToString();
+            return base.ToString();
         }
     }
 }

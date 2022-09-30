@@ -31,5 +31,18 @@ namespace Entidades
 
             return diferenciaDeDias / 360;
         }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.AppendLine($"Nombre: {nombre}");
+            sb.AppendLine($"Apellido: {apellido}");
+            sb.AppendLine($"DNI: {dni}");
+            sb.AppendLine($"Genero: {genero}");
+            sb.AppendLine($"Edad: {edad}");
+
+            return sb.ToString();            
+        }
     }
 }

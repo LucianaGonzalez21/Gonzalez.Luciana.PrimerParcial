@@ -103,14 +103,15 @@ namespace Aerolineas
                 esValido = false;
             }
 
-            //if (dgv_aviones == null)
-            //{
-            //    sb.AppendLine("Avion");
-            //}
-
             if (cmbOrigen.Text == cmbDestinosNacionales.Text)
             {
                 sb.AppendLine("Origen y destino no pueden ser los mismos");
+                esValido = false;
+            }
+
+            if(Validadora.ValidarFechaVuelo(dtp_fechaPartida.Value))
+            {
+                sb.AppendLine("Fecha de partida no valida");
                 esValido = false;
             }
 
@@ -118,6 +119,7 @@ namespace Aerolineas
             {
                 MessageBox.Show(sb.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
 
             return esValido;
         }

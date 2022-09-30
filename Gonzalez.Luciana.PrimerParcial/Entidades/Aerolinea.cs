@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    
+
     public static class Aerolinea
     {
         public static Avion[] listaAviones;
@@ -94,11 +94,11 @@ namespace Entidades
 
         public static Usuario ValidarUsuario(string usuario, string clave)
         {
-            if(Validadora.ValidarCadena(usuario) && Validadora.ValidarCadena(clave))
+            if (Validadora.ValidarCadena(usuario) && Validadora.ValidarCadena(clave))
             {
                 foreach (Usuario item in listaUsuarios)
                 {
-                    if(item.usuario == usuario && item.clave == clave)
+                    if (item.usuario == usuario && item.clave == clave)
                     {
                         return item;
                     }
@@ -106,35 +106,6 @@ namespace Entidades
             }
             return null;
         }
-
-        //public static double CalcularCostoPasaje(Vuelo vuelo, string clase)
-        //{
-        //    double costoPasaje = 0;
-        //    int duracion = CalcularDuracionVuelo(vuelo);
-
-        //    switch (vuelo.Destino)
-        //    {
-        //        case nameof(DestinosInternacionales.Acapulco):
-        //        case nameof(DestinosInternacionales.Miami):
-        //        case nameof(DestinosInternacionales.Recife):
-        //        case nameof(DestinosInternacionales.Roma):
-        //            costoPasaje = duracion * 100;
-        //            break;
-        //        default:
-        //            costoPasaje = duracion * 50;
-        //            break;
-
-        //    }
-
-        //    if (clase == "Premium")
-        //    {
-        //        double recargoPremium = costoPasaje * .15;
-        //        costoPasaje += recargoPremium;
-        //    }
-
-        //    return costoPasaje;
-
-        //}
 
         public static int CalcularDuracionVuelo(Vuelo vuelo)
         {
@@ -159,9 +130,9 @@ namespace Entidades
 
         public static bool EsCliente(Cliente unCliente)
         {
-            foreach (Cliente item in listaClientes)
+            foreach (Cliente item in Aerolinea.listaClientes)
             {
-                if(unCliente.DNI == item.DNI)
+                if (item.Equals(unCliente) && item.GetHashCode() == unCliente.GetHashCode())
                 {
                     return true;
                 }
@@ -173,8 +144,7 @@ namespace Entidades
         {
             foreach (Vuelo item in listaVuelos)
             {
-                if (unVuelo.Matricula_Avion == item.Matricula_Avion //mismo avion
-                    && unVuelo.Fecha_Partida == item.Fecha_Partida)   // MISMA FECHA?
+                if (item.Equals(unVuelo) && item.GetHashCode() == unVuelo.GetHashCode())
                 {
                     return false;
                 }

@@ -18,7 +18,7 @@ namespace Aerolineas
         private int indiceVuelo;
         private string clase;
         private Pasajero unPasajero;
-        private PasajeroPremium unPasajeroPremium;
+        //private PasajeroPremium unPasajeroPremium;
         private Cliente unCliente;
         private bool bolsoMano;
 
@@ -111,14 +111,16 @@ namespace Aerolineas
                     unPasajero = new Pasajero(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value);
                     Aerolinea.listaVuelos[indiceVuelo].Asientos_Turista--;
                     nuevoPasaje = new Pasaje(unPasajero, Aerolinea.listaVuelos[indiceVuelo], clase);
+                    MessageBox.Show(unPasajero.ToString());
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
                 else if(clase == "Premium" && Aerolinea.listaVuelos[indiceVuelo].Asientos_Premium>0)
                 {
-                    unPasajeroPremium = new PasajeroPremium(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value,(int)numValijaDos.Value);
+                    unPasajero = new PasajeroPremium(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value,(int)numValijaDos.Value);
                     Aerolinea.listaVuelos[indiceVuelo].Asientos_Premium--;
-                    nuevoPasaje = new Pasaje(unPasajeroPremium, Aerolinea.listaVuelos[indiceVuelo], clase);
+                    nuevoPasaje = new Pasaje(unPasajero, Aerolinea.listaVuelos[indiceVuelo], clase);
+                    MessageBox.Show(unPasajero.ToString());
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }
