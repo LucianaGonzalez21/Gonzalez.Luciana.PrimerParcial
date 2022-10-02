@@ -156,5 +156,19 @@ namespace Aerolineas
                 dgv_principal.DataSource = Aerolinea.listaPasajes;
             }
         }
+
+        private void btn_listaAviones_Click(object sender, EventArgs e)
+        {
+            lbl_tituloDataGridView.Text = "Lista de Aviones";
+            dgv_principal.DataSource = null;
+            dgv_principal.DataSource = Aerolinea.listaAviones;
+        }
+
+        private void btn_estadisticas_Click(object sender, EventArgs e)
+        {
+            FrmEstadisticas frmEstadisticas = new FrmEstadisticas();
+            DialogResult retorno = frmEstadisticas.ShowDialog();
+
+        }
     }
 }

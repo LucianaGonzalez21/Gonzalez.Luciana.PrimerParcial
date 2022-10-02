@@ -41,6 +41,7 @@ namespace Aerolineas
             this.btn_listaVuelos = new System.Windows.Forms.Button();
             this.btn_listaClientes = new System.Windows.Forms.Button();
             this.lbl_tituloDataGridView = new System.Windows.Forms.Label();
+            this.btn_listaAviones = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_principal)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,11 +73,11 @@ namespace Aerolineas
             this.btn_listaPasajeros.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btn_listaPasajeros.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_listaPasajeros.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_listaPasajeros.Location = new System.Drawing.Point(12, 240);
+            this.btn_listaPasajeros.Location = new System.Drawing.Point(12, 151);
             this.btn_listaPasajeros.Name = "btn_listaPasajeros";
             this.btn_listaPasajeros.Size = new System.Drawing.Size(126, 84);
             this.btn_listaPasajeros.TabIndex = 2;
-            this.btn_listaPasajeros.Text = "Ver pasajeros";
+            this.btn_listaPasajeros.Text = "Ver Pasajeros";
             this.btn_listaPasajeros.UseVisualStyleBackColor = true;
             this.btn_listaPasajeros.Click += new System.EventHandler(this.btn_listaPasajeros_Click);
             // 
@@ -90,6 +91,7 @@ namespace Aerolineas
             this.btn_estadisticas.TabIndex = 3;
             this.btn_estadisticas.Text = "Estadisticas";
             this.btn_estadisticas.UseVisualStyleBackColor = true;
+            this.btn_estadisticas.Click += new System.EventHandler(this.btn_estadisticas_Click);
             // 
             // lblBienvenido
             // 
@@ -163,7 +165,7 @@ namespace Aerolineas
             this.btn_listaVuelos.Name = "btn_listaVuelos";
             this.btn_listaVuelos.Size = new System.Drawing.Size(126, 84);
             this.btn_listaVuelos.TabIndex = 10;
-            this.btn_listaVuelos.Text = "Ver vuelos";
+            this.btn_listaVuelos.Text = "Ver Vuelos";
             this.btn_listaVuelos.UseVisualStyleBackColor = true;
             this.btn_listaVuelos.Click += new System.EventHandler(this.btn_listaVuelos_Click);
             // 
@@ -172,11 +174,11 @@ namespace Aerolineas
             this.btn_listaClientes.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btn_listaClientes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_listaClientes.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_listaClientes.Location = new System.Drawing.Point(12, 148);
+            this.btn_listaClientes.Location = new System.Drawing.Point(12, 61);
             this.btn_listaClientes.Name = "btn_listaClientes";
             this.btn_listaClientes.Size = new System.Drawing.Size(126, 84);
             this.btn_listaClientes.TabIndex = 11;
-            this.btn_listaClientes.Text = "Ver clientes";
+            this.btn_listaClientes.Text = "Ver Clientes";
             this.btn_listaClientes.UseVisualStyleBackColor = true;
             this.btn_listaClientes.Click += new System.EventHandler(this.btn_listaClientes_Click);
             // 
@@ -191,6 +193,19 @@ namespace Aerolineas
             this.lbl_tituloDataGridView.Text = "Lista de Vuelos";
             this.lbl_tituloDataGridView.Click += new System.EventHandler(this.label1_Click_1);
             // 
+            // btn_listaAviones
+            // 
+            this.btn_listaAviones.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_listaAviones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_listaAviones.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_listaAviones.Location = new System.Drawing.Point(12, 240);
+            this.btn_listaAviones.Name = "btn_listaAviones";
+            this.btn_listaAviones.Size = new System.Drawing.Size(126, 84);
+            this.btn_listaAviones.TabIndex = 13;
+            this.btn_listaAviones.Text = "Ver Aviones";
+            this.btn_listaAviones.UseVisualStyleBackColor = true;
+            this.btn_listaAviones.Click += new System.EventHandler(this.btn_listaAviones_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -198,6 +213,7 @@ namespace Aerolineas
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(948, 479);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_listaAviones);
             this.Controls.Add(this.lbl_tituloDataGridView);
             this.Controls.Add(this.btn_listaClientes);
             this.Controls.Add(this.btn_listaVuelos);
@@ -237,5 +253,6 @@ namespace Aerolineas
         private System.Windows.Forms.Button btn_listaVuelos;
         private System.Windows.Forms.Button btn_listaClientes;
         private System.Windows.Forms.Label lbl_tituloDataGridView;
+        private System.Windows.Forms.Button btn_listaAviones;
     }
 }
