@@ -31,14 +31,8 @@ namespace Aerolineas
         {
             this.lbl_pasajeros = new System.Windows.Forms.Label();
             this.btn_AgregarPasajero = new System.Windows.Forms.Button();
-            this.lbl_totalPasajeros = new System.Windows.Forms.Label();
-            this.lbl_numerosPasajeros = new System.Windows.Forms.Label();
             this.lbl_vuelo = new System.Windows.Forms.Label();
             this.btn_seleccionarVuelo = new System.Windows.Forms.Button();
-            this.lbl_costoBase = new System.Windows.Forms.Label();
-            this.lbl_importeBase = new System.Windows.Forms.Label();
-            this.lbl_costoNeto = new System.Windows.Forms.Label();
-            this.lbl_importeNeto = new System.Windows.Forms.Label();
             this.gpr_Clase = new System.Windows.Forms.GroupBox();
             this.rd_premium = new System.Windows.Forms.RadioButton();
             this.rd_turista = new System.Windows.Forms.RadioButton();
@@ -47,6 +41,9 @@ namespace Aerolineas
             this.btn_cancelar = new System.Windows.Forms.Button();
             this.lbl_textoError = new System.Windows.Forms.Label();
             this.lbl_vueloSeleccionado = new System.Windows.Forms.Label();
+            this.lbl_costoBruto = new System.Windows.Forms.Label();
+            this.lbl_importeBruto = new System.Windows.Forms.Label();
+            this.btn_calcular = new System.Windows.Forms.Button();
             this.gpr_Clase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_listaPasajeros)).BeginInit();
             this.SuspendLayout();
@@ -73,26 +70,6 @@ namespace Aerolineas
             this.btn_AgregarPasajero.UseVisualStyleBackColor = true;
             this.btn_AgregarPasajero.Click += new System.EventHandler(this.btn_AgregarPasajero_Click);
             // 
-            // lbl_totalPasajeros
-            // 
-            this.lbl_totalPasajeros.AutoSize = true;
-            this.lbl_totalPasajeros.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_totalPasajeros.Location = new System.Drawing.Point(26, 378);
-            this.lbl_totalPasajeros.Name = "lbl_totalPasajeros";
-            this.lbl_totalPasajeros.Size = new System.Drawing.Size(131, 18);
-            this.lbl_totalPasajeros.TabIndex = 2;
-            this.lbl_totalPasajeros.Text = "Total pasajeros";
-            // 
-            // lbl_numerosPasajeros
-            // 
-            this.lbl_numerosPasajeros.AutoSize = true;
-            this.lbl_numerosPasajeros.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_numerosPasajeros.Location = new System.Drawing.Point(383, 374);
-            this.lbl_numerosPasajeros.Name = "lbl_numerosPasajeros";
-            this.lbl_numerosPasajeros.Size = new System.Drawing.Size(68, 18);
-            this.lbl_numerosPasajeros.TabIndex = 3;
-            this.lbl_numerosPasajeros.Text = "numero";
-            // 
             // lbl_vuelo
             // 
             this.lbl_vuelo.AutoSize = true;
@@ -114,46 +91,6 @@ namespace Aerolineas
             this.btn_seleccionarVuelo.Text = "Seleccionar Vuelo";
             this.btn_seleccionarVuelo.UseVisualStyleBackColor = true;
             this.btn_seleccionarVuelo.Click += new System.EventHandler(this.btn_seleccionarVuelo_Click);
-            // 
-            // lbl_costoBase
-            // 
-            this.lbl_costoBase.AutoSize = true;
-            this.lbl_costoBase.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_costoBase.Location = new System.Drawing.Point(26, 428);
-            this.lbl_costoBase.Name = "lbl_costoBase";
-            this.lbl_costoBase.Size = new System.Drawing.Size(169, 18);
-            this.lbl_costoBase.TabIndex = 6;
-            this.lbl_costoBase.Text = "Costo sin impuestos";
-            // 
-            // lbl_importeBase
-            // 
-            this.lbl_importeBase.AutoSize = true;
-            this.lbl_importeBase.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_importeBase.Location = new System.Drawing.Point(381, 428);
-            this.lbl_importeBase.Name = "lbl_importeBase";
-            this.lbl_importeBase.Size = new System.Drawing.Size(70, 18);
-            this.lbl_importeBase.TabIndex = 7;
-            this.lbl_importeBase.Text = "importe";
-            // 
-            // lbl_costoNeto
-            // 
-            this.lbl_costoNeto.AutoSize = true;
-            this.lbl_costoNeto.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_costoNeto.Location = new System.Drawing.Point(26, 482);
-            this.lbl_costoNeto.Name = "lbl_costoNeto";
-            this.lbl_costoNeto.Size = new System.Drawing.Size(96, 18);
-            this.lbl_costoNeto.TabIndex = 8;
-            this.lbl_costoNeto.Text = "Costo total";
-            // 
-            // lbl_importeNeto
-            // 
-            this.lbl_importeNeto.AutoSize = true;
-            this.lbl_importeNeto.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_importeNeto.Location = new System.Drawing.Point(381, 482);
-            this.lbl_importeNeto.Name = "lbl_importeNeto";
-            this.lbl_importeNeto.Size = new System.Drawing.Size(70, 18);
-            this.lbl_importeNeto.TabIndex = 9;
-            this.lbl_importeNeto.Text = "importe";
             // 
             // gpr_Clase
             // 
@@ -205,7 +142,7 @@ namespace Aerolineas
             // 
             this.btn_aceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_aceptar.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_aceptar.Location = new System.Drawing.Point(641, 501);
+            this.btn_aceptar.Location = new System.Drawing.Point(641, 470);
             this.btn_aceptar.Name = "btn_aceptar";
             this.btn_aceptar.Size = new System.Drawing.Size(131, 29);
             this.btn_aceptar.TabIndex = 12;
@@ -217,23 +154,25 @@ namespace Aerolineas
             // 
             this.btn_cancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_cancelar.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_cancelar.Location = new System.Drawing.Point(787, 501);
+            this.btn_cancelar.Location = new System.Drawing.Point(787, 470);
             this.btn_cancelar.Name = "btn_cancelar";
             this.btn_cancelar.Size = new System.Drawing.Size(129, 29);
             this.btn_cancelar.TabIndex = 13;
             this.btn_cancelar.Text = "Cancelar";
             this.btn_cancelar.UseVisualStyleBackColor = true;
+            this.btn_cancelar.Click += new System.EventHandler(this.btn_cancelar_Click);
             // 
             // lbl_textoError
             // 
             this.lbl_textoError.AutoSize = true;
             this.lbl_textoError.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_textoError.ForeColor = System.Drawing.Color.Red;
-            this.lbl_textoError.Location = new System.Drawing.Point(493, 460);
+            this.lbl_textoError.Location = new System.Drawing.Point(35, 475);
             this.lbl_textoError.Name = "lbl_textoError";
             this.lbl_textoError.Size = new System.Drawing.Size(99, 18);
             this.lbl_textoError.TabIndex = 15;
             this.lbl_textoError.Text = "Texto error";
+            this.lbl_textoError.Visible = false;
             // 
             // lbl_vueloSeleccionado
             // 
@@ -244,27 +183,58 @@ namespace Aerolineas
             this.lbl_vueloSeleccionado.Size = new System.Drawing.Size(91, 18);
             this.lbl_vueloSeleccionado.TabIndex = 16;
             this.lbl_vueloSeleccionado.Text = "info vuelo";
+            this.lbl_vueloSeleccionado.Visible = false;
+            // 
+            // lbl_costoBruto
+            // 
+            this.lbl_costoBruto.AutoSize = true;
+            this.lbl_costoBruto.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_costoBruto.Location = new System.Drawing.Point(493, 374);
+            this.lbl_costoBruto.Name = "lbl_costoBruto";
+            this.lbl_costoBruto.Size = new System.Drawing.Size(187, 18);
+            this.lbl_costoBruto.TabIndex = 6;
+            this.lbl_costoBruto.Text = "Costo Bruto del Vuelo";
+            // 
+            // lbl_importeBruto
+            // 
+            this.lbl_importeBruto.AutoSize = true;
+            this.lbl_importeBruto.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_importeBruto.Location = new System.Drawing.Point(848, 374);
+            this.lbl_importeBruto.Name = "lbl_importeBruto";
+            this.lbl_importeBruto.Size = new System.Drawing.Size(70, 18);
+            this.lbl_importeBruto.TabIndex = 7;
+            this.lbl_importeBruto.Text = "importe";
+            this.lbl_importeBruto.Visible = false;
+            // 
+            // btn_calcular
+            // 
+            this.btn_calcular.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_calcular.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_calcular.Location = new System.Drawing.Point(787, 416);
+            this.btn_calcular.Name = "btn_calcular";
+            this.btn_calcular.Size = new System.Drawing.Size(131, 29);
+            this.btn_calcular.TabIndex = 17;
+            this.btn_calcular.Text = "Calcular";
+            this.btn_calcular.UseVisualStyleBackColor = true;
+            this.btn_calcular.Click += new System.EventHandler(this.btn_calcular_Click);
             // 
             // FrmAltaGrupo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
-            this.ClientSize = new System.Drawing.Size(928, 542);
+            this.ClientSize = new System.Drawing.Size(928, 517);
+            this.Controls.Add(this.btn_calcular);
             this.Controls.Add(this.lbl_vueloSeleccionado);
             this.Controls.Add(this.lbl_textoError);
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.btn_aceptar);
             this.Controls.Add(this.dgv_listaPasajeros);
             this.Controls.Add(this.gpr_Clase);
-            this.Controls.Add(this.lbl_importeNeto);
-            this.Controls.Add(this.lbl_costoNeto);
-            this.Controls.Add(this.lbl_importeBase);
-            this.Controls.Add(this.lbl_costoBase);
+            this.Controls.Add(this.lbl_importeBruto);
+            this.Controls.Add(this.lbl_costoBruto);
             this.Controls.Add(this.btn_seleccionarVuelo);
             this.Controls.Add(this.lbl_vuelo);
-            this.Controls.Add(this.lbl_numerosPasajeros);
-            this.Controls.Add(this.lbl_totalPasajeros);
             this.Controls.Add(this.btn_AgregarPasajero);
             this.Controls.Add(this.lbl_pasajeros);
             this.Name = "FrmAltaGrupo";
@@ -283,14 +253,8 @@ namespace Aerolineas
 
         private System.Windows.Forms.Label lbl_pasajeros;
         private System.Windows.Forms.Button btn_AgregarPasajero;
-        private System.Windows.Forms.Label lbl_totalPasajeros;
-        private System.Windows.Forms.Label lbl_numerosPasajeros;
         private System.Windows.Forms.Label lbl_vuelo;
         private System.Windows.Forms.Button btn_seleccionarVuelo;
-        private System.Windows.Forms.Label lbl_costoBase;
-        private System.Windows.Forms.Label lbl_importeBase;
-        private System.Windows.Forms.Label lbl_costoNeto;
-        private System.Windows.Forms.Label lbl_importeNeto;
         private System.Windows.Forms.GroupBox gpr_Clase;
         private System.Windows.Forms.RadioButton rd_premium;
         private System.Windows.Forms.RadioButton rd_turista;
@@ -299,5 +263,8 @@ namespace Aerolineas
         private System.Windows.Forms.Button btn_cancelar;
         private System.Windows.Forms.Label lbl_textoError;
         private System.Windows.Forms.Label lbl_vueloSeleccionado;
+        private System.Windows.Forms.Label lbl_costoBruto;
+        private System.Windows.Forms.Label lbl_importeBruto;
+        private System.Windows.Forms.Button btn_calcular;
     }
 }

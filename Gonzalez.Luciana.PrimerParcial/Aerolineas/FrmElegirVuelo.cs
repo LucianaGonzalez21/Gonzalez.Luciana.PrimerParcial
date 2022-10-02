@@ -66,7 +66,7 @@ namespace Aerolineas
 
                 listaFiltrada = Aerolinea.FiltrarVuelos(cmb_origen.Text, destino, cb_wifi.Checked, cb_comida.Checked);
 
-                if (listaFiltrada == null)
+                if (listaFiltrada.Count == 0)
                 {
                     MessageBox.Show("No hay vuelos con esas caracteristicas");
                 }
@@ -133,6 +133,15 @@ namespace Aerolineas
             {
                 unVuelo = listaFiltrada[indiceVuelo];
                 this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
+        private void btn_cancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("Esta seguro que desea cancelar?", "Cancelar", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (respuesta == DialogResult.OK)
+            {
                 this.Close();
             }
         }

@@ -16,6 +16,8 @@ namespace Entidades
         public static List<Usuario> listaUsuarios;
         public static List<Pasaje> listaPasajes;
         public static List<Cliente> listaClientes;
+        public static int codigoPasaje;
+        public static int idCliente;
 
         static Aerolinea()
         {
@@ -26,6 +28,8 @@ namespace Entidades
             listaPasajes = new List<Pasaje>();
             listaClientes = new List<Cliente>();
             listaPasajerosPremium = new List<PasajeroPremium>();
+            codigoPasaje = 123;
+            idCliente = 999;
 
             AgregarAviones();
             AgregarUsuarios();
@@ -37,17 +41,17 @@ namespace Entidades
 
         private static void AgregarClientes()
         {
-            listaClientes.Add(new Cliente("Martin", "Martinez", 30123456, nameof(Generos.Masculino), 30));
-            listaClientes.Add(new Cliente("Emiliano", "Gomez", 36123456, nameof(Generos.Masculino), 30));
-            listaClientes.Add(new Cliente("Rosa", "Martinez", 15155406, nameof(Generos.Femenino), 60));
-            listaClientes.Add(new Cliente("Morena", "Rodriguez", 15159159, nameof(Generos.Femenino), 30));
-            listaClientes.Add(new Cliente("Jose", "Lopez", 15259159, nameof(Generos.Masculino), 40));
-            listaClientes.Add(new Cliente("Maria", "Ramirez", 15159459, nameof(Generos.Femenino), 30));
-            listaClientes.Add(new Cliente("Pedro", "Gutierrez", 38159159, nameof(Generos.No_Binario), 30));
-            listaClientes.Add(new Cliente("Pablo", "Garcia", 15299159, nameof(Generos.Femenino), 40));
-            listaClientes.Add(new Cliente("Micaela", "Gomez", 15157159, nameof(Generos.No_Binario), 32));
-            listaClientes.Add(new Cliente("Mariela", "Gomez", 35157159, nameof(Generos.Femenino), 23));
-            listaClientes.Add(new Cliente("German", "Gomez", 20157159, nameof(Generos.Masculino), 29));
+            listaClientes.Add(new Cliente("Martin", "Martinez", 30123456, nameof(Generos.Masculino), 30, GenerarIdCliente()));
+            listaClientes.Add(new Cliente("Emiliano", "Gomez", 36123456, nameof(Generos.Masculino), 30, GenerarIdCliente()));
+            listaClientes.Add(new Cliente("Rosa", "Martinez", 15155406, nameof(Generos.Femenino), 60, GenerarIdCliente()));
+            listaClientes.Add(new Cliente("Morena", "Rodriguez", 15159159, nameof(Generos.Femenino), 30, GenerarIdCliente()));
+            listaClientes.Add(new Cliente("Jose", "Lopez", 15259159, nameof(Generos.Masculino), 40, GenerarIdCliente()));
+            listaClientes.Add(new Cliente("Maria", "Ramirez", 15159459, nameof(Generos.Femenino), 30, GenerarIdCliente()));
+            listaClientes.Add(new Cliente("Pedro", "Gutierrez", 38159159, nameof(Generos.No_Binario), 30, GenerarIdCliente()));
+            listaClientes.Add(new Cliente("Pablo", "Garcia", 15299159, nameof(Generos.Femenino), 40, GenerarIdCliente()));
+            listaClientes.Add(new Cliente("Micaela", "Gomez", 15157159, nameof(Generos.No_Binario), 32, GenerarIdCliente()));
+            listaClientes.Add(new Cliente("Mariela", "Gomez", 35157159, nameof(Generos.Femenino), 23, GenerarIdCliente()));
+            listaClientes.Add(new Cliente("German", "Gomez", 20157159, nameof(Generos.Masculino), 29, GenerarIdCliente()));
         }
 
         private static void AgregarPasajes()
@@ -82,6 +86,14 @@ namespace Entidades
             listaVuelos.Add(new Vuelo(nameof(DestinosInternacionales.Miami), nameof(Origen.Buenos_Aires), Convert.ToDateTime("12/15/2022"), listaAviones[2]));
             listaVuelos.Add(new Vuelo(nameof(DestinosNacionales.Cordoba), nameof(Origen.Iguazu), Convert.ToDateTime("11/13/2023"), listaAviones[4]));
             listaVuelos.Add(new Vuelo(nameof(DestinosNacionales.Jujuy), nameof(Origen.Neuquen), Convert.ToDateTime("10/16/2022"), listaAviones[5]));
+            listaVuelos.Add(new Vuelo(nameof(DestinosNacionales.Neuquen), nameof(Origen.Salta), Convert.ToDateTime("11/10/2022"), listaAviones[4]));
+            listaVuelos.Add(new Vuelo(nameof(DestinosNacionales.Trelew), nameof(Origen.Ushuaia), Convert.ToDateTime("02/03/2023"), listaAviones[6]));
+            listaVuelos.Add(new Vuelo(nameof(DestinosNacionales.Santiego_Del_Estero), nameof(Origen.Ushuaia), Convert.ToDateTime("12/30/2022"), listaAviones[1]));
+            listaVuelos.Add(new Vuelo(nameof(DestinosNacionales.Santa_Rosa), nameof(Origen.Puerto_Madryn), Convert.ToDateTime("08/15/2023"), listaAviones[3]));
+            listaVuelos.Add(new Vuelo(nameof(DestinosInternacionales.Recife), nameof(Origen.Buenos_Aires), Convert.ToDateTime("03/15/2023"), listaAviones[3]));
+            listaVuelos.Add(new Vuelo(nameof(DestinosInternacionales.Roma), nameof(Origen.Buenos_Aires), Convert.ToDateTime("01/23/2023"), listaAviones[2]));
+            listaVuelos.Add(new Vuelo(nameof(DestinosInternacionales.Recife), nameof(Origen.Buenos_Aires), Convert.ToDateTime("01/30/2023"), listaAviones[1]));
+            listaVuelos.Add(new Vuelo(nameof(DestinosInternacionales.Miami), nameof(Origen.Buenos_Aires), Convert.ToDateTime("02/28/2023"), listaAviones[0]));
         }
 
         private static void AgregarUsuarios()
@@ -197,6 +209,20 @@ namespace Entidades
             }
 
             return listaFiltrada;
+        }
+
+        public static int GenerarCodigoPasaje()
+        {
+            codigoPasaje++;
+
+            return codigoPasaje;
+        }
+
+        public static int GenerarIdCliente()
+        {
+            idCliente++;
+
+            return idCliente;
         }
     }
 }

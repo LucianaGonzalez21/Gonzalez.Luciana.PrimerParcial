@@ -134,7 +134,7 @@ namespace Aerolineas
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult respuesta = MessageBox.Show("Esta seguro que desea salir?", "Cancelar", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            DialogResult respuesta = MessageBox.Show("Esta seguro que desea cancelar?", "Cancelar", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (respuesta == DialogResult.OK)
             {
                 this.Close();

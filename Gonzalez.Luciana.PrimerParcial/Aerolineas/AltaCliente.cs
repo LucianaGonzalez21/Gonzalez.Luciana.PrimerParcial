@@ -35,7 +35,7 @@ namespace Aerolineas
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult respuesta = MessageBox.Show("Esta seguro que desea salir?", "Cancelar", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            DialogResult respuesta = MessageBox.Show("Esta seguro que desea cancelar?", "Cancelar", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (respuesta == DialogResult.OK)
             {
                 this.Close();
@@ -47,15 +47,14 @@ namespace Aerolineas
             if (ValidarDatos())
             {
                 nuevoCliente = new Cliente(txtNombre.Text, txtApellido.Text, int.Parse(txtDNI.Text), cmbGenero.Text, Cliente.CalcularEdad(dtp_fechaNacimiento.Value.Date));
-                //MessageBox.Show(nuevoCliente.MostrarCliente());
                 if (Aerolinea.EsCliente(nuevoCliente))
                 {
                     lbl_textoError.Text = "El cliente ya existe";
-                    lbl_textoError.ForeColor = Color.Red;
                     lbl_textoError.Visible = true;
                 }
                 else
                 {
+                    nuevoCliente.Id = Aerolinea.GenerarIdCliente();
                     this.DialogResult = DialogResult.OK;
                     this.Close();
                 }

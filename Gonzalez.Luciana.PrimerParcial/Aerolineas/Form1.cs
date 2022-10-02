@@ -37,7 +37,7 @@ namespace Aerolineas
                 Usuario auxUsuario = Aerolinea.ValidarUsuario(txtUsuario.Text, txtClave.Text);
                 if (auxUsuario != null)
                 {
-                    FrmPrincipal frmPrincipal = new FrmPrincipal(auxUsuario);
+                    FrmPrincipal frmPrincipal = new FrmPrincipal(auxUsuario, this);
                     this.Hide();
                     frmPrincipal.Show();
                 }

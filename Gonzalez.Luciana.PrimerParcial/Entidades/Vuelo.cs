@@ -33,38 +33,6 @@ namespace Entidades
             this.cantidadAsientosTotal = avion.Asientos;
         }
 
-        public int Asientos_Disponibles
-        {
-            get
-            {
-                return cantidadAsientosPremium + cantidadAsientosTurista;
-            }
-        }
-
-        public int Asientos_Turista
-        {
-            set
-            {
-                cantidadAsientosTurista = value;
-            }
-            get
-            {
-                return cantidadAsientosTurista;
-            }
-        }
-
-        public int Asientos_Premium
-        {
-            set
-            {
-                cantidadAsientosPremium = value;
-            }
-            get
-            {
-                return cantidadAsientosPremium;
-            }
-        }
-
         public string Origen
         {
             get
@@ -101,6 +69,38 @@ namespace Entidades
             get
             {
                 return estadoVuelo;
+            }
+        }
+
+        public int Asientos_Disponibles
+        {
+            get
+            {
+                return cantidadAsientosPremium + cantidadAsientosTurista;
+            }
+        }
+
+        public int Asientos_Turista
+        {
+            set
+            {
+                cantidadAsientosTurista = value;
+            }
+            get
+            {
+                return cantidadAsientosTurista;
+            }
+        }
+
+        public int Asientos_Premium
+        {
+            set
+            {
+                cantidadAsientosPremium = value;
+            }
+            get
+            {
+                return cantidadAsientosPremium;
             }
         }
 
@@ -205,7 +205,7 @@ namespace Entidades
 
             sb.AppendLine($"Origen: {origen}");
             sb.AppendLine($"Destino: {destino}");
-            sb.AppendLine($"Fecha {fechaInicio}");
+            sb.AppendLine($"Fecha: {fechaInicio.Date}");
 
             return sb.ToString();
         }

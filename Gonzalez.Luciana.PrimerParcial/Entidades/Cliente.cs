@@ -8,10 +8,27 @@ namespace Entidades
 {
     public class Cliente: Persona
     {
-        //int idCliente;
-        public Cliente(string nombre, string apellido, int dni, string genero, int edad/*, int idCliente*/):base(nombre, apellido, dni, genero, edad)
+        private int idCliente;
+        public Cliente(string nombre, string apellido, int dni, string genero, int edad):base(nombre, apellido, dni, genero, edad)
         {
-            //this.idCliente = idCliente;
+            //this.idCliente = Aerolinea.GenerarIdCliente();
+        }
+
+        public Cliente(string nombre, string apellido, int dni, string genero, int edad, int id):this(nombre, apellido, dni, genero, edad)
+        {
+            this.idCliente = id;
+        }
+
+        public int Id
+        {
+            set
+            {
+                idCliente = value;
+            }
+            get
+            {
+                return idCliente;
+            }
         }
 
         public string Nombre

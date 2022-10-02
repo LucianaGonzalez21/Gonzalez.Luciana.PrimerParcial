@@ -15,7 +15,6 @@ namespace Aerolineas
     {
         private Pasaje nuevoPasaje;
         private int indiceCliente;
-        //private int indiceVuelo;
         private string clase;
         private Pasajero unPasajero;
         private Cliente unCliente;
@@ -115,22 +114,16 @@ namespace Aerolineas
                 }
                 else
                 {
-                    if (clase == "Turista" && /*Aerolinea.listaVuelos[indiceVuelo]*/unVuelo.Asientos_Turista>0)
+                    if (clase == "Turista" && unVuelo.Asientos_Turista>0)
                     {
                         unPasajero = new Pasajero(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value);
-
-                        //CAMBIO
-                        //ValidarPasaje(unPasajero, Aerolinea.listaVuelos[indiceVuelo], clase);
                         ValidarPasaje(unPasajero, unVuelo, clase);
-
-
                     }
-                    else if (clase == "Premium" && /*Aerolinea.listaVuelos[indiceVuelo]*/unVuelo.Asientos_Premium>0)
+                    else if (clase == "Premium" && unVuelo.Asientos_Premium>0)
                     {
                         unPasajero = new PasajeroPremium(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value, (int)numValijaDos.Value);
-                        //Aerolinea.listaVuelos[indiceVuelo].Asientos_Premium--;
 
-                        ValidarPasaje(unPasajero, /*Aerolinea.listaVuelos[indiceVuelo]*/ unVuelo, clase);
+                        ValidarPasaje(unPasajero, unVuelo, clase);
 
                     }
                     else
@@ -179,7 +172,6 @@ namespace Aerolineas
 
         private void ValidarPasaje(Pasajero unPasajero, Vuelo unVuelo, string clase)
         {
-            //nuevoPasaje = new Pasaje(unPasajero, Aerolinea.listaVuelos[indiceVuelo], clase);
             nuevoPasaje = new Pasaje(unPasajero, unVuelo, clase);
 
             if (Aerolinea.EsPasajeroEnElVuelo(nuevoPasaje))
@@ -189,16 +181,7 @@ namespace Aerolineas
             }
             else
             {
-                if(clase == "Turista")
-                {
-                    //Aerolinea.listaVuelos[indiceVuelo].Asientos_Turista--;
-                    unVuelo.Asientos_Turista--;
-                }
-                else
-                {
-                    //Aerolinea.listaVuelos[indiceVuelo].Asientos_Premium--;
-                    unVuelo.Asientos_Premium--;
-                }
+                DescontarAsientosAvion(clase);
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -207,18 +190,12 @@ namespace Aerolineas
         private void dgv_clientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             indiceCliente = dgv_clientes.CurrentRow.Index;
-            lbl_clienteSeleccionado.Text = Aerolinea.listaClientes[indiceCliente].Nombre + Aerolinea.listaClientes[indiceCliente].Apellido;
+            lbl_clienteSeleccionado.Text = Aerolinea.listaClientes[indiceCliente].Nombre + " " + Aerolinea.listaClientes[indiceCliente].Apellido;
         }
-
-        //private void dgv_aviones_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        //{
-        //    indiceVuelo = dgv_vuelos.CurrentRow.Index;
-        //    lbl_vueloSeleccionado.Text = Aerolinea.listaVuelos[indiceVuelo].Matricula_Avion;
-        //}
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            DialogResult respuesta = MessageBox.Show("Esta seguro que desea salir?", "Cancelar", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            DialogResult respuesta = MessageBox.Show("Esta seguro que desea cancelar?", "Cancelar", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
             if (respuesta == DialogResult.OK)
             {
                 this.Close();
@@ -233,7 +210,19 @@ namespace Aerolineas
             if (respuesta == DialogResult.OK)
             {
                 unVuelo = frmElegirVuelo.Vuelo;
-                lbl_vueloSeleccionado.Text = unVuelo.Matricula_Avion;
+                lbl_vueloSeleccionado.Text = unVuelo.ToString();
+            }
+        }
+
+        private void DescontarAsientosAvion(string clase)
+        {
+            if (clase == "Turista")
+            {
+                unVuelo.Asientos_Turista--;
+            }
+            else
+            {
+                unVuelo.Asientos_Premium--;
             }
         }
     }

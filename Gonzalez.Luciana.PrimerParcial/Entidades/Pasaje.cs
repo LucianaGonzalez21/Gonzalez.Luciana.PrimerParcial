@@ -20,7 +20,7 @@ namespace Entidades
             this.pasajero=pasajero;
             this.vuelo=vuelo;
             this.clase=clase;
-            this.costo= pasajero.CalcularCostoPasaje(vuelo);
+            this.costo= CalcularImporteBruto();
         }
 
         public int Codigo_Pasaje
@@ -160,6 +160,10 @@ namespace Entidades
             return (vuelo, pasajero).GetHashCode();
         }
 
+        private double CalcularImporteBruto()
+        {
+            return pasajero.CalcularCostoPasaje(vuelo) * 1.21;
+        }
 
         public override string ToString()
         {

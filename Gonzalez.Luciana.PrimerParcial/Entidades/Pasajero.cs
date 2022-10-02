@@ -61,7 +61,6 @@ namespace Entidades
         public virtual double CalcularCostoPasaje(Vuelo vuelo)
         {
             double costoPasaje = 0;
-            //int duracion = Aerolinea.CalcularDuracionVuelo(vuelo);  //calcular duracion o vuelo.duracion???
             int duracion = vuelo.Duracion;
 
             switch (vuelo.Destino)

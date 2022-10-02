@@ -211,6 +211,7 @@ namespace Aerolineas
             this.lbl_textoError.Size = new System.Drawing.Size(101, 18);
             this.lbl_textoError.TabIndex = 11;
             this.lbl_textoError.Text = "Texto Error";
+            this.lbl_textoError.Visible = false;
             // 
             // lbl_clienteSeleccionado
             // 

@@ -29,7 +29,7 @@ namespace Entidades
 
             int diferenciaDeDias = (int)(fechaActual - fechaNacimiento).TotalDays;
 
-            return diferenciaDeDias / 360;
+            return diferenciaDeDias / 365;
         }
 
         public override string ToString()
