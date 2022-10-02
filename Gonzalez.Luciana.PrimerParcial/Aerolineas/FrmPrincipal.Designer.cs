@@ -37,7 +37,7 @@ namespace Aerolineas
             this.btnAgregarCliente = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnVenderPasaje = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_ventaGrupo = new System.Windows.Forms.Button();
             this.btn_listaVuelos = new System.Windows.Forms.Button();
             this.btn_listaClientes = new System.Windows.Forms.Button();
             this.lbl_tituloDataGridView = new System.Windows.Forms.Label();
@@ -100,9 +100,9 @@ namespace Aerolineas
             this.lblBienvenido.ForeColor = System.Drawing.Color.DarkRed;
             this.lblBienvenido.Location = new System.Drawing.Point(12, 21);
             this.lblBienvenido.Name = "lblBienvenido";
-            this.lblBienvenido.Size = new System.Drawing.Size(50, 19);
+            this.lblBienvenido.Size = new System.Drawing.Size(98, 19);
             this.lblBienvenido.TabIndex = 4;
-            this.lblBienvenido.Text = "texto";
+            this.lblBienvenido.Text = "bienvenida";
             this.lblBienvenido.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnAgregarCliente
@@ -142,16 +142,17 @@ namespace Aerolineas
             this.btnVenderPasaje.UseVisualStyleBackColor = true;
             this.btnVenderPasaje.Click += new System.EventHandler(this.btnVenderPasaje_Click);
             // 
-            // button1
+            // btn_ventaGrupo
             // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(532, 61);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(114, 84);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Vender Pasajes (Grupo familiar)";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btn_ventaGrupo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_ventaGrupo.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_ventaGrupo.Location = new System.Drawing.Point(532, 61);
+            this.btn_ventaGrupo.Name = "btn_ventaGrupo";
+            this.btn_ventaGrupo.Size = new System.Drawing.Size(114, 84);
+            this.btn_ventaGrupo.TabIndex = 9;
+            this.btn_ventaGrupo.Text = "Vender Pasajes (Grupo familiar)";
+            this.btn_ventaGrupo.UseVisualStyleBackColor = true;
+            this.btn_ventaGrupo.Click += new System.EventHandler(this.button1_Click);
             // 
             // btn_listaVuelos
             // 
@@ -200,7 +201,7 @@ namespace Aerolineas
             this.Controls.Add(this.lbl_tituloDataGridView);
             this.Controls.Add(this.btn_listaClientes);
             this.Controls.Add(this.btn_listaVuelos);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_ventaGrupo);
             this.Controls.Add(this.btnVenderPasaje);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnAgregarCliente);
@@ -232,7 +233,7 @@ namespace Aerolineas
         private System.Windows.Forms.Button btnAgregarCliente;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnVenderPasaje;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_ventaGrupo;
         private System.Windows.Forms.Button btn_listaVuelos;
         private System.Windows.Forms.Button btn_listaClientes;
         private System.Windows.Forms.Label lbl_tituloDataGridView;

@@ -81,9 +81,9 @@ namespace Aerolineas
                 }
                 else
                 {
-                    lblAvionRepetido.Text = "El avion ya registra un vuelo en esa fecha";
-                    lblAvionRepetido.ForeColor = Color.Red;
-                    lblAvionRepetido.Visible = true;
+                    lbl_textoError.Text = "El avion ya registra un vuelo en esa fecha";
+                    lbl_textoError.ForeColor = Color.Red;
+                    lbl_textoError.Visible = true;
                 }
 
             }

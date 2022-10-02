@@ -50,9 +50,9 @@ namespace Aerolineas
                 //MessageBox.Show(nuevoCliente.MostrarCliente());
                 if (Aerolinea.EsCliente(nuevoCliente))
                 {
-                    lblClienteRepetido.Text = "El cliente ya existe";
-                    lblClienteRepetido.ForeColor = Color.Red;
-                    lblClienteRepetido.Visible = true;
+                    lbl_textoError.Text = "El cliente ya existe";
+                    lbl_textoError.ForeColor = Color.Red;
+                    lbl_textoError.Visible = true;
                 }
                 else
                 {

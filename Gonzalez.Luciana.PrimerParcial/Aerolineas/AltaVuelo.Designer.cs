@@ -45,7 +45,7 @@ namespace Aerolineas
             this.dgv_aviones = new System.Windows.Forms.DataGridView();
             this.lblAvionSeleccionado = new System.Windows.Forms.Label();
             this.lblMatriculaAvion = new System.Windows.Forms.Label();
-            this.lblAvionRepetido = new System.Windows.Forms.Label();
+            this.lbl_textoError = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_aviones)).BeginInit();
             this.SuspendLayout();
             // 
@@ -217,17 +217,17 @@ namespace Aerolineas
             this.lblMatriculaAvion.Text = "matricula";
             this.lblMatriculaAvion.Visible = false;
             // 
-            // lblAvionRepetido
+            // lbl_textoError
             // 
-            this.lblAvionRepetido.AutoSize = true;
-            this.lblAvionRepetido.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblAvionRepetido.ForeColor = System.Drawing.Color.Red;
-            this.lblAvionRepetido.Location = new System.Drawing.Point(514, 464);
-            this.lblAvionRepetido.Name = "lblAvionRepetido";
-            this.lblAvionRepetido.Size = new System.Drawing.Size(243, 18);
-            this.lblAvionRepetido.TabIndex = 19;
-            this.lblAvionRepetido.Text = "error avion repetido en fecha";
-            this.lblAvionRepetido.Visible = false;
+            this.lbl_textoError.AutoSize = true;
+            this.lbl_textoError.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_textoError.ForeColor = System.Drawing.Color.Red;
+            this.lbl_textoError.Location = new System.Drawing.Point(514, 464);
+            this.lbl_textoError.Name = "lbl_textoError";
+            this.lbl_textoError.Size = new System.Drawing.Size(94, 18);
+            this.lbl_textoError.TabIndex = 19;
+            this.lbl_textoError.Text = "texto error";
+            this.lbl_textoError.Visible = false;
             // 
             // AltaVuelo
             // 
@@ -235,7 +235,7 @@ namespace Aerolineas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(819, 554);
-            this.Controls.Add(this.lblAvionRepetido);
+            this.Controls.Add(this.lbl_textoError);
             this.Controls.Add(this.lblMatriculaAvion);
             this.Controls.Add(this.lblAvionSeleccionado);
             this.Controls.Add(this.dgv_aviones);
@@ -280,6 +280,6 @@ namespace Aerolineas
         private System.Windows.Forms.DataGridView dgv_aviones;
         private System.Windows.Forms.Label lblAvionSeleccionado;
         private System.Windows.Forms.Label lblMatriculaAvion;
-        private System.Windows.Forms.Label lblAvionRepetido;
+        private System.Windows.Forms.Label lbl_textoError;
     }
 }

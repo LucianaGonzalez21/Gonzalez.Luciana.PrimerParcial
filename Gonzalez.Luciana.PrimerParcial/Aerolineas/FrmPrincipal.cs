@@ -154,5 +154,18 @@ namespace Aerolineas
                 dgv_principal.DataSource = Aerolinea.listaVuelos;
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FrmAltaGrupo frmAltaGrupo = new FrmAltaGrupo();
+            DialogResult retorno = frmAltaGrupo.ShowDialog();
+
+            if(retorno == DialogResult.OK)
+            {
+                lbl_tituloDataGridView.Text = "Lista de Pasajes";
+                dgv_principal.DataSource = null;
+                dgv_principal.DataSource = Aerolinea.listaPasajes;
+            }
+        }
     }
 }

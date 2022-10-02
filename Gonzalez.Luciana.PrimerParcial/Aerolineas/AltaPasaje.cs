@@ -207,7 +207,7 @@ namespace Aerolineas
         private void dgv_clientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             indiceCliente = dgv_clientes.CurrentRow.Index;
-            lbl_clienteSeleccionado.Text = Aerolinea.listaClientes[indiceCliente].Nombre;
+            lbl_clienteSeleccionado.Text = Aerolinea.listaClientes[indiceCliente].Nombre + Aerolinea.listaClientes[indiceCliente].Apellido;
         }
 
         //private void dgv_aviones_CellContentClick(object sender, DataGridViewCellEventArgs e)

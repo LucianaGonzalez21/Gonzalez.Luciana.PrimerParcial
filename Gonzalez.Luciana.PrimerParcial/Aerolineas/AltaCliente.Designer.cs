@@ -42,7 +42,7 @@ namespace Aerolineas
             this.label2 = new System.Windows.Forms.Label();
             this.cmbGenero = new System.Windows.Forms.ComboBox();
             this.lblDNI = new System.Windows.Forms.Label();
-            this.lblClienteRepetido = new System.Windows.Forms.Label();
+            this.lbl_textoError = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblDatosCliente
@@ -166,17 +166,17 @@ namespace Aerolineas
             this.lblDNI.TabIndex = 3;
             this.lblDNI.Text = "DNI";
             // 
-            // lblClienteRepetido
+            // lbl_textoError
             // 
-            this.lblClienteRepetido.AutoSize = true;
-            this.lblClienteRepetido.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblClienteRepetido.ForeColor = System.Drawing.Color.Red;
-            this.lblClienteRepetido.Location = new System.Drawing.Point(22, 406);
-            this.lblClienteRepetido.Name = "lblClienteRepetido";
-            this.lblClienteRepetido.Size = new System.Drawing.Size(181, 18);
-            this.lblClienteRepetido.TabIndex = 14;
-            this.lblClienteRepetido.Text = "texto cliente repetido";
-            this.lblClienteRepetido.Visible = false;
+            this.lbl_textoError.AutoSize = true;
+            this.lbl_textoError.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbl_textoError.ForeColor = System.Drawing.Color.Red;
+            this.lbl_textoError.Location = new System.Drawing.Point(22, 406);
+            this.lbl_textoError.Name = "lbl_textoError";
+            this.lbl_textoError.Size = new System.Drawing.Size(94, 18);
+            this.lbl_textoError.TabIndex = 14;
+            this.lbl_textoError.Text = "texto error";
+            this.lbl_textoError.Visible = false;
             // 
             // AltaCliente
             // 
@@ -184,7 +184,7 @@ namespace Aerolineas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(499, 443);
-            this.Controls.Add(this.lblClienteRepetido);
+            this.Controls.Add(this.lbl_textoError);
             this.Controls.Add(this.cmbGenero);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCancelar);
@@ -222,6 +222,6 @@ namespace Aerolineas
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbGenero;
         private System.Windows.Forms.Label lblDNI;
-        private System.Windows.Forms.Label lblClienteRepetido;
+        private System.Windows.Forms.Label lbl_textoError;
     }
 }

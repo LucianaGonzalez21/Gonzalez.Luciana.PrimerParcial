@@ -50,3 +50,5 @@ C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParc
 C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.genruntimeconfig.cache
 C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.Properties.Resources.resources
 C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.FrmElegirVuelo.resources
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.FrmAltaGrupo.resources
+C:\Users\Dell\Desktop\Gonzalez.Luciana.PrimerParcial\Gonzalez.Luciana.PrimerParcial\Aerolineas\obj\Debug\net5.0-windows\Aerolineas.FrmAltaPasajeroTurista.resources
