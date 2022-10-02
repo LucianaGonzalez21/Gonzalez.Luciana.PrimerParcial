@@ -48,37 +48,40 @@ namespace Aerolineas
             // lblDatosCliente
             // 
             this.lblDatosCliente.AutoSize = true;
-            this.lblDatosCliente.Font = new System.Drawing.Font("Arial", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblDatosCliente.Font = new System.Drawing.Font("Mongolian Baiti", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDatosCliente.Location = new System.Drawing.Point(22, 39);
             this.lblDatosCliente.Name = "lblDatosCliente";
-            this.lblDatosCliente.Size = new System.Drawing.Size(159, 21);
+            this.lblDatosCliente.Size = new System.Drawing.Size(152, 19);
             this.lblDatosCliente.TabIndex = 0;
             this.lblDatosCliente.Text = "Datos del Cliente";
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
+            this.lblNombre.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblNombre.Location = new System.Drawing.Point(22, 99);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(64, 20);
+            this.lblNombre.Size = new System.Drawing.Size(71, 18);
             this.lblNombre.TabIndex = 1;
             this.lblNombre.Text = "Nombre";
             // 
             // lblApellido
             // 
             this.lblApellido.AutoSize = true;
+            this.lblApellido.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblApellido.Location = new System.Drawing.Point(22, 152);
             this.lblApellido.Name = "lblApellido";
-            this.lblApellido.Size = new System.Drawing.Size(66, 20);
+            this.lblApellido.Size = new System.Drawing.Size(78, 18);
             this.lblApellido.TabIndex = 2;
             this.lblApellido.Text = "Apellido";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(22, 337);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(149, 20);
+            this.label1.Size = new System.Drawing.Size(176, 18);
             this.label1.TabIndex = 4;
             this.label1.Text = "Fecha de Nacimiento";
             // 
@@ -112,6 +115,8 @@ namespace Aerolineas
             // 
             // btnAceptar
             // 
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAceptar.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAceptar.Location = new System.Drawing.Point(247, 397);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(94, 29);
@@ -122,6 +127,8 @@ namespace Aerolineas
             // 
             // btnCancelar
             // 
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelar.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancelar.Location = new System.Drawing.Point(362, 397);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(94, 29);
@@ -133,9 +140,10 @@ namespace Aerolineas
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(22, 269);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 20);
+            this.label2.Size = new System.Drawing.Size(66, 18);
             this.label2.TabIndex = 12;
             this.label2.Text = "Genero";
             // 
@@ -151,18 +159,21 @@ namespace Aerolineas
             // lblDNI
             // 
             this.lblDNI.AutoSize = true;
+            this.lblDNI.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblDNI.Location = new System.Drawing.Point(22, 202);
             this.lblDNI.Name = "lblDNI";
-            this.lblDNI.Size = new System.Drawing.Size(35, 20);
+            this.lblDNI.Size = new System.Drawing.Size(41, 18);
             this.lblDNI.TabIndex = 3;
             this.lblDNI.Text = "DNI";
             // 
             // lblClienteRepetido
             // 
             this.lblClienteRepetido.AutoSize = true;
+            this.lblClienteRepetido.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblClienteRepetido.ForeColor = System.Drawing.Color.Red;
             this.lblClienteRepetido.Location = new System.Drawing.Point(22, 406);
             this.lblClienteRepetido.Name = "lblClienteRepetido";
-            this.lblClienteRepetido.Size = new System.Drawing.Size(152, 20);
+            this.lblClienteRepetido.Size = new System.Drawing.Size(181, 18);
             this.lblClienteRepetido.TabIndex = 14;
             this.lblClienteRepetido.Text = "texto cliente repetido";
             this.lblClienteRepetido.Visible = false;
@@ -171,6 +182,7 @@ namespace Aerolineas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(499, 443);
             this.Controls.Add(this.lblClienteRepetido);
             this.Controls.Add(this.cmbGenero);

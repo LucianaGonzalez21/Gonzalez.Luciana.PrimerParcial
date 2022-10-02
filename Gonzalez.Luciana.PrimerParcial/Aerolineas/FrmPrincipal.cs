@@ -40,7 +40,7 @@ namespace Aerolineas
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
         {
-            dgv_clientes.DataSource = Aerolinea.listaClientes;
+            dgv_principal.DataSource = Aerolinea.listaVuelos;
         }
 
         private void btnAgregarVuelo_Click(object sender, EventArgs e)
@@ -51,9 +51,10 @@ namespace Aerolineas
 
             if(retorno == DialogResult.OK)
             {
+                lbl_tituloDataGridView.Text = "Lista de Vuelos";
                 Aerolinea.listaVuelos.Add(frmAltaVuelo.Vuelo);
-                dgv_clientes.DataSource = null;
-                dgv_clientes.DataSource = Aerolinea.listaVuelos;
+                dgv_principal.DataSource = null;
+                dgv_principal.DataSource = Aerolinea.listaVuelos;
             }
         }
 
@@ -65,9 +66,10 @@ namespace Aerolineas
 
             if(respuesta == DialogResult.OK)
             {
+                lbl_tituloDataGridView.Text = "Lista de Clientes";
                 Aerolinea.listaClientes.Add(frmAltaCliente.Cliente);
-                dgv_clientes.DataSource = null;
-                dgv_clientes.DataSource = Aerolinea.listaClientes;
+                dgv_principal.DataSource = null;
+                dgv_principal.DataSource = Aerolinea.listaClientes;
             }
         }
 
@@ -78,10 +80,11 @@ namespace Aerolineas
 
             if(retorno == DialogResult.OK)
             {
-                (frmAltaPasaje.Pasaje).CodigoPasaje = GenerarCodigoPasaje();
+                lbl_tituloDataGridView.Text = "Lista de Pasajes";
+                (frmAltaPasaje.Pasaje).Codigo_Pasaje = GenerarCodigoPasaje();
                 Aerolinea.listaPasajes.Add(frmAltaPasaje.Pasaje);
-                dgv_clientes.DataSource = null;
-                dgv_clientes.DataSource = Aerolinea.listaPasajes;
+                dgv_principal.DataSource = null;
+                dgv_principal.DataSource = Aerolinea.listaPasajes;
 
             }
         }
@@ -98,6 +101,57 @@ namespace Aerolineas
             if (respuesta == DialogResult.OK)
             {
                 this.Close();
+            }
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_listaClientes_Click(object sender, EventArgs e)
+        {
+            if(Aerolinea.listaClientes == null)
+            {
+                MessageBox.Show("No hay clientes para mostrar");
+            }
+            else
+            {
+                lbl_tituloDataGridView.Text = "Lista de Clientes";
+                dgv_principal.DataSource = null;
+                dgv_principal.DataSource = Aerolinea.listaClientes;
+            }
+        }
+
+        private void btn_listaPasajeros_Click(object sender, EventArgs e)
+        {
+            if(Aerolinea.listaPasajeros == null)
+            {
+                MessageBox.Show("No hay pasajeros para mostrar");
+            }
+            else
+            {
+                lbl_tituloDataGridView.Text = "Lista de Pasajeros";
+                dgv_principal.DataSource = null;
+                dgv_principal.DataSource = Aerolinea.listaPasajes;
+                dgv_principal.Columns["Costo"].Visible = false;
+                dgv_principal.Columns["Codigo_Pasaje"].Visible = false;
+                dgv_principal.Columns["Duracion_Vuelo"].Visible = false;
+                dgv_principal.Columns["Matricula_Avion"].Visible = false;
+            }
+        }
+
+        private void btn_listaVuelos_Click(object sender, EventArgs e)
+        {
+            if(Aerolinea.listaVuelos == null)
+            {
+                MessageBox.Show("No hay vuelos para mostrar");
+            }
+            else
+            {
+                lbl_tituloDataGridView.Text = "Lista de Vuelos";
+                dgv_principal.DataSource = null;
+                dgv_principal.DataSource = Aerolinea.listaVuelos;
             }
         }
     }

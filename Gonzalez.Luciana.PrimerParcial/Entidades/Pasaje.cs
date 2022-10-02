@@ -23,7 +23,7 @@ namespace Entidades
             this.costo= pasajero.CalcularCostoPasaje(vuelo);
         }
 
-        public int CodigoPasaje
+        public int Codigo_Pasaje
         {
             set
             {
@@ -130,6 +130,36 @@ namespace Entidades
                 return vuelo.Matricula_Avion;
             }
         }
+
+        public static bool operator ==(Pasaje pasajeUno, Pasaje pasajeDos)
+        {
+            if (pasajeUno is null || pasajeDos is null)
+            {
+                return false;
+            }
+
+            return pasajeUno.GetType() == pasajeDos.GetType()
+                && pasajeUno.pasajero == pasajeDos.pasajero
+                && pasajeUno.vuelo == pasajeDos.vuelo;
+        }
+
+        public static bool operator !=(Pasaje pasajeUno, Pasaje pasajeDos)
+        {
+            return !(pasajeUno == pasajeDos);
+        }
+
+        public override bool Equals(object obj)
+        {
+            Pasaje pasaje = obj as Pasaje;
+
+            return pasaje is not null && this == pasaje;
+        }
+
+        public override int GetHashCode()
+        {
+            return (vuelo, pasajero).GetHashCode();
+        }
+
 
         public override string ToString()
         {

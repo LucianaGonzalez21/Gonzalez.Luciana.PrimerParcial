@@ -103,6 +103,34 @@ namespace Entidades
             }
         }
 
+        public static bool operator ==(Avion avionUno, Avion avionDos)
+        {
+            if (avionUno is null || avionDos is null)
+            {
+                return false;
+            }
+
+            return avionUno.GetType() == avionDos.GetType()
+                && avionUno.matricula == avionDos.matricula;
+        }
+
+        public static bool operator !=(Avion avionUno, Avion avionDos)
+        {
+            return !(avionUno == avionDos);
+        }
+
+        public override bool Equals(object obj)
+        {
+            Avion avion = obj as Avion;
+
+            return avion is not null && this == avion;
+        }
+
+        public override int GetHashCode()
+        {
+            return matricula.GetHashCode();
+        }
+
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

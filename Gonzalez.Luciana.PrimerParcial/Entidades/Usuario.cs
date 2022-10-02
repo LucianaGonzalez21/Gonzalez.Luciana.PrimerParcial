@@ -19,7 +19,7 @@ namespace Entidades
 
         public override string ToString()
         {
-            return $"Bienvenido/a, {nombre} {apellido}, Fecha: {DateTime.Today.ToString("dd/MM/yyyy")}";
+            return $"Bienvenido/a, {nombre} {apellido}. Fecha: {DateTime.Today.ToString("dd/MM/yyyy")}";
         }
     }
 }

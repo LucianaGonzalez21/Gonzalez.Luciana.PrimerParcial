@@ -151,5 +151,52 @@ namespace Entidades
             }
             return true;
         }
+
+        public static bool EsPasajeroEnElVuelo(Pasaje unPasaje)
+        {
+            foreach(Pasaje item in listaPasajes)
+            {
+                if(item.Equals(unPasaje) && item.GetHashCode() == unPasaje.GetHashCode())
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public static List<Vuelo> FiltrarVuelos(string origen, string destino, bool wifi, bool comida)
+        {
+            List<Vuelo> listaFiltrada = new List<Vuelo>();
+            string wifiString;
+            string comidaString;
+
+            if (wifi)
+            {
+                wifiString = "SI";
+            }
+            else
+            {
+                wifiString = "NO"; 
+            }
+
+            if(comida)
+            {
+                comidaString = "SI";
+            }
+            else
+            {
+                comidaString = "NO";
+            }
+
+            foreach (Vuelo item in listaVuelos)
+            {
+                if(item.Origen == origen && item.Destino == destino && item.Comida == comidaString && item.Wifi == wifiString)
+                {
+                    listaFiltrada.Add(item);
+                }
+            }
+
+            return listaFiltrada;
+        }
     }
 }

@@ -62,9 +62,10 @@ namespace Aerolineas
             // lblOrigen
             // 
             this.lblOrigen.AutoSize = true;
+            this.lblOrigen.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblOrigen.Location = new System.Drawing.Point(39, 427);
             this.lblOrigen.Name = "lblOrigen";
-            this.lblOrigen.Size = new System.Drawing.Size(54, 20);
+            this.lblOrigen.Size = new System.Drawing.Size(63, 18);
             this.lblOrigen.TabIndex = 1;
             this.lblOrigen.Text = "Origen";
             // 
@@ -80,18 +81,20 @@ namespace Aerolineas
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(39, 325);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 20);
+            this.label1.Size = new System.Drawing.Size(70, 18);
             this.label1.TabIndex = 5;
             this.label1.Text = "Destino";
             // 
             // rdNacional
             // 
             this.rdNacional.AutoSize = true;
+            this.rdNacional.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.rdNacional.Location = new System.Drawing.Point(212, 323);
             this.rdNacional.Name = "rdNacional";
-            this.rdNacional.Size = new System.Drawing.Size(89, 24);
+            this.rdNacional.Size = new System.Drawing.Size(101, 22);
             this.rdNacional.TabIndex = 6;
             this.rdNacional.TabStop = true;
             this.rdNacional.Text = "Nacional";
@@ -101,9 +104,10 @@ namespace Aerolineas
             // rdInternacional
             // 
             this.rdInternacional.AutoSize = true;
+            this.rdInternacional.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.rdInternacional.Location = new System.Drawing.Point(410, 321);
             this.rdInternacional.Name = "rdInternacional";
-            this.rdInternacional.Size = new System.Drawing.Size(116, 24);
+            this.rdInternacional.Size = new System.Drawing.Size(137, 22);
             this.rdInternacional.TabIndex = 7;
             this.rdInternacional.TabStop = true;
             this.rdInternacional.Text = "Internacional";
@@ -138,23 +142,27 @@ namespace Aerolineas
             // lblFechaPartida
             // 
             this.lblFechaPartida.AutoSize = true;
+            this.lblFechaPartida.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblFechaPartida.Location = new System.Drawing.Point(39, 506);
             this.lblFechaPartida.Name = "lblFechaPartida";
-            this.lblFechaPartida.Size = new System.Drawing.Size(118, 20);
+            this.lblFechaPartida.Size = new System.Drawing.Size(141, 18);
             this.lblFechaPartida.TabIndex = 11;
             this.lblFechaPartida.Text = "Fecha de Partida";
             // 
             // lblAvion
             // 
             this.lblAvion.AutoSize = true;
+            this.lblAvion.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblAvion.Location = new System.Drawing.Point(39, 75);
             this.lblAvion.Name = "lblAvion";
-            this.lblAvion.Size = new System.Drawing.Size(47, 20);
+            this.lblAvion.Size = new System.Drawing.Size(57, 18);
             this.lblAvion.TabIndex = 12;
             this.lblAvion.Text = "Avion";
             // 
             // btnAceptar
             // 
+            this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAceptar.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnAceptar.Location = new System.Drawing.Point(590, 509);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(94, 29);
@@ -165,6 +173,8 @@ namespace Aerolineas
             // 
             // btnCancelar
             // 
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelar.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnCancelar.Location = new System.Drawing.Point(707, 509);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(94, 29);
@@ -175,6 +185,7 @@ namespace Aerolineas
             // 
             // dgv_aviones
             // 
+            this.dgv_aviones.BackgroundColor = System.Drawing.Color.LightSalmon;
             this.dgv_aviones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_aviones.Location = new System.Drawing.Point(39, 110);
             this.dgv_aviones.Name = "dgv_aviones";
@@ -187,20 +198,21 @@ namespace Aerolineas
             // lblAvionSeleccionado
             // 
             this.lblAvionSeleccionado.AutoSize = true;
+            this.lblAvionSeleccionado.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblAvionSeleccionado.Location = new System.Drawing.Point(254, 75);
             this.lblAvionSeleccionado.Name = "lblAvionSeleccionado";
-            this.lblAvionSeleccionado.Size = new System.Drawing.Size(141, 20);
+            this.lblAvionSeleccionado.Size = new System.Drawing.Size(173, 18);
             this.lblAvionSeleccionado.TabIndex = 17;
             this.lblAvionSeleccionado.Text = "Avion seleccionado:";
             // 
             // lblMatriculaAvion
             // 
             this.lblMatriculaAvion.AutoSize = true;
-            this.lblMatriculaAvion.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblMatriculaAvion.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblMatriculaAvion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.lblMatriculaAvion.Location = new System.Drawing.Point(420, 75);
             this.lblMatriculaAvion.Name = "lblMatriculaAvion";
-            this.lblMatriculaAvion.Size = new System.Drawing.Size(72, 18);
+            this.lblMatriculaAvion.Size = new System.Drawing.Size(84, 18);
             this.lblMatriculaAvion.TabIndex = 18;
             this.lblMatriculaAvion.Text = "matricula";
             this.lblMatriculaAvion.Visible = false;
@@ -208,9 +220,11 @@ namespace Aerolineas
             // lblAvionRepetido
             // 
             this.lblAvionRepetido.AutoSize = true;
+            this.lblAvionRepetido.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblAvionRepetido.ForeColor = System.Drawing.Color.Red;
             this.lblAvionRepetido.Location = new System.Drawing.Point(514, 464);
             this.lblAvionRepetido.Name = "lblAvionRepetido";
-            this.lblAvionRepetido.Size = new System.Drawing.Size(202, 20);
+            this.lblAvionRepetido.Size = new System.Drawing.Size(243, 18);
             this.lblAvionRepetido.TabIndex = 19;
             this.lblAvionRepetido.Text = "error avion repetido en fecha";
             this.lblAvionRepetido.Visible = false;
@@ -219,6 +233,7 @@ namespace Aerolineas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(819, 554);
             this.Controls.Add(this.lblAvionRepetido);
             this.Controls.Add(this.lblMatriculaAvion);

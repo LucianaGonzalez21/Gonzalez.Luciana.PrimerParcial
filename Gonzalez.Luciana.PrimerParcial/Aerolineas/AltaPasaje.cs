@@ -15,12 +15,13 @@ namespace Aerolineas
     {
         private Pasaje nuevoPasaje;
         private int indiceCliente;
-        private int indiceVuelo;
+        //private int indiceVuelo;
         private string clase;
         private Pasajero unPasajero;
-        //private PasajeroPremium unPasajeroPremium;
         private Cliente unCliente;
         private bool bolsoMano;
+
+        Vuelo unVuelo;
 
         public AltaPasaje()
         {
@@ -43,7 +44,7 @@ namespace Aerolineas
 
         private void AltaPasaje_Load(object sender, EventArgs e)
         {
-            dgv_vuelos.DataSource = Aerolinea.listaVuelos;
+            //dgv_vuelos.DataSource = Aerolinea.listaVuelos;
             dgv_clientes.DataSource = Aerolinea.listaClientes;
             //numValijaUno.Enabled = false;
             //numValijaDos.Enabled = false;
@@ -104,47 +105,41 @@ namespace Aerolineas
                     bolsoMano = false;
                 }
                 unCliente = Aerolinea.listaClientes[indiceCliente];
-                //unPasajero = new Pasajero(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value);
 
-                if (clase == "Turista" && Aerolinea.listaVuelos[indiceVuelo].Asientos_Turista>0)
+                //validar unvuelo no sea null
+
+                if(unVuelo is null)
                 {
-                    unPasajero = new Pasajero(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value);
-                    Aerolinea.listaVuelos[indiceVuelo].Asientos_Turista--;
-                    nuevoPasaje = new Pasaje(unPasajero, Aerolinea.listaVuelos[indiceVuelo], clase);
-                    MessageBox.Show(unPasajero.ToString());
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                else if(clase == "Premium" && Aerolinea.listaVuelos[indiceVuelo].Asientos_Premium>0)
-                {
-                    unPasajero = new PasajeroPremium(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value,(int)numValijaDos.Value);
-                    Aerolinea.listaVuelos[indiceVuelo].Asientos_Premium--;
-                    nuevoPasaje = new Pasaje(unPasajero, Aerolinea.listaVuelos[indiceVuelo], clase);
-                    MessageBox.Show(unPasajero.ToString());
-                    this.DialogResult = DialogResult.OK;
-                    this.Close();
+                    lbl_textoError.Text = "Primero debe elegir un vuelo";
+                    lbl_textoError.Visible = true;
                 }
                 else
                 {
-                    lbl_textoError.Text = "El vuelo seleccionado no cuenta con asientos disponibles";
-                    lbl_textoError.ForeColor = Color.Red;
-                    lbl_textoError.Visible = true;
+                    if (clase == "Turista" && /*Aerolinea.listaVuelos[indiceVuelo]*/unVuelo.Asientos_Turista>0)
+                    {
+                        unPasajero = new Pasajero(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value);
+
+                        //CAMBIO
+                        //ValidarPasaje(unPasajero, Aerolinea.listaVuelos[indiceVuelo], clase);
+                        ValidarPasaje(unPasajero, unVuelo, clase);
+
+
+                    }
+                    else if (clase == "Premium" && /*Aerolinea.listaVuelos[indiceVuelo]*/unVuelo.Asientos_Premium>0)
+                    {
+                        unPasajero = new PasajeroPremium(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value, (int)numValijaDos.Value);
+                        //Aerolinea.listaVuelos[indiceVuelo].Asientos_Premium--;
+
+                        ValidarPasaje(unPasajero, /*Aerolinea.listaVuelos[indiceVuelo]*/ unVuelo, clase);
+
+                    }
+                    else
+                    {
+                        lbl_textoError.Text = "El vuelo seleccionado no cuenta con asientos disponibles";
+                        lbl_textoError.Visible = true;
+                    }
                 }
-
-                //if (Aerolinea.listaVuelos[indiceVuelo].Asientos_Disponibles>0)
-                //{
-                //    nuevoPasaje = new Pasaje(unPasajero, Aerolinea.listaVuelos[indiceVuelo], clase);
-                //    this.DialogResult = DialogResult.OK;
-                //    this.Close();
-                //}
-                //else
-                //{
-                //    lbl_textoError.Text = "El vuelo seleccionado no cuenta con asientos disponibles";
-                //    lbl_textoError.ForeColor = Color.Red;
-                //    lbl_textoError.Visible = true;
-                //}
-
-                //MessageBox.Show(nuevoPasaje.ToString());
+                
             }
         }
 
@@ -182,17 +177,44 @@ namespace Aerolineas
             return esValido;
         }
 
+        private void ValidarPasaje(Pasajero unPasajero, Vuelo unVuelo, string clase)
+        {
+            //nuevoPasaje = new Pasaje(unPasajero, Aerolinea.listaVuelos[indiceVuelo], clase);
+            nuevoPasaje = new Pasaje(unPasajero, unVuelo, clase);
+
+            if (Aerolinea.EsPasajeroEnElVuelo(nuevoPasaje))
+            {
+                lbl_textoError.Text = "El cliente ya es pasajero en el vuelo seleccionado";
+                lbl_textoError.Visible = true;
+            }
+            else
+            {
+                if(clase == "Turista")
+                {
+                    //Aerolinea.listaVuelos[indiceVuelo].Asientos_Turista--;
+                    unVuelo.Asientos_Turista--;
+                }
+                else
+                {
+                    //Aerolinea.listaVuelos[indiceVuelo].Asientos_Premium--;
+                    unVuelo.Asientos_Premium--;
+                }
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+        }
+
         private void dgv_clientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             indiceCliente = dgv_clientes.CurrentRow.Index;
             lbl_clienteSeleccionado.Text = Aerolinea.listaClientes[indiceCliente].Nombre;
         }
 
-        private void dgv_aviones_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            indiceVuelo = dgv_vuelos.CurrentRow.Index;
-            lbl_vueloSeleccionado.Text = Aerolinea.listaVuelos[indiceVuelo].Matricula_Avion;
-        }
+        //private void dgv_aviones_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        //{
+        //    indiceVuelo = dgv_vuelos.CurrentRow.Index;
+        //    lbl_vueloSeleccionado.Text = Aerolinea.listaVuelos[indiceVuelo].Matricula_Avion;
+        //}
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -200,6 +222,18 @@ namespace Aerolineas
             if (respuesta == DialogResult.OK)
             {
                 this.Close();
+            }
+        }
+
+        private void btn_elegirVuelo_Click(object sender, EventArgs e)
+        {
+            FrmElegirVuelo frmElegirVuelo = new FrmElegirVuelo();
+            DialogResult respuesta = frmElegirVuelo.ShowDialog();
+            
+            if (respuesta == DialogResult.OK)
+            {
+                unVuelo = frmElegirVuelo.Vuelo;
+                lbl_vueloSeleccionado.Text = unVuelo.Matricula_Avion;
             }
         }
     }

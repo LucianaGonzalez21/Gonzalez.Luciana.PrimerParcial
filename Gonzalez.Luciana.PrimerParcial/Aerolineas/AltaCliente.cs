@@ -60,12 +60,6 @@ namespace Aerolineas
                     this.Close();
                 }
             }
-            //else
-            //{
-            //    lblTextoError.Text = "Revisar datos ingresados";
-            //    lblTextoError.Visible = true;
-            //}
-
         }
 
         private bool ValidarDatos()

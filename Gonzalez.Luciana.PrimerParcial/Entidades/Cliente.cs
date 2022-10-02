@@ -71,8 +71,6 @@ namespace Entidades
             return !(clienteUno == clienteDos);
         }
 
-
-        //VER CLASE DE EQUALS!!!!!!!
         public override bool Equals(object obj)
         {
             Cliente cliente = obj as Cliente;

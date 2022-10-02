@@ -80,6 +80,34 @@ namespace Entidades
             return costoPasaje;
         }
 
+        public static bool operator ==(Pasajero pasajeroUno, Pasajero pasajeroDos)
+        {
+            if (pasajeroUno is null || pasajeroDos is null)
+            {
+                return false;
+            }
+
+            return pasajeroUno.GetType() == pasajeroDos.GetType()
+                && pasajeroUno.dni == pasajeroDos.dni;
+        }
+
+        public static bool operator !=(Pasajero pasajeroUno, Pasajero pasajeroDos)
+        {
+            return !(pasajeroUno == pasajeroDos);
+        }
+
+        public override bool Equals(object obj)
+        {
+            Pasajero pasajero = obj as Pasajero;
+
+            return pasajero is not null && this == pasajero;
+        }
+
+        public override int GetHashCode()
+        {
+            return dni.GetHashCode();
+        }
+
         public override string ToString()
         {
             return base.ToString() + $"Bolso de mano: {Bolso_De_Mano}{Environment.NewLine}Peso valija 1: {Peso_Valija}";

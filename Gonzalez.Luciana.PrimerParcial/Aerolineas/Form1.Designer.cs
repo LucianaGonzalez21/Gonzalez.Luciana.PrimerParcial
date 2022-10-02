@@ -56,9 +56,11 @@ namespace Aerolineas
             // 
             // btnIngresar
             // 
-            this.btnIngresar.Location = new System.Drawing.Point(58, 217);
+            this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnIngresar.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnIngresar.Location = new System.Drawing.Point(50, 208);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(94, 29);
+            this.btnIngresar.Size = new System.Drawing.Size(110, 29);
             this.btnIngresar.TabIndex = 2;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = true;
@@ -66,9 +68,11 @@ namespace Aerolineas
             // 
             // btnAutocompletar
             // 
-            this.btnAutocompletar.Location = new System.Drawing.Point(103, 161);
+            this.btnAutocompletar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAutocompletar.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnAutocompletar.Location = new System.Drawing.Point(94, 162);
             this.btnAutocompletar.Name = "btnAutocompletar";
-            this.btnAutocompletar.Size = new System.Drawing.Size(125, 29);
+            this.btnAutocompletar.Size = new System.Drawing.Size(146, 29);
             this.btnAutocompletar.TabIndex = 3;
             this.btnAutocompletar.Text = "Autocompletar";
             this.btnAutocompletar.UseVisualStyleBackColor = true;
@@ -76,9 +80,11 @@ namespace Aerolineas
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(172, 217);
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnCancelar.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnCancelar.Location = new System.Drawing.Point(164, 208);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(94, 29);
+            this.btnCancelar.Size = new System.Drawing.Size(110, 29);
             this.btnCancelar.TabIndex = 4;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -87,9 +93,11 @@ namespace Aerolineas
             // lblMensajeError
             // 
             this.lblMensajeError.AutoSize = true;
-            this.lblMensajeError.Location = new System.Drawing.Point(103, 261);
+            this.lblMensajeError.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblMensajeError.ForeColor = System.Drawing.Color.Red;
+            this.lblMensajeError.Location = new System.Drawing.Point(94, 261);
             this.lblMensajeError.Name = "lblMensajeError";
-            this.lblMensajeError.Size = new System.Drawing.Size(100, 20);
+            this.lblMensajeError.Size = new System.Drawing.Size(122, 18);
             this.lblMensajeError.TabIndex = 5;
             this.lblMensajeError.Text = "Mensaje Error";
             this.lblMensajeError.Visible = false;
@@ -98,6 +106,7 @@ namespace Aerolineas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(337, 305);
             this.Controls.Add(this.lblMensajeError);
             this.Controls.Add(this.btnCancelar);

@@ -43,11 +43,7 @@ namespace Entidades
 
         public static bool ValidarFechaNacimiento(DateTime fechaNacimiento)
         {
-            if(fechaNacimiento < DateTime.Now.Date)
-            {
-                return true;
-            }
-            return false;
+            return fechaNacimiento < DateTime.Now.Date;
         }
 
         public static bool ValidarFechaVuelo(DateTime fechaPartida)

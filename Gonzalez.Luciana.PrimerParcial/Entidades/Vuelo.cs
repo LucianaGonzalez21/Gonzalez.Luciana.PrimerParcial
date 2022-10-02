@@ -112,6 +112,22 @@ namespace Entidades
             }
         }
 
+        public string Wifi
+        {
+            get
+            {
+                return avion.Wifi;
+            }
+        }
+
+        public string Comida
+        {
+            get 
+            {
+                return avion.Comida;
+            }
+        }
+
         private int CalcularDuracionVuelo(string destino)
         {
             Random random = new Random();
