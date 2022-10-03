@@ -6,25 +6,35 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Pasajero:Persona
+    public class Pasajero : Persona
     {
         protected bool bolsoMano;
         protected int pesoValijaUno;
+        //protected int cantidadViajes;
 
-        public Pasajero(string nombre, string apellido, string genero, int dni, int edad, bool bolsoMano, int pesoValijaUno):base(nombre, apellido, dni, genero, edad)
+        public Pasajero(string nombre, string apellido, string genero, int dni, int edad, bool bolsoMano, int pesoValijaUno) : base(nombre, apellido, dni, genero, edad)
         {
-            this.nombre=nombre;
-            this.apellido=apellido;
-            this.genero=genero;
-            this.dni=dni;
-            this.edad=edad;
             this.bolsoMano=bolsoMano;
             this.pesoValijaUno=pesoValijaUno;
+            //this.cantidadViajes = 0;
         }
 
-        public Pasajero(string nombre, string apellido, string genero, int dni, int edad, bool bolsoMano):this(nombre, apellido, genero, dni, edad, bolsoMano, 0)
+        public Pasajero(string nombre, string apellido, string genero, int dni, int edad, bool bolsoMano) : this(nombre, apellido, genero, dni, edad, bolsoMano, 0)
         {
         }
+
+        //public int CantidadViajes
+        //{
+        //    set
+        //    {
+        //        cantidadViajes = value;
+        //    }
+        //    get
+        //    {
+        //        return cantidadViajes;
+        //    }
+        //}
+
 
         public string Nombre
         {
@@ -105,6 +115,21 @@ namespace Entidades
         public override int GetHashCode()
         {
             return dni.GetHashCode();
+        }
+
+        public static bool operator ==(Pasajero pasajero, Cliente cliente)
+        {
+            if (pasajero is null || cliente is null)
+            {
+                return false;
+            }
+
+            return pasajero.dni == cliente.DNI;
+        }
+
+        public static bool operator !=(Pasajero pasajero, Cliente cliente)
+        {
+            return !(pasajero == cliente);
         }
 
         public override string ToString()

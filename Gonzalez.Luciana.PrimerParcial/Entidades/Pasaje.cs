@@ -67,6 +67,18 @@ namespace Entidades
             }
         }
 
+        //public int CantidadViajes
+        //{
+        //    get
+        //    {
+        //        return pasajero.CantidadViajes;
+        //    }
+        //    set
+        //    {
+        //        pasajero.CantidadViajes = value;
+        //    }
+        //}
+
         //public string Bolso_De_Mano
         //{
         //    get

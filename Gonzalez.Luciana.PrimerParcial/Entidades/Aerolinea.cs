@@ -18,17 +18,17 @@ namespace Entidades
         public static List<Cliente> listaClientes;
         public static int codigoPasaje;
         public static int idCliente;
-        private static Dictionary<string, int> diccionarioDestinos;
+        private static Dictionary<string, double> diccionarioDestinos;
 
         static Aerolinea()
         {
             listaAviones = new Avion[7];
-            listaPasajeros = new List<Pasajero>();
             listaUsuarios = new List<Usuario>();
             listaVuelos = new List<Vuelo>();
-            listaPasajes = new List<Pasaje>();
             listaClientes = new List<Cliente>();
+            listaPasajeros = new List<Pasajero>();
             listaPasajerosPremium = new List<PasajeroPremium>();
+            listaPasajes = new List<Pasaje>();
             codigoPasaje = 123;
             idCliente = 999;
             diccionarioDestinos = InicializarDiccionarioDestinos();
@@ -39,6 +39,7 @@ namespace Entidades
             AgregarPasajeros();
             AgregarPasajes();
             AgregarClientes();
+            AgregarVuelosAClientes();
         }
 
         private static void AgregarClientes()
@@ -60,14 +61,30 @@ namespace Entidades
         {
             listaPasajes.Add(new Pasaje(listaPasajeros[0], listaVuelos[0], "Turista"));
             listaPasajes.Add(new Pasaje(listaPasajeros[2], listaVuelos[3], "Turista"));
-            listaPasajes.Add(new Pasaje(listaPasajeros[1], listaVuelos[2], "Premium"));
+            listaPasajes.Add(new Pasaje(listaPasajeros[1], listaVuelos[2], "Premium"));          
+            listaPasajes.Add(new Pasaje(listaPasajeros[3], listaVuelos[4], "Premium"));          
+        }
+
+        private static void AgregarVuelosAClientes()
+        {
+            foreach (Pasajero pasajero in listaPasajeros)
+            {
+                foreach (Cliente cliente in listaClientes)
+                {
+                    if (pasajero == cliente)
+                    {
+                        cliente.Cantidad_Viajes++;
+                        break;
+                    }
+                }
+            }
         }
 
         private static void AgregarPasajeros()
         {
             listaPasajeros.Add(new Pasajero("Emiliano", "Gomez", nameof(Generos.Masculino), 36123456, 30, true, 20));
-            listaPasajeros.Add(new Pasajero("Laura", "Fabiani", nameof(Generos.Femenino), 40123456, 22, true, 15));
-            listaPasajeros.Add(new Pasajero("David", "Gutierrez", nameof(Generos.No_Binario), 12123123, 22, false));
+            listaPasajeros.Add(new Pasajero("Mariela", "Gomez", nameof(Generos.Femenino), 35157159, 23, true, 15));
+            listaPasajeros.Add(new Pasajero("German", "Gomez", nameof(Generos.Masculino), 20157159, 29, false));
             listaPasajeros.Add(new Pasajero("Rosa", "Martinez", nameof(Generos.Femenino), 15155406, 60, false));
         }
 
@@ -227,10 +244,10 @@ namespace Entidades
             return idCliente;
         }
 
-        private static Dictionary<string, int> InicializarDiccionarioDestinos()
+        private static Dictionary<string, double> InicializarDiccionarioDestinos()
         {
             //key: destino, value: contador de ctdad veces elegido
-            diccionarioDestinos = new Dictionary<string, int>();
+            diccionarioDestinos = new Dictionary<string, double>();
 
             diccionarioDestinos.Add(nameof(DestinosNacionales.Bariloche), 0);
             diccionarioDestinos.Add(nameof(DestinosNacionales.Cordoba), 0);
@@ -255,10 +272,8 @@ namespace Entidades
             return diccionarioDestinos;
         }
 
-        private static Dictionary<string, int> CargarDiccionarioDestinos()
+        private static Dictionary<string, double> CargarDiccionarioDestinos()
         {
-            //Dictionary<string, int> diccionarioDestinos = InicializarDiccionarioDestinos();
-
             if (diccionarioDestinos is not null)
             {
                 foreach (Pasaje item in listaPasajes)
@@ -329,15 +344,16 @@ namespace Entidades
         }
 
         //recorrer diccionario y buscar el value mas alto
-        private static int BuscarMaximoValorEnDiccionarioDestinos()
+        private static double BuscarMaximoValorEnDiccionarioDestinos()
         {
-            Dictionary<string, int> diccionarioDestinos = CargarDiccionarioDestinos();
-            int valorMaximoDeVecesElegido = 0;
+            diccionarioDestinos = InicializarDiccionarioDestinos();
+            diccionarioDestinos = CargarDiccionarioDestinos();
+            double valorMaximoDeVecesElegido = 0;
             bool flag = true;
 
-            foreach (KeyValuePair<string, int> item in diccionarioDestinos)
+            foreach (KeyValuePair<string, double> item in diccionarioDestinos)
             {
-                if(flag || item.Value > valorMaximoDeVecesElegido)
+                if (flag || item.Value > valorMaximoDeVecesElegido)
                 {
                     valorMaximoDeVecesElegido = item.Value;
                     flag = false;
@@ -350,13 +366,13 @@ namespace Entidades
         public static string CalcularDestinosMasElegidos()
         {
             StringBuilder sb = new StringBuilder();
-            int valorMaximoDeVecesElegido = BuscarMaximoValorEnDiccionarioDestinos();
+            double valorMaximoDeVecesElegido = BuscarMaximoValorEnDiccionarioDestinos();
 
             sb.AppendLine("Destinos mas elegidos:");
 
-            foreach (KeyValuePair<string, int> item in diccionarioDestinos)
+            foreach (KeyValuePair<string, double> item in diccionarioDestinos)
             {
-                if(item.Value == valorMaximoDeVecesElegido)
+                if (item.Value == valorMaximoDeVecesElegido)
                 {
                     sb.AppendLine(item.Key);
                 }
@@ -368,9 +384,9 @@ namespace Entidades
         {
             int[] vectorHorasVuelo = new int[] { 0, 0, 0, 0, 0, 0, 0 };
 
-            foreach(Pasaje item in listaPasajes)
+            foreach (Pasaje item in listaPasajes)
             {
-                switch(item.Matricula_Avion)
+                switch (item.Matricula_Avion)
                 {
                     case "ABC123":
                         vectorHorasVuelo[0] += item.Duracion_Vuelo;
@@ -403,16 +419,115 @@ namespace Entidades
             int[] vectorHorasVuelo = CalcularHorasVueloPorAvion();
             StringBuilder sb = new StringBuilder();
 
-            //sb.AppendLine("Matricula de Avion           Horas");
-            //ver como acomodar los datos en columnas 
-
-            for(int i=0; i<7; i++)
+            for (int i = 0; i<7; i++)
             {
                 sb.AppendLine($"Matricula avion: {listaAviones[i].Matricula}   Horas de vuelo: {vectorHorasVuelo[i]}");
             }
 
             return sb.ToString();
         }
+
+        //facturacion
+
+        private static Dictionary<string, double> CargarDiccionarioDestinosConCostos()
+        {
+            if (diccionarioDestinos is not null)
+            {
+                foreach (Pasaje item in listaPasajes)
+                {
+                    switch (item.Destino)
+                    {
+                        case nameof(DestinosNacionales.Bariloche):
+                            diccionarioDestinos["Bariloche"] += item.Costo;
+                            break;
+                        case nameof(DestinosNacionales.Cordoba):
+                            diccionarioDestinos["Cordoba"] += item.Costo;
+                            break;
+                        case nameof(DestinosNacionales.Corrientes):
+                            diccionarioDestinos["Corrientes"] += item.Costo;
+                            break;
+                        case nameof(DestinosNacionales.Iguazu):
+                            diccionarioDestinos["Iguazu"] += item.Costo;
+                            break;
+                        case nameof(DestinosNacionales.Jujuy):
+                            diccionarioDestinos["Jujuy"] += item.Costo;
+                            break;
+                        case nameof(DestinosNacionales.Mendoza):
+                            diccionarioDestinos["Mendoza"] += item.Costo;
+                            break;
+                        case nameof(DestinosNacionales.Neuquen):
+                            diccionarioDestinos["Neuquen"] += item.Costo;
+                            break;
+                        case nameof(DestinosNacionales.Posadas):
+                            diccionarioDestinos["Posadas"] += item.Costo;
+                            break;
+                        case nameof(DestinosNacionales.Puerto_Madryn):
+                            diccionarioDestinos["Puerto_Madryn"] += item.Costo;
+                            break;
+                        case nameof(DestinosNacionales.Salta):
+                            diccionarioDestinos["Salta"] += item.Costo;
+                            break;
+                        case nameof(DestinosNacionales.Santa_Rosa):
+                            diccionarioDestinos["Santa_Rosa"] += item.Costo;
+                            break;
+                        case nameof(DestinosNacionales.Santiego_Del_Estero):
+                            diccionarioDestinos["Santiego_Del_Estero"] += item.Costo;
+                            break;
+                        case nameof(DestinosNacionales.Trelew):
+                            diccionarioDestinos["Trelew"] += item.Costo;
+                            break;
+                        case nameof(DestinosNacionales.Tucuman):
+                            diccionarioDestinos["Tucuman"] += item.Costo;
+                            break;
+                        case nameof(DestinosNacionales.Ushuaia):
+                            diccionarioDestinos["Ushuaia"] += item.Costo;
+                            break;
+                        case nameof(DestinosInternacionales.Acapulco):
+                            diccionarioDestinos["Acapulco"] += item.Costo;
+                            break;
+                        case nameof(DestinosInternacionales.Miami):
+                            diccionarioDestinos["Miami"] += item.Costo;
+                            break;
+                        case nameof(DestinosInternacionales.Recife):
+                            diccionarioDestinos["Recife"] += item.Costo;
+                            break;
+                        case nameof(DestinosInternacionales.Roma):
+                            diccionarioDestinos["Roma"] += item.Costo;
+                            break;
+                    }
+                }
+            }
+            return diccionarioDestinos;
+        }
+
+        public static string InformarDestinosConFacturacion()
+        {
+            StringBuilder sb = new StringBuilder();
+            diccionarioDestinos = InicializarDiccionarioDestinos();
+            diccionarioDestinos = CargarDiccionarioDestinosConCostos();
+
+            foreach (KeyValuePair<string, double> item in diccionarioDestinos)
+            {
+                sb.AppendLine($"Destino: {item.Key}  Facturacion: ${item.Value}");
+            }
+
+            return sb.ToString();
+        }
+
+        //Lista de pasajeros frecuente ordenada por cantidad de vuelos
+
+        public static string InformarCantidadDeVuelosPorPasajero()
+        {
+            StringBuilder sb = new StringBuilder();
+
+            foreach (Cliente item in listaClientes)
+            {
+                sb.AppendLine($"{item.Nombre} {item.Apellido} {item.Cantidad_Viajes}");
+            }
+
+            return sb.ToString();
+        }
+
     }
 }
 

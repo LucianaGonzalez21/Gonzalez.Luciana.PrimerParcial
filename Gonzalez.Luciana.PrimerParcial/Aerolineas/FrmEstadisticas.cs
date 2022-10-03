@@ -43,5 +43,18 @@ namespace Aerolineas
             lbl_informacion.Text = Aerolinea.InformarHorasDeVueloPorAvion();
             lbl_informacion.Visible = true;
         }
+
+        private void btn_facturacionDestinos_Click(object sender, EventArgs e)
+        {
+            lbl_informacion.Text = Aerolinea.InformarDestinosConFacturacion();
+            lbl_informacion.Visible = true;
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            lbl_informacion.Text = Aerolinea.InformarCantidadDeVuelosPorPasajero();
+            lbl_informacion.Visible = true; 
+        }
     }
 }

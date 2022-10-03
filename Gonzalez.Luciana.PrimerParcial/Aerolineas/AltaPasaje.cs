@@ -37,16 +37,16 @@ namespace Aerolineas
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
+            numValijaUno.Value = 0;
+            numValijaDos.Value = 0;
             numValijaUno.Enabled = false;
             numValijaDos.Enabled = false;
         }
 
         private void AltaPasaje_Load(object sender, EventArgs e)
         {
-            //dgv_vuelos.DataSource = Aerolinea.listaVuelos;
             dgv_clientes.DataSource = Aerolinea.listaClientes;
-            //numValijaUno.Enabled = false;
-            //numValijaDos.Enabled = false;
+            dgv_clientes.Columns["Cantidad_Viajes"].Visible = false;
         }
 
         private void rdTurista_CheckedChanged(object sender, EventArgs e)
@@ -182,6 +182,8 @@ namespace Aerolineas
             else
             {
                 DescontarAsientosAvion(clase);
+                //unPasajero.CantidadViajes++;
+                unCliente.Cantidad_Viajes++;
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

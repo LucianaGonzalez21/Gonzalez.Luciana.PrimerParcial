@@ -105,6 +105,7 @@ namespace Aerolineas
                         MessageBox.Show($"Costo a pagar con impuestos: ${costoTotal}");
                         //descontar asientos del avion
                         DescontarAsientosAvion(clase);
+                        AcumularViajesDeClientes(); //y la lista?
 
                         this.DialogResult = DialogResult.OK;
                         this.Close();
@@ -155,8 +156,8 @@ namespace Aerolineas
 
         private bool ValidarDisponibilidadVuelo()
         {
-            if ((clase == "Turista" && unVuelo.Asientos_Turista - listaPasajeros.Count > 0)
-                || (clase == "Premium" && unVuelo.Asientos_Premium - listaPasajeros.Count > 0))
+            if ((clase == "Turista" && unVuelo.Asientos_Turista - listaPasajeros.Count >= 0)
+                || (clase == "Premium" && unVuelo.Asientos_Premium - listaPasajeros.Count >= 0))
             {
                 return true;
             }
@@ -187,6 +188,22 @@ namespace Aerolineas
             else
             {
                 unVuelo.Asientos_Premium -= cantidadAsientos;
+            }
+        }
+
+        private void AcumularViajesDeClientes()
+        {
+            foreach(Pasajero pasajero in listaPasajeros)
+            {
+                //item.Cantidad_Viajes++;
+                foreach (Cliente cliente in Aerolinea.listaClientes)
+                {
+                    if(pasajero == cliente)
+                    {
+                        cliente.Cantidad_Viajes++;
+                        break;
+                    }
+                }
             }
         }
     }

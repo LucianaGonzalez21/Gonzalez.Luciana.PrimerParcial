@@ -9,6 +9,7 @@ namespace Entidades
     public class Cliente: Persona
     {
         private int idCliente;
+        private int cantidadViajes;
         public Cliente(string nombre, string apellido, int dni, string genero, int edad):base(nombre, apellido, dni, genero, edad)
         {
             //this.idCliente = Aerolinea.GenerarIdCliente();
@@ -71,6 +72,17 @@ namespace Entidades
             }
         }
 
+        public int Cantidad_Viajes
+        {
+            set
+            {
+                cantidadViajes = value;
+            }
+            get
+            {
+                return cantidadViajes;
+            }
+        }
 
         public static bool operator ==(Cliente clienteUno, Cliente clienteDos)
         {
