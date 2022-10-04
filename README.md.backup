@@ -21,6 +21,8 @@ También cuenta con un apartado donde se pueden ver algunas estadísticas de la 
 **Diagrama de clases**
 
 
+
+
 **Justificación de técnica**: implementé una clase estática para el core de la aplicación, la aerolinea, ya que no se instancian objetos de este tipo, la aerolínea es una sola y es el negocio. Esta clase funciona como administradora de las demás: verifica si los clientes ya existen, si al dar de alta un vuelo el avión seleccionado se encuentra en otro, los destinos más elegidos por los clientes, etc. 
 
 La aplicación usa como interfaz gráfica a los formularios de Windows: a través de ellos se pueden visualizar las listas antes mencionadas, vender pasajes y dar de alta a nuevos clientes. Estos formularios toman la información ingresada por el empleado, la valida y a su vez, la clase administradora (Aerolinea) hace sus propias validaciones. Así implementé el encapsulamiento: no es tarea del Windows Form saber  los clientes que están registrados en la empresa o recorrer la lista de usuarios para dejar que el empleado se registre.

@@ -20,7 +20,7 @@ También cuenta con un apartado donde se pueden ver algunas estadísticas de la 
 
 **Diagrama de clases**
 
-
+![](../diagrama.png)
 
 
 **Justificación de técnica**: implementé una clase estática para el core de la aplicación, la aerolinea, ya que no se instancian objetos de este tipo, la aerolínea es una sola y es el negocio. Esta clase funciona como administradora de las demás: verifica si los clientes ya existen, si al dar de alta un vuelo el avión seleccionado se encuentra en otro, los destinos más elegidos por los clientes, etc. 
