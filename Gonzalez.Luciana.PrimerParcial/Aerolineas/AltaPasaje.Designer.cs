@@ -320,6 +320,7 @@ namespace Aerolineas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(873, 578);
+            this.ControlBox = false;
             this.Controls.Add(this.btn_elegirVuelo);
             this.Controls.Add(this.lbl_textoError);
             this.Controls.Add(this.lbl_vueloSeleccionado);
@@ -337,7 +338,7 @@ namespace Aerolineas
             this.MinimizeBox = false;
             this.Name = "AltaPasaje";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AltaPasaje";
+            this.Text = "Alta pasaje";
             this.Load += new System.EventHandler(this.AltaPasaje_Load);
             this.grpClase.ResumeLayout(false);
             this.grpClase.PerformLayout();

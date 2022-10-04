@@ -114,6 +114,7 @@ namespace Aerolineas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(800, 557);
+            this.ControlBox = false;
             this.Controls.Add(this.btn_cantidadVuelos);
             this.Controls.Add(this.btn_facturacionDestinos);
             this.Controls.Add(this.btn_horasPorAvion);
@@ -124,7 +125,7 @@ namespace Aerolineas
             this.MinimizeBox = false;
             this.Name = "FrmEstadisticas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmEstadisticas";
+            this.Text = "Estadisticas";
             this.Load += new System.EventHandler(this.FrmEstadisticas_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -108,6 +108,7 @@ namespace Aerolineas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(337, 305);
+            this.ControlBox = false;
             this.Controls.Add(this.lblMensajeError);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAutocompletar);

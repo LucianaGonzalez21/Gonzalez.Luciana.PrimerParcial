@@ -224,6 +224,7 @@ namespace Aerolineas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(928, 517);
+            this.ControlBox = false;
             this.Controls.Add(this.btn_calcular);
             this.Controls.Add(this.lbl_vueloSeleccionado);
             this.Controls.Add(this.lbl_textoError);
@@ -239,7 +240,7 @@ namespace Aerolineas
             this.Controls.Add(this.lbl_pasajeros);
             this.Name = "FrmAltaGrupo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmAltaGrupo";
+            this.Text = "Alta grupo familiar";
             this.Load += new System.EventHandler(this.FrmAltaGrupo_Load);
             this.gpr_Clase.ResumeLayout(false);
             this.gpr_Clase.PerformLayout();

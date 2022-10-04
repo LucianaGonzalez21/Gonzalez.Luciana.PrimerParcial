@@ -235,6 +235,7 @@ namespace Aerolineas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(819, 554);
+            this.ControlBox = false;
             this.Controls.Add(this.lbl_textoError);
             this.Controls.Add(this.lblMatriculaAvion);
             this.Controls.Add(this.lblAvionSeleccionado);
@@ -254,7 +255,7 @@ namespace Aerolineas
             this.Controls.Add(this.lblDatosVuelo);
             this.Name = "AltaVuelo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AltaVuelo";
+            this.Text = "Alta vuelo";
             this.Load += new System.EventHandler(this.AltaVuelo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_aviones)).EndInit();
             this.ResumeLayout(false);

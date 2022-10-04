@@ -202,6 +202,7 @@ namespace Aerolineas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(808, 504);
+            this.ControlBox = false;
             this.Controls.Add(this.btn_aceptar);
             this.Controls.Add(this.btn_cancelar);
             this.Controls.Add(this.cb_comida);
@@ -220,7 +221,7 @@ namespace Aerolineas
             this.MinimizeBox = false;
             this.Name = "FrmElegirVuelo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmElegirVuelo";
+            this.Text = "Seleccionar vuelo";
             this.Load += new System.EventHandler(this.FrmElegirVuelo_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_listaVuelos)).EndInit();
             this.ResumeLayout(false);

@@ -230,6 +230,7 @@ namespace Aerolineas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(546, 502);
+            this.ControlBox = false;
             this.Controls.Add(this.lbl_clienteSeleccionado);
             this.Controls.Add(this.lbl_textoError);
             this.Controls.Add(this.btn_cancelar);
@@ -244,7 +245,7 @@ namespace Aerolineas
             this.Controls.Add(this.lbl_clientes);
             this.Name = "FrmAltaPasajeroTurista";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmAltaPasajeroTurista";
+            this.Text = "Alta pasajero";
             this.Load += new System.EventHandler(this.FrmAltaPasajeroTurista_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_listaClientes)).EndInit();
             this.grp_equipajeMano.ResumeLayout(false);

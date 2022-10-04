@@ -184,6 +184,7 @@ namespace Aerolineas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
             this.ClientSize = new System.Drawing.Size(499, 443);
+            this.ControlBox = false;
             this.Controls.Add(this.lbl_textoError);
             this.Controls.Add(this.cmbGenero);
             this.Controls.Add(this.label2);
@@ -200,7 +201,7 @@ namespace Aerolineas
             this.Controls.Add(this.lblDatosCliente);
             this.Name = "AltaCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AltaCliente";
+            this.Text = "Alta cliente";
             this.Load += new System.EventHandler(this.AltaCliente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
