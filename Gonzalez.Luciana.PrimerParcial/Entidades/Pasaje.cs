@@ -16,11 +16,10 @@ namespace Entidades
         
         public Pasaje(Pasajero pasajero, Vuelo vuelo, string clase)
         {
-            //this.codigoPasaje=codigoPasaje;
-            this.pasajero=pasajero;
-            this.vuelo=vuelo;
-            this.clase=clase;
-            this.costo= CalcularImporteBruto();
+            this.pasajero = pasajero;
+            this.vuelo = vuelo;
+            this.clase = clase;
+            this.costo = CalcularImporteBruto();
         }
 
         public int Codigo_Pasaje
@@ -66,42 +65,6 @@ namespace Entidades
                 return clase;
             }
         }
-
-        //public int CantidadViajes
-        //{
-        //    get
-        //    {
-        //        return pasajero.CantidadViajes;
-        //    }
-        //    set
-        //    {
-        //        pasajero.CantidadViajes = value;
-        //    }
-        //}
-
-        //public string Bolso_De_Mano
-        //{
-        //    get
-        //    {
-        //        return (pasajero.Bolso_De_Mano)? "Si" : "No";
-        //    }
-        //}
-
-        //public int Peso_Valija
-        //{
-        //    get
-        //    {
-        //        return pasajero.Peso_Valija;
-        //    }
-        //}
-
-        //public int Peso_Valija2
-        //{
-        //    get
-        //    {
-        //        return ((PasajeroPremium)pasajero).Peso_Valija_2;
-        //    }
-        //}
 
         public string Origen
         {

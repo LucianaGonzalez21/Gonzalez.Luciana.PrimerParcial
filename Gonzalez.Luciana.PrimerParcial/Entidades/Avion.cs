@@ -9,27 +9,25 @@ namespace Entidades
     public class Avion
     {
         string matricula;
-        int cantidadAsientos;   //premium + turista
+        int cantidadAsientos;
         int cantidadAsientosTurista;
         int cantidadAsientosPremium;
         int cantidadBanios;
-        int capacidadBodega;    //capacidad bolsos de mano?
-        //----fin caracteristicas en comun----
-        //List<Vuelo> listaVuelos;
+        int capacidadBodega;
         bool wifi;
         bool comida;
 
 
         public Avion(string matricula, int cantidadAsientos, int cantidadBanios, int capacidadBodega, bool wifi, bool comida)
         {
-            this.matricula=matricula;
+            this.matricula = matricula;
             this.cantidadAsientos = cantidadAsientos;
-            this.cantidadAsientosTurista=(int)(cantidadAsientos * .8);
-            this.cantidadAsientosPremium=(int)(cantidadAsientos * .2);
-            this.cantidadBanios=cantidadBanios;
-            this.capacidadBodega=capacidadBodega;
-            this.wifi=wifi;
-            this.comida=comida;
+            this.cantidadAsientosTurista = (int)(cantidadAsientos * .8);
+            this.cantidadAsientosPremium = (int)(cantidadAsientos * .2);
+            this.cantidadBanios = cantidadBanios;
+            this.capacidadBodega = capacidadBodega;
+            this.wifi = wifi;
+            this.comida = comida;
         }
 
         private bool Disponibilidad

@@ -61,6 +61,12 @@ namespace Aerolineas
             }
         }
 
+        /// <summary>
+        /// Valida que los datos ingresados por los controles del windows form cumplan con 
+        /// los requisitos establecidos. Ademas, muestra un MessageBox con los datos que 
+        /// no son validos 
+        /// </summary>
+        /// <returns>True si los datos son correctos, false si no pasan las validaciones</returns>
         private bool ValidarDatos()
         {
             bool esValido = true;

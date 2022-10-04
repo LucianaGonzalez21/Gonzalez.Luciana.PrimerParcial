@@ -10,31 +10,16 @@ namespace Entidades
     {
         protected bool bolsoMano;
         protected int pesoValijaUno;
-        //protected int cantidadViajes;
 
         public Pasajero(string nombre, string apellido, string genero, int dni, int edad, bool bolsoMano, int pesoValijaUno) : base(nombre, apellido, dni, genero, edad)
         {
-            this.bolsoMano=bolsoMano;
-            this.pesoValijaUno=pesoValijaUno;
-            //this.cantidadViajes = 0;
+            this.bolsoMano = bolsoMano;
+            this.pesoValijaUno = pesoValijaUno;
         }
 
         public Pasajero(string nombre, string apellido, string genero, int dni, int edad, bool bolsoMano) : this(nombre, apellido, genero, dni, edad, bolsoMano, 0)
         {
         }
-
-        //public int CantidadViajes
-        //{
-        //    set
-        //    {
-        //        cantidadViajes = value;
-        //    }
-        //    get
-        //    {
-        //        return cantidadViajes;
-        //    }
-        //}
-
 
         public string Nombre
         {

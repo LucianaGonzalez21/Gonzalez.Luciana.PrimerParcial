@@ -87,22 +87,28 @@ namespace Aerolineas
             // 
             // txtNombre
             // 
+            this.txtNombre.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtNombre.Location = new System.Drawing.Point(206, 92);
             this.txtNombre.Name = "txtNombre";
+            this.txtNombre.PlaceholderText = "Juan Pedro";
             this.txtNombre.Size = new System.Drawing.Size(125, 27);
             this.txtNombre.TabIndex = 5;
             // 
             // txtDNI
             // 
+            this.txtDNI.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtDNI.Location = new System.Drawing.Point(206, 199);
             this.txtDNI.Name = "txtDNI";
+            this.txtDNI.PlaceholderText = "40300200";
             this.txtDNI.Size = new System.Drawing.Size(125, 27);
             this.txtDNI.TabIndex = 6;
             // 
             // txtApellido
             // 
+            this.txtApellido.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtApellido.Location = new System.Drawing.Point(206, 145);
             this.txtApellido.Name = "txtApellido";
+            this.txtApellido.PlaceholderText = "Perez";
             this.txtApellido.Size = new System.Drawing.Size(125, 27);
             this.txtApellido.TabIndex = 7;
             // 

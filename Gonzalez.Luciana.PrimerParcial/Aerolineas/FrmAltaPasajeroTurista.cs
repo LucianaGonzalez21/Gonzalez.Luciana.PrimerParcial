@@ -36,7 +36,6 @@ namespace Aerolineas
         {
             dgv_listaClientes.DataSource = Aerolinea.listaClientes;
 
-            //validar que clase viene del form anterior
             if(clase == "Turista")
             {
                 num_valijaUno.Maximum = 25;
@@ -79,11 +78,11 @@ namespace Aerolineas
                 esValido = false;
             }
 
-            //if (rd_equipajeBodegaSi.Checked && (num_valijaUno.Value == 0 || num_valijaDos.Value == 0))
-            //{
-            //    sb.AppendLine("Equipaje bodega");
-            //    esValido = false;
-            //}
+            if(unCliente is null)
+            {
+                sb.AppendLine("Debe seleccionar un cliente");
+                esValido = false;
+            }
 
             if (!esValido)
             {

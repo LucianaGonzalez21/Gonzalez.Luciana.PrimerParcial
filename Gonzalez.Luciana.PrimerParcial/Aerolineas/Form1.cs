@@ -52,14 +52,8 @@ namespace Aerolineas
 
         private void btnAutocompletar_Click(object sender, EventArgs e)
         {
-            //Random random = new Random();
-
-            //int numeroAleatorio = random.Next(0, 4);
-
             txtUsuario.Text = "lucas";
             txtClave.Text = "1234";
-            //txtUsuario.Text = listaUsuarios[numeroAleatorio].usuario;
-            //txtClave.Text = listaUsuarios[numeroAleatorio].clave;
         }
     }
 }

@@ -53,7 +53,7 @@ namespace Aerolineas
             // 
             this.btn_salir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_salir.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_salir.Location = new System.Drawing.Point(677, 485);
+            this.btn_salir.Location = new System.Drawing.Point(532, 485);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(111, 60);
             this.btn_salir.TabIndex = 1;
@@ -113,7 +113,7 @@ namespace Aerolineas
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
-            this.ClientSize = new System.Drawing.Size(800, 557);
+            this.ClientSize = new System.Drawing.Size(661, 577);
             this.ControlBox = false;
             this.Controls.Add(this.btn_cantidadVuelos);
             this.Controls.Add(this.btn_facturacionDestinos);

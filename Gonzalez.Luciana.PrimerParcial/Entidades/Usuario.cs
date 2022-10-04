@@ -11,10 +11,10 @@ namespace Entidades
 
         public Usuario(string usuario, string clave, string nombre, string apellido)
         {
-            this.usuario=usuario;
-            this.clave=clave;
-            this.nombre=nombre;
-            this.apellido=apellido;
+            this.usuario = usuario;
+            this.clave = clave;
+            this.nombre = nombre;
+            this.apellido = apellido;
         }
 
         public override string ToString()

@@ -12,7 +12,6 @@ namespace Entidades
         private int cantidadViajes;
         public Cliente(string nombre, string apellido, int dni, string genero, int edad):base(nombre, apellido, dni, genero, edad)
         {
-            //this.idCliente = Aerolinea.GenerarIdCliente();
         }
 
         public Cliente(string nombre, string apellido, int dni, string genero, int edad, int id):this(nombre, apellido, dni, genero, edad)

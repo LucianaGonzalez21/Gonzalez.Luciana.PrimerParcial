@@ -18,17 +18,16 @@ namespace Entidades
         int cantidadAsientosTurista;
         int cantidadAsientosPremium;
         int cantidadAsientosTotal;
-        //CANTIDAD DE PASAJEROS DEL VUELO. INICIALIZO EN CERO Y VOY SUMANDO
 
         public Vuelo(string destino, string origen, DateTime fechaInicio, Avion avion)
         {
-            this.destino=destino;
-            this.origen=origen;
-            this.fechaInicio=fechaInicio;
-            this.duracion=CalcularDuracionVuelo(destino);
+            this.destino = destino;
+            this.origen = origen;
+            this.fechaInicio = fechaInicio;
+            this.duracion = CalcularDuracionVuelo(destino);
             this.estadoVuelo = DefinirEstadoVuelo();
             this.avion = avion;
-            this.cantidadAsientosTurista = avion.AsientosTurista;   //cuantos pasajeros permite el vuelo
+            this.cantidadAsientosTurista = avion.AsientosTurista;   
             this.cantidadAsientosPremium = avion.AsientosPremium;
             this.cantidadAsientosTotal = avion.Asientos;
         }
@@ -196,7 +195,7 @@ namespace Entidades
 
         public override int GetHashCode()
         {
-            return (avion.Matricula, fechaInicio).GetHashCode();  //propiedades?
+            return (avion.Matricula, fechaInicio).GetHashCode();  
         }
 
         public override string ToString()

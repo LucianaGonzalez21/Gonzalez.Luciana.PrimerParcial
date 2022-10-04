@@ -103,10 +103,8 @@ namespace Aerolineas
                     {
                         double costoTotal = listaPasajeros.Count * unPasaje.Costo;
                         MessageBox.Show($"Costo a pagar con impuestos: ${costoTotal}");
-                        //descontar asientos del avion
                         DescontarAsientosAvion(clase);
-                        AcumularViajesDeClientes(); //y la lista?
-
+                        AcumularViajesDeClientes(); 
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
@@ -154,6 +152,12 @@ namespace Aerolineas
             }
         }
 
+
+        /// <summary>
+        /// Valida, segun la clase, que los pasajeros que quieren viajar en el vuelo
+        /// tengan lugar en el avion
+        /// </summary>
+        /// <returns>True si cuenta con disponibilidad. False si el avion ya no tiene asientos disponibles</returns>
         private bool ValidarDisponibilidadVuelo()
         {
             if ((clase == "Turista" && unVuelo.Asientos_Turista - listaPasajeros.Count >= 0)
@@ -164,6 +168,10 @@ namespace Aerolineas
             return false;
         }
 
+        /// <summary>
+        /// Valida si el pasajero ya se encuentra registrado en el vuelo elegido
+        /// </summary>
+        /// <returns>True si ya está registrado. False si no</returns>
         private bool ValidarPasajerosEnVuelo()
         {
             foreach (Pasaje item in listaPasajes)
@@ -176,6 +184,11 @@ namespace Aerolineas
             return true;
         }
 
+        /// <summary>
+        /// Segun la clase recibida por parametro, descuenta tantos asientos del avion como 
+        /// el largo de la lista de pasajeros
+        /// </summary>
+        /// <param name="clase">Es la clase elegida por los pasajeros: Turista o Premium</param>
         private void DescontarAsientosAvion(string clase)
         {
             int cantidadAsientos;
@@ -191,11 +204,13 @@ namespace Aerolineas
             }
         }
 
+        /// <summary>
+        /// Suma 1 en el cantidad de viajes realizados por los clientes
+        /// </summary>
         private void AcumularViajesDeClientes()
         {
             foreach(Pasajero pasajero in listaPasajeros)
             {
-                //item.Cantidad_Viajes++;
                 foreach (Cliente cliente in Aerolinea.listaClientes)
                 {
                     if(pasajero == cliente)

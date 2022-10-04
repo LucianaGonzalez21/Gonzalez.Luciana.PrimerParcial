@@ -34,7 +34,6 @@ namespace Aerolineas
         {
             dgv_aviones.DataSource = Aerolinea.listaAviones;
             cmbOrigen.DataSource = Enum.GetValues(typeof(Origen));
-            //cmbAviones.SelectedItem = null;
             cmbDestinosInternacionales.SelectedItem = null;
             cmbDestinosNacionales.SelectedItem = null;
             cmbOrigen.SelectedItem = null;
@@ -73,7 +72,7 @@ namespace Aerolineas
                 }
 
                 nuevoVuelo = new Vuelo(destino, cmbOrigen.Text, dtp_fechaPartida.Value.Date, avionSeleccionado);
-                //MessageBox.Show(nuevoVuelo.MostrarVuelo());
+
                 if (Aerolinea.EsAvionDisponible(nuevoVuelo))
                 {
                     this.DialogResult = DialogResult.OK;
@@ -112,6 +111,12 @@ namespace Aerolineas
             if(Validadora.ValidarFechaVuelo(dtp_fechaPartida.Value))
             {
                 sb.AppendLine("Fecha de partida no valida");
+                esValido = false;
+            }
+
+            if(avionSeleccionado is null)
+            {
+                sb.AppendLine("Debe seleccionar un avion");
                 esValido = false;
             }
 

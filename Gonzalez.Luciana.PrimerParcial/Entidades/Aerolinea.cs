@@ -31,7 +31,7 @@ namespace Entidades
             listaPasajes = new List<Pasaje>();
             codigoPasaje = 123;
             idCliente = 999;
-            diccionarioDestinos = InicializarDiccionarioDestinos();
+            InicializarDiccionarioDestinos();
 
             AgregarAviones();
             AgregarUsuarios();
@@ -65,6 +65,10 @@ namespace Entidades
             listaPasajes.Add(new Pasaje(listaPasajeros[3], listaVuelos[4], "Premium"));          
         }
 
+        /// <summary>
+        /// Recorre la lista hardcodeada de clientes y les suma 1 a su contador de viajes
+        /// si estan a su vez registrados como pasajeros
+        /// </summary>
         private static void AgregarVuelosAClientes()
         {
             foreach (Pasajero pasajero in listaPasajeros)
@@ -123,6 +127,13 @@ namespace Entidades
             listaUsuarios.Add(new Usuario("esteban", "1234", "Esteban", "Prieto"));
         }
 
+        /// <summary>
+        /// Valida si el usuario y clave ingresados por parametro coinciden con
+        /// los de los usuarios ya registrados
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="clave"></param>
+        /// <returns>Devuelve el Usuario si ya se encuentra en el sistema o null si no</returns>
         public static Usuario ValidarUsuario(string usuario, string clave)
         {
             if (Validadora.ValidarCadena(usuario) && Validadora.ValidarCadena(clave))
@@ -138,6 +149,12 @@ namespace Entidades
             return null;
         }
 
+        /// <summary>
+        /// Calcula la duración del vuelo ingresado por parametro, a través de un
+        /// numero aleatorio
+        /// </summary>
+        /// <param name="vuelo"></param>
+        /// <returns>Devuelve un entero entre 2 y 4 para destinos nacionales y un entero entre 8 y 12 para internacionales</returns>
         public static int CalcularDuracionVuelo(Vuelo vuelo)
         {
             Random numeroAleatorio = new Random();
@@ -159,6 +176,12 @@ namespace Entidades
             return duracion;
         }
 
+        /// <summary>
+        /// Recorre la lista de clientes para comparar si el cliente pasado por parámetro ya existe en
+        /// el sistema
+        /// </summary>
+        /// <param name="unCliente">Es el cliente a buscar en el sistema</param>
+        /// <returns>True si existe, false si no</returns>
         public static bool EsCliente(Cliente unCliente)
         {
             foreach (Cliente item in Aerolinea.listaClientes)
@@ -171,6 +194,12 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// Verifica que el avion del vuelo pasado por parametro tiene un vuelo
+        /// registrado en la fecha del mismo
+        /// </summary>
+        /// <param name="unVuelo">Es el vuelo cuyo avion se verificará si posee otro viaje en la fecha del vuelo</param>
+        /// <returns>True si el avion está disponible en la fecha, false si no</returns>
         public static bool EsAvionDisponible(Vuelo unVuelo)
         {
             foreach (Vuelo item in listaVuelos)
@@ -183,6 +212,13 @@ namespace Entidades
             return true;
         }
 
+        /// <summary>
+        /// Verifica si el pasajero relacionado al pasaje ingresado por parametro
+        /// ya cuenta con un pasaje para el vuelo
+        /// </summary>
+        /// <param name="unPasaje"></param>
+        /// <returns>True si el pasajero ya tiene un pasaje para el vuelo que intenta
+        /// sacar, false si no</returns>
         public static bool EsPasajeroEnElVuelo(Pasaje unPasaje)
         {
             foreach (Pasaje item in listaPasajes)
@@ -195,6 +231,15 @@ namespace Entidades
             return false;
         }
 
+        /// <summary>
+        /// crea una nueva lista que tenga las caracteristicas pasadas por parametro:
+        /// origen, destino y si tiene o no wifi y comida
+        /// </summary>
+        /// <param name="origen"></param>
+        /// <param name="destino"></param>
+        /// <param name="wifi"></param>
+        /// <param name="comida"></param>
+        /// <returns>Devuelve una lista con los vuelos que cumplen con esas caracteristicas</returns>
         public static List<Vuelo> FiltrarVuelos(string origen, string destino, bool wifi, bool comida)
         {
             List<Vuelo> listaFiltrada = new List<Vuelo>();
@@ -244,9 +289,14 @@ namespace Entidades
             return idCliente;
         }
 
-        private static Dictionary<string, double> InicializarDiccionarioDestinos()
+
+        /// <summary>
+        /// Inicializa el diccionarioDestinos con los enumerados de destinos nacionales
+        /// e internacionales y pone en 0 todos sus values.
+        /// </summary>
+        /// <returns></returns>
+        private static void InicializarDiccionarioDestinos()
         {
-            //key: destino, value: contador de ctdad veces elegido
             diccionarioDestinos = new Dictionary<string, double>();
 
             diccionarioDestinos.Add(nameof(DestinosNacionales.Bariloche), 0);
@@ -268,11 +318,14 @@ namespace Entidades
             diccionarioDestinos.Add(nameof(DestinosInternacionales.Miami), 0);
             diccionarioDestinos.Add(nameof(DestinosInternacionales.Recife), 0);
             diccionarioDestinos.Add(nameof(DestinosInternacionales.Roma), 0);
-
-            return diccionarioDestinos;
         }
 
-        private static Dictionary<string, double> CargarDiccionarioDestinos()
+        /// <summary>
+        /// Carga el diccionarioDestinos recorriendo la lista de pasajes vendidos, y segun
+        /// el destino del mismo, aumenta en 1 el value de esa key
+        /// </summary>
+        /// <returns></returns>
+        private static void CargarDiccionarioDestinos()
         {
             if (diccionarioDestinos is not null)
             {
@@ -340,14 +393,16 @@ namespace Entidades
                     }
                 }
             }
-            return diccionarioDestinos;
         }
 
-        //recorrer diccionario y buscar el value mas alto
+        /// <summary>
+        /// Recorre el diccionarioDestinos buscando el value mas alto 
+        /// </summary>
+        /// <returns>Devuelve el value mas alto del diccionarioDestinos</returns>
         private static double BuscarMaximoValorEnDiccionarioDestinos()
         {
-            diccionarioDestinos = InicializarDiccionarioDestinos();
-            diccionarioDestinos = CargarDiccionarioDestinos();
+            InicializarDiccionarioDestinos();
+            CargarDiccionarioDestinos();
             double valorMaximoDeVecesElegido = 0;
             bool flag = true;
 
@@ -363,6 +418,11 @@ namespace Entidades
             return valorMaximoDeVecesElegido;
         }
 
+        /// <summary>
+        /// Busca en el diccionarioDestinos, aquellas keys que tengan el value mas alto
+        /// y las agrega a un stringbuilder
+        /// </summary>
+        /// <returns>Devuelve un string con los destinos mas elegidos por los pasajeros</returns>
         public static string CalcularDestinosMasElegidos()
         {
             StringBuilder sb = new StringBuilder();
@@ -380,6 +440,11 @@ namespace Entidades
             return sb.ToString();
         }
 
+        /// <summary>
+        /// Crea un vector donde se guardan las horas de vuelo de cada avion, en 
+        /// el orden en que estan declarados los mismos
+        /// </summary>
+        /// <returns>Devuelve el vector con las horas</returns>
         private static int[] CalcularHorasVueloPorAvion()
         {
             int[] vectorHorasVuelo = new int[] { 0, 0, 0, 0, 0, 0, 0 };
@@ -414,6 +479,11 @@ namespace Entidades
             return vectorHorasVuelo;
         }
 
+        /// <summary>
+        /// Recorre los vectores de aviones y de horas de vuelo, y guarda en un string
+        /// la matricula del avion con sus horas de vuelo
+        /// </summary>
+        /// <returns>Devuelve un string con todos los aviones y sus horas de vuelo correspondientes</returns>
         public static string InformarHorasDeVueloPorAvion()
         {
             int[] vectorHorasVuelo = CalcularHorasVueloPorAvion();
@@ -427,9 +497,11 @@ namespace Entidades
             return sb.ToString();
         }
 
-        //facturacion
-
-        private static Dictionary<string, double> CargarDiccionarioDestinosConCostos()
+        /// <summary>
+        /// Carga el diccionarioDestinos con los costos de cada pasaje hacia ese destino
+        /// </summary>
+        /// <returns></returns>
+        private static void CargarDiccionarioDestinosConCostos()
         {
             if (diccionarioDestinos is not null)
             {
@@ -497,14 +569,17 @@ namespace Entidades
                     }
                 }
             }
-            return diccionarioDestinos;
         }
 
+        /// <summary>
+        /// crea un stringbuilder con todos los destinos y cuanto facturó cada uno
+        /// </summary>
+        /// <returns>Devuelve un string con toda la informacion</returns>
         public static string InformarDestinosConFacturacion()
         {
             StringBuilder sb = new StringBuilder();
-            diccionarioDestinos = InicializarDiccionarioDestinos();
-            diccionarioDestinos = CargarDiccionarioDestinosConCostos();
+            InicializarDiccionarioDestinos();
+            CargarDiccionarioDestinosConCostos();
 
             foreach (KeyValuePair<string, double> item in diccionarioDestinos)
             {
@@ -514,8 +589,11 @@ namespace Entidades
             return sb.ToString();
         }
 
-        //Lista de pasajeros frecuente ordenada por cantidad de vuelos
 
+        /// <summary>
+        /// crea un stringbuilder con los nombres, apellidos y cantidad de viajes de cada pasajero
+        /// </summary>
+        /// <returns>Devuelve el string con toda la informacion</returns>
         public static string InformarCantidadDeVuelosPorPasajero()
         {
             StringBuilder sb = new StringBuilder();

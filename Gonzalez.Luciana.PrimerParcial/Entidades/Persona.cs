@@ -16,11 +16,11 @@ namespace Entidades
 
         public Persona(string nombre, string apellido, int dni, string genero, int edad)
         {
-            this.nombre=nombre;
-            this.apellido=apellido;
-            this.dni=dni;
-            this.genero=genero;
-            this.edad=edad;
+            this.nombre = nombre;
+            this.apellido = apellido;
+            this.dni = dni;
+            this.genero = genero;
+            this.edad = edad;
         }
 
         public static int CalcularEdad(DateTime fechaNacimiento)

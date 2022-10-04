@@ -78,6 +78,11 @@ namespace Aerolineas
             }
         }
 
+        /// <summary>
+        /// Valida que se haya elegido destino y origen y que estos sean distintos entre si
+        /// Muestra a través de un MessageBox los datos no validos, si los hubiera
+        /// </summary>
+        /// <returns>True si los datos son validos, false si no lo son</returns>
         private bool ValidarFiltros()
         {
             bool esValido = true;
@@ -108,9 +113,7 @@ namespace Aerolineas
 
         private void FrmElegirVuelo_Load(object sender, EventArgs e)
         {
-            //dgv_listaVuelos.DataSource = Aerolinea.listaVuelos;
             cmb_origen.DataSource = Enum.GetValues(typeof(Origen));
-            //cmbAviones.SelectedItem = null;
             cmb_internacional.SelectedItem = null;
             cmb_nacional.SelectedItem = null;
             cmb_origen.SelectedItem = null;
@@ -121,11 +124,12 @@ namespace Aerolineas
         private void dgv_listaVuelos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             indiceVuelo = dgv_listaVuelos.CurrentRow.Index;
+            unVuelo = listaFiltrada[indiceVuelo];   //acaaa
         }
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
-            if (unVuelo == null)
+            if (unVuelo is null)
             {
                 MessageBox.Show("Primero debe elegir un vuelo");
             }
