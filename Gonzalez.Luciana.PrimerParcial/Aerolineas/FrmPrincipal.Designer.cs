@@ -42,6 +42,7 @@ namespace Aerolineas
             this.btn_listaClientes = new System.Windows.Forms.Button();
             this.lbl_tituloDataGridView = new System.Windows.Forms.Label();
             this.btn_listaAviones = new System.Windows.Forms.Button();
+            this.btn_alojamientos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_principal)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,11 +62,11 @@ namespace Aerolineas
             // 
             this.dgv_principal.BackgroundColor = System.Drawing.Color.LightSalmon;
             this.dgv_principal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_principal.Location = new System.Drawing.Point(150, 214);
+            this.dgv_principal.Location = new System.Drawing.Point(150, 240);
             this.dgv_principal.Name = "dgv_principal";
             this.dgv_principal.RowHeadersWidth = 51;
             this.dgv_principal.RowTemplate.Height = 29;
-            this.dgv_principal.Size = new System.Drawing.Size(786, 200);
+            this.dgv_principal.Size = new System.Drawing.Size(786, 264);
             this.dgv_principal.TabIndex = 1;
             // 
             // btn_listaPasajeros
@@ -124,7 +125,7 @@ namespace Aerolineas
             // 
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalir.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSalir.Location = new System.Drawing.Point(842, 438);
+            this.btnSalir.Location = new System.Drawing.Point(842, 516);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(94, 29);
             this.btnSalir.TabIndex = 7;
@@ -186,7 +187,7 @@ namespace Aerolineas
             // 
             this.lbl_tituloDataGridView.AutoSize = true;
             this.lbl_tituloDataGridView.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_tituloDataGridView.Location = new System.Drawing.Point(468, 183);
+            this.lbl_tituloDataGridView.Location = new System.Drawing.Point(470, 208);
             this.lbl_tituloDataGridView.Name = "lbl_tituloDataGridView";
             this.lbl_tituloDataGridView.Size = new System.Drawing.Size(133, 18);
             this.lbl_tituloDataGridView.TabIndex = 12;
@@ -206,13 +207,27 @@ namespace Aerolineas
             this.btn_listaAviones.UseVisualStyleBackColor = true;
             this.btn_listaAviones.Click += new System.EventHandler(this.btn_listaAviones_Click);
             // 
+            // btn_alojamientos
+            // 
+            this.btn_alojamientos.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btn_alojamientos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_alojamientos.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btn_alojamientos.Location = new System.Drawing.Point(12, 420);
+            this.btn_alojamientos.Name = "btn_alojamientos";
+            this.btn_alojamientos.Size = new System.Drawing.Size(126, 84);
+            this.btn_alojamientos.TabIndex = 14;
+            this.btn_alojamientos.Text = "Ver Alojamientos";
+            this.btn_alojamientos.UseVisualStyleBackColor = true;
+            this.btn_alojamientos.Click += new System.EventHandler(this.btn_alojamientos_Click);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
-            this.ClientSize = new System.Drawing.Size(948, 479);
+            this.ClientSize = new System.Drawing.Size(948, 557);
             this.ControlBox = false;
+            this.Controls.Add(this.btn_alojamientos);
             this.Controls.Add(this.btn_listaAviones);
             this.Controls.Add(this.lbl_tituloDataGridView);
             this.Controls.Add(this.btn_listaClientes);
@@ -254,5 +269,6 @@ namespace Aerolineas
         private System.Windows.Forms.Button btn_listaClientes;
         private System.Windows.Forms.Label lbl_tituloDataGridView;
         private System.Windows.Forms.Button btn_listaAviones;
+        private System.Windows.Forms.Button btn_alojamientos;
     }
 }

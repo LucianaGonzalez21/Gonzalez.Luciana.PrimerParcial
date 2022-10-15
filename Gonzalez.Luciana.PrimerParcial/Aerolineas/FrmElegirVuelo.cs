@@ -53,18 +53,27 @@ namespace Aerolineas
         {
             if (ValidarFiltros())
             {
-                string destino = "Miami";
+                string destino = string.Empty;
 
-                if (cmb_nacional.SelectedItem != null)
+                if (string.IsNullOrWhiteSpace(cmb_nacional.Text) == false)
                 {
                     destino = cmb_nacional.Text;
                 }
-                else if (cmb_internacional.SelectedItem != null)
+                else if (string.IsNullOrWhiteSpace(cmb_internacional.Text) == false)
                 {
                     destino = cmb_internacional.Text;
                 }
 
-                listaFiltrada = Aerolinea.FiltrarVuelos(cmb_origen.Text, destino, cb_wifi.Checked, cb_comida.Checked);
+                if ((string.IsNullOrWhiteSpace(cmb_internacional.Text) || string.IsNullOrWhiteSpace(cmb_nacional.Text))
+                    && string.IsNullOrWhiteSpace(cmb_origen.Text))
+                {
+                    listaFiltrada = Aerolinea.FiltrarVuelos(cb_wifi.Checked, cb_comida.Checked);
+                }
+                else
+                {
+                    listaFiltrada = Aerolinea.FiltrarVuelos(cmb_origen.Text, destino, cb_wifi.Checked, cb_comida.Checked);
+                }
+
 
                 if (listaFiltrada.Count == 0)
                 {
@@ -90,12 +99,12 @@ namespace Aerolineas
 
             sb.AppendLine("Los siguientes datos no son validos:");
 
-            if ((cmb_internacional.Text == null || cmb_nacional.Text == null)
-                && cmb_origen.Text == null)
-            {
-                sb.AppendLine("Debe seleccionar un destino y un origen");
-                esValido = false;
-            }
+            //if ((cmb_internacional.Text == null || cmb_nacional.Text == null)
+            //    && cmb_origen.Text == null)
+            //{
+            //    sb.AppendLine("Debe seleccionar un destino y un origen");
+            //    esValido = false;
+            //}
 
             if (cmb_origen.Text == cmb_nacional.Text)
             {
@@ -117,6 +126,7 @@ namespace Aerolineas
             cmb_internacional.SelectedItem = null;
             cmb_nacional.SelectedItem = null;
             cmb_origen.SelectedItem = null;
+                        
 
             dgv_listaVuelos.DataSource = null;
         }

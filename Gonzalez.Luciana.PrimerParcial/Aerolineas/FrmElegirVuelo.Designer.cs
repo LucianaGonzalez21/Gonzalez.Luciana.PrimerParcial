@@ -104,6 +104,7 @@ namespace Aerolineas
             // 
             // cmb_origen
             // 
+            this.cmb_origen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_origen.FormattingEnabled = true;
             this.cmb_origen.Location = new System.Drawing.Point(162, 32);
             this.cmb_origen.Name = "cmb_origen";
@@ -112,6 +113,7 @@ namespace Aerolineas
             // 
             // cmb_nacional
             // 
+            this.cmb_nacional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_nacional.FormattingEnabled = true;
             this.cmb_nacional.Location = new System.Drawing.Point(162, 146);
             this.cmb_nacional.Name = "cmb_nacional";
@@ -120,6 +122,7 @@ namespace Aerolineas
             // 
             // cmb_internacional
             // 
+            this.cmb_internacional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmb_internacional.FormattingEnabled = true;
             this.cmb_internacional.Location = new System.Drawing.Point(335, 146);
             this.cmb_internacional.Name = "cmb_internacional";

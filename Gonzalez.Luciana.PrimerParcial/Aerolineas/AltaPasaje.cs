@@ -19,8 +19,8 @@ namespace Aerolineas
         private Pasajero unPasajero;
         private Cliente unCliente;
         private bool bolsoMano;
-
         Vuelo unVuelo;
+        Alojamiento alojamiento;
 
         public AltaPasaje()
         {
@@ -47,6 +47,10 @@ namespace Aerolineas
         {
             dgv_clientes.DataSource = Aerolinea.listaClientes;
             dgv_clientes.Columns["Cantidad_Viajes"].Visible = false;
+            rbCabania.Enabled = false;
+            rbHotel.Enabled = false;
+            rbDesayunoNo.Enabled = false;
+            rbDesayunoSi.Enabled = false;
         }
 
         private void rdTurista_CheckedChanged(object sender, EventArgs e)
@@ -104,7 +108,7 @@ namespace Aerolineas
                     bolsoMano = false;
                 }
 
-                if(unVuelo is null)
+                if (unVuelo is null)
                 {
                     lbl_textoError.Text = "Primero debe elegir un vuelo";
                     lbl_textoError.Visible = true;
@@ -129,7 +133,7 @@ namespace Aerolineas
                         lbl_textoError.Visible = true;
                     }
                 }
-                
+
             }
         }
 
@@ -165,9 +169,21 @@ namespace Aerolineas
                 esValido = false;
             }
 
-            if(unCliente is null)
+            if (unCliente is null)
             {
                 sb.AppendLine("Debe seleccionar un cliente");
+                esValido = false;
+            }
+
+            if (rbAlojamientoNo.Checked == false && rbAlojamientoSi.Checked == false)
+            {
+                sb.AppendLine("Alojamiento");
+                esValido = false;
+            }
+
+            if(rbAlojamientoSi.Checked && nudCantidadDias.Value == 0)
+            {
+                sb.AppendLine("La cantidad de dias no puede ser 0");
                 esValido = false;
             }
 
@@ -189,7 +205,7 @@ namespace Aerolineas
         /// <param name="clase">La clase en la que viajará el pasajero</param>
         private void ValidarPasaje(Pasajero unPasajero, Vuelo unVuelo, string clase)
         {
-            nuevoPasaje = new Pasaje(unPasajero, unVuelo, clase);
+            nuevoPasaje = new Pasaje(unPasajero, unVuelo, clase, DarAltaAlojamiento());
 
             if (Aerolinea.EsPasajeroEnElVuelo(nuevoPasaje))
             {
@@ -225,7 +241,7 @@ namespace Aerolineas
         {
             FrmElegirVuelo frmElegirVuelo = new FrmElegirVuelo();
             DialogResult respuesta = frmElegirVuelo.ShowDialog();
-            
+
             if (respuesta == DialogResult.OK)
             {
                 unVuelo = frmElegirVuelo.Vuelo;
@@ -249,5 +265,51 @@ namespace Aerolineas
                 unVuelo.Asientos_Premium--;
             }
         }
-    }
+
+        private void rbAlojamientoSi_CheckedChanged(object sender, EventArgs e)
+        {
+            rbCabania.Enabled = true;
+            rbHotel.Enabled = true;
+            rbDesayunoNo.Enabled = true;
+            rbDesayunoSi.Enabled = true;
+        }
+
+        private void rbAlojamientoNo_CheckedChanged(object sender, EventArgs e)
+        {
+            rbCabania.Enabled = false;
+            rbHotel.Enabled = false;
+            rbDesayunoNo.Enabled = false;
+            rbDesayunoSi.Enabled = false;
+        }
+
+        private Alojamiento DarAltaAlojamiento()
+        {
+            if (rbAlojamientoSi.Checked == false)
+            {
+                return null;
+            }
+
+            bool desayuno;
+
+            if (rbDesayunoSi.Checked)
+            {
+                desayuno = true;
+            }
+            else
+            {
+                desayuno = false;
+            }
+
+            if (rbHotel.Checked)
+            {
+                alojamiento = new Hotel(desayuno, (int)nudCantidadDias.Value);
+            }
+            else
+            {
+                alojamiento = new Cabania(desayuno, (int)nudCantidadDias.Value);
+            }
+
+            return alojamiento;
+        }
+}
 }

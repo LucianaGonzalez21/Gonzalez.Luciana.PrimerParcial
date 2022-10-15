@@ -120,7 +120,10 @@ namespace Aerolineas
                 dgv_principal.Columns["Costo"].Visible = false;
                 dgv_principal.Columns["Codigo_Pasaje"].Visible = false;
                 dgv_principal.Columns["Duracion_Vuelo"].Visible = false;
-                dgv_principal.Columns["Matricula_Avion"].Visible = false;
+                dgv_principal.Columns["Alojamiento"].Visible = false;
+                dgv_principal.Columns["Costo_Alojamiento"].Visible = false;
+                dgv_principal.Columns["Desayuno"].Visible = false;
+                dgv_principal.Columns["Km_Del_Centro"].Visible = false;
             }
         }
 
@@ -169,6 +172,33 @@ namespace Aerolineas
             FrmEstadisticas frmEstadisticas = new FrmEstadisticas();
             DialogResult retorno = frmEstadisticas.ShowDialog();
 
+        }
+
+        private void btn_alojamientos_Click(object sender, EventArgs e)
+        {
+            List<Pasaje> listaPasajesConAlojamiento;
+
+            listaPasajesConAlojamiento = Aerolinea.FiltrarPasajesPorAlojamientos();
+
+            if (listaPasajesConAlojamiento.Count > 0)
+            {
+                lbl_tituloDataGridView.Text = "Lista de alojamientos";
+                dgv_principal.DataSource = null;
+                dgv_principal.DataSource = listaPasajesConAlojamiento;
+                dgv_principal.Columns["Clase"].Visible = false;
+                dgv_principal.Columns["Costo"].Visible = false;
+                dgv_principal.Columns["Codigo_Pasaje"].Visible = false;
+                dgv_principal.Columns["Duracion_Vuelo"].Visible = false;
+                dgv_principal.Columns["Origen"].Visible = false;
+                dgv_principal.Columns["Destino"].Visible = false;
+                dgv_principal.Columns["Fecha_Partida"].Visible = false;
+                dgv_principal.Columns["Matricula_Avion"].Visible = false;
+                dgv_principal.Columns["Alojamiento"].Visible = false;
+            }
+            else
+            {
+                MessageBox.Show("No hay alojamientos para mostrar");
+            }
         }
     }
 }

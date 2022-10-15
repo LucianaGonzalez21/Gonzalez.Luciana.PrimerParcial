@@ -52,12 +52,27 @@ namespace Aerolineas
             this.lbl_vueloSeleccionado = new System.Windows.Forms.Label();
             this.lbl_textoError = new System.Windows.Forms.Label();
             this.btn_elegirVuelo = new System.Windows.Forms.Button();
+            this.gbAlojamiento = new System.Windows.Forms.GroupBox();
+            this.rbAlojamientoSi = new System.Windows.Forms.RadioButton();
+            this.rbAlojamientoNo = new System.Windows.Forms.RadioButton();
+            this.nudCantidadDias = new System.Windows.Forms.NumericUpDown();
+            this.lblCantidadDias = new System.Windows.Forms.Label();
+            this.rbCabania = new System.Windows.Forms.RadioButton();
+            this.rbHotel = new System.Windows.Forms.RadioButton();
+            this.gbTipoAlojamiento = new System.Windows.Forms.GroupBox();
+            this.rbDesayunoNo = new System.Windows.Forms.RadioButton();
+            this.rbDesayunoSi = new System.Windows.Forms.RadioButton();
+            this.gpDesayuno = new System.Windows.Forms.GroupBox();
             this.grpClase.SuspendLayout();
             this.grpEquipajeMano.SuspendLayout();
             this.grpEquipajeBodega.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numValijaDos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numValijaUno)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_clientes)).BeginInit();
+            this.gbAlojamiento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadDias)).BeginInit();
+            this.gbTipoAlojamiento.SuspendLayout();
+            this.gpDesayuno.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpClase
@@ -100,7 +115,7 @@ namespace Aerolineas
             // 
             this.lblVuelo.AutoSize = true;
             this.lblVuelo.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblVuelo.Location = new System.Drawing.Point(38, 469);
+            this.lblVuelo.Location = new System.Drawing.Point(38, 589);
             this.lblVuelo.Name = "lblVuelo";
             this.lblVuelo.Size = new System.Drawing.Size(56, 18);
             this.lblVuelo.TabIndex = 1;
@@ -159,9 +174,9 @@ namespace Aerolineas
             this.grpEquipajeBodega.Controls.Add(this.rdEquipajeBodegaNo);
             this.grpEquipajeBodega.Controls.Add(this.rdEquipajeBodegaSi);
             this.grpEquipajeBodega.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.grpEquipajeBodega.Location = new System.Drawing.Point(327, 332);
+            this.grpEquipajeBodega.Location = new System.Drawing.Point(315, 332);
             this.grpEquipajeBodega.Name = "grpEquipajeBodega";
-            this.grpEquipajeBodega.Size = new System.Drawing.Size(522, 100);
+            this.grpEquipajeBodega.Size = new System.Drawing.Size(534, 100);
             this.grpEquipajeBodega.TabIndex = 8;
             this.grpEquipajeBodega.TabStop = false;
             this.grpEquipajeBodega.Text = "Equipaje de Bodega";
@@ -226,7 +241,7 @@ namespace Aerolineas
             // 
             this.btnAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAceptar.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAceptar.Location = new System.Drawing.Point(629, 524);
+            this.btnAceptar.Location = new System.Drawing.Point(629, 677);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(94, 29);
             this.btnAceptar.TabIndex = 9;
@@ -238,7 +253,7 @@ namespace Aerolineas
             // 
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancelar.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnCancelar.Location = new System.Drawing.Point(754, 524);
+            this.btnCancelar.Location = new System.Drawing.Point(754, 677);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(94, 29);
             this.btnCancelar.TabIndex = 10;
@@ -284,7 +299,7 @@ namespace Aerolineas
             this.lbl_vueloSeleccionado.AutoSize = true;
             this.lbl_vueloSeleccionado.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_vueloSeleccionado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
-            this.lbl_vueloSeleccionado.Location = new System.Drawing.Point(327, 469);
+            this.lbl_vueloSeleccionado.Location = new System.Drawing.Point(327, 589);
             this.lbl_vueloSeleccionado.Name = "lbl_vueloSeleccionado";
             this.lbl_vueloSeleccionado.Size = new System.Drawing.Size(166, 18);
             this.lbl_vueloSeleccionado.TabIndex = 14;
@@ -295,7 +310,7 @@ namespace Aerolineas
             this.lbl_textoError.AutoSize = true;
             this.lbl_textoError.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbl_textoError.ForeColor = System.Drawing.Color.Red;
-            this.lbl_textoError.Location = new System.Drawing.Point(37, 535);
+            this.lbl_textoError.Location = new System.Drawing.Point(37, 688);
             this.lbl_textoError.Name = "lbl_textoError";
             this.lbl_textoError.Size = new System.Drawing.Size(99, 18);
             this.lbl_textoError.TabIndex = 15;
@@ -306,7 +321,7 @@ namespace Aerolineas
             // 
             this.btn_elegirVuelo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_elegirVuelo.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btn_elegirVuelo.Location = new System.Drawing.Point(149, 464);
+            this.btn_elegirVuelo.Location = new System.Drawing.Point(149, 584);
             this.btn_elegirVuelo.Name = "btn_elegirVuelo";
             this.btn_elegirVuelo.Size = new System.Drawing.Size(133, 29);
             this.btn_elegirVuelo.TabIndex = 17;
@@ -314,13 +329,139 @@ namespace Aerolineas
             this.btn_elegirVuelo.UseVisualStyleBackColor = true;
             this.btn_elegirVuelo.Click += new System.EventHandler(this.btn_elegirVuelo_Click);
             // 
+            // gbAlojamiento
+            // 
+            this.gbAlojamiento.Controls.Add(this.rbAlojamientoSi);
+            this.gbAlojamiento.Controls.Add(this.rbAlojamientoNo);
+            this.gbAlojamiento.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.gbAlojamiento.Location = new System.Drawing.Point(38, 470);
+            this.gbAlojamiento.Name = "gbAlojamiento";
+            this.gbAlojamiento.Size = new System.Drawing.Size(250, 65);
+            this.gbAlojamiento.TabIndex = 18;
+            this.gbAlojamiento.TabStop = false;
+            this.gbAlojamiento.Text = "Alojamiento";
+            // 
+            // rbAlojamientoSi
+            // 
+            this.rbAlojamientoSi.AutoSize = true;
+            this.rbAlojamientoSi.Location = new System.Drawing.Point(23, 26);
+            this.rbAlojamientoSi.Name = "rbAlojamientoSi";
+            this.rbAlojamientoSi.Size = new System.Drawing.Size(45, 22);
+            this.rbAlojamientoSi.TabIndex = 5;
+            this.rbAlojamientoSi.TabStop = true;
+            this.rbAlojamientoSi.Text = "Si";
+            this.rbAlojamientoSi.UseVisualStyleBackColor = true;
+            this.rbAlojamientoSi.CheckedChanged += new System.EventHandler(this.rbAlojamientoSi_CheckedChanged);
+            // 
+            // rbAlojamientoNo
+            // 
+            this.rbAlojamientoNo.AutoSize = true;
+            this.rbAlojamientoNo.Location = new System.Drawing.Point(131, 26);
+            this.rbAlojamientoNo.Name = "rbAlojamientoNo";
+            this.rbAlojamientoNo.Size = new System.Drawing.Size(52, 22);
+            this.rbAlojamientoNo.TabIndex = 6;
+            this.rbAlojamientoNo.TabStop = true;
+            this.rbAlojamientoNo.Text = "No";
+            this.rbAlojamientoNo.UseVisualStyleBackColor = true;
+            this.rbAlojamientoNo.CheckedChanged += new System.EventHandler(this.rbAlojamientoNo_CheckedChanged);
+            // 
+            // nudCantidadDias
+            // 
+            this.nudCantidadDias.Location = new System.Drawing.Point(673, 622);
+            this.nudCantidadDias.Name = "nudCantidadDias";
+            this.nudCantidadDias.Size = new System.Drawing.Size(150, 27);
+            this.nudCantidadDias.TabIndex = 20;
+            // 
+            // lblCantidadDias
+            // 
+            this.lblCantidadDias.AutoSize = true;
+            this.lblCantidadDias.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCantidadDias.Location = new System.Drawing.Point(673, 584);
+            this.lblCantidadDias.Name = "lblCantidadDias";
+            this.lblCantidadDias.Size = new System.Drawing.Size(142, 18);
+            this.lblCantidadDias.TabIndex = 21;
+            this.lblCantidadDias.Text = "Cantidad de dias";
+            // 
+            // rbCabania
+            // 
+            this.rbCabania.AutoSize = true;
+            this.rbCabania.Location = new System.Drawing.Point(131, 26);
+            this.rbCabania.Name = "rbCabania";
+            this.rbCabania.Size = new System.Drawing.Size(94, 22);
+            this.rbCabania.TabIndex = 6;
+            this.rbCabania.TabStop = true;
+            this.rbCabania.Text = "Cabania";
+            this.rbCabania.UseVisualStyleBackColor = true;
+            // 
+            // rbHotel
+            // 
+            this.rbHotel.AutoSize = true;
+            this.rbHotel.Location = new System.Drawing.Point(23, 26);
+            this.rbHotel.Name = "rbHotel";
+            this.rbHotel.Size = new System.Drawing.Size(73, 22);
+            this.rbHotel.TabIndex = 5;
+            this.rbHotel.TabStop = true;
+            this.rbHotel.Text = "Hotel";
+            this.rbHotel.UseVisualStyleBackColor = true;
+            // 
+            // gbTipoAlojamiento
+            // 
+            this.gbTipoAlojamiento.Controls.Add(this.rbHotel);
+            this.gbTipoAlojamiento.Controls.Add(this.rbCabania);
+            this.gbTipoAlojamiento.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.gbTipoAlojamiento.Location = new System.Drawing.Point(315, 470);
+            this.gbTipoAlojamiento.Name = "gbTipoAlojamiento";
+            this.gbTipoAlojamiento.Size = new System.Drawing.Size(262, 65);
+            this.gbTipoAlojamiento.TabIndex = 19;
+            this.gbTipoAlojamiento.TabStop = false;
+            this.gbTipoAlojamiento.Text = "Tipo";
+            // 
+            // rbDesayunoNo
+            // 
+            this.rbDesayunoNo.AutoSize = true;
+            this.rbDesayunoNo.Location = new System.Drawing.Point(131, 26);
+            this.rbDesayunoNo.Name = "rbDesayunoNo";
+            this.rbDesayunoNo.Size = new System.Drawing.Size(52, 22);
+            this.rbDesayunoNo.TabIndex = 6;
+            this.rbDesayunoNo.TabStop = true;
+            this.rbDesayunoNo.Text = "No";
+            this.rbDesayunoNo.UseVisualStyleBackColor = true;
+            // 
+            // rbDesayunoSi
+            // 
+            this.rbDesayunoSi.AutoSize = true;
+            this.rbDesayunoSi.Location = new System.Drawing.Point(23, 26);
+            this.rbDesayunoSi.Name = "rbDesayunoSi";
+            this.rbDesayunoSi.Size = new System.Drawing.Size(45, 22);
+            this.rbDesayunoSi.TabIndex = 5;
+            this.rbDesayunoSi.TabStop = true;
+            this.rbDesayunoSi.Text = "Si";
+            this.rbDesayunoSi.UseVisualStyleBackColor = true;
+            // 
+            // gpDesayuno
+            // 
+            this.gpDesayuno.Controls.Add(this.rbDesayunoSi);
+            this.gpDesayuno.Controls.Add(this.rbDesayunoNo);
+            this.gpDesayuno.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.gpDesayuno.Location = new System.Drawing.Point(598, 470);
+            this.gpDesayuno.Name = "gpDesayuno";
+            this.gpDesayuno.Size = new System.Drawing.Size(250, 65);
+            this.gpDesayuno.TabIndex = 22;
+            this.gpDesayuno.TabStop = false;
+            this.gpDesayuno.Text = "Desayuno";
+            // 
             // AltaPasaje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
-            this.ClientSize = new System.Drawing.Size(873, 578);
+            this.ClientSize = new System.Drawing.Size(873, 718);
             this.ControlBox = false;
+            this.Controls.Add(this.gpDesayuno);
+            this.Controls.Add(this.lblCantidadDias);
+            this.Controls.Add(this.nudCantidadDias);
+            this.Controls.Add(this.gbTipoAlojamiento);
+            this.Controls.Add(this.gbAlojamiento);
             this.Controls.Add(this.btn_elegirVuelo);
             this.Controls.Add(this.lbl_textoError);
             this.Controls.Add(this.lbl_vueloSeleccionado);
@@ -349,6 +490,13 @@ namespace Aerolineas
             ((System.ComponentModel.ISupportInitialize)(this.numValijaDos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numValijaUno)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_clientes)).EndInit();
+            this.gbAlojamiento.ResumeLayout(false);
+            this.gbAlojamiento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudCantidadDias)).EndInit();
+            this.gbTipoAlojamiento.ResumeLayout(false);
+            this.gbTipoAlojamiento.PerformLayout();
+            this.gpDesayuno.ResumeLayout(false);
+            this.gpDesayuno.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -379,5 +527,16 @@ namespace Aerolineas
         private System.Windows.Forms.Label lbl_vueloSeleccionado;
         private System.Windows.Forms.Label lbl_textoError;
         private System.Windows.Forms.Button btn_elegirVuelo;
+        private System.Windows.Forms.GroupBox gbAlojamiento;
+        private System.Windows.Forms.RadioButton rbAlojamientoSi;
+        private System.Windows.Forms.RadioButton rbAlojamientoNo;
+        private System.Windows.Forms.NumericUpDown nudCantidadDias;
+        private System.Windows.Forms.Label lblCantidadDias;
+        private System.Windows.Forms.RadioButton rbCabania;
+        private System.Windows.Forms.RadioButton rbHotel;
+        private System.Windows.Forms.GroupBox gbTipoAlojamiento;
+        private System.Windows.Forms.RadioButton rbDesayunoNo;
+        private System.Windows.Forms.RadioButton rbDesayunoSi;
+        private System.Windows.Forms.GroupBox gpDesayuno;
     }
 }

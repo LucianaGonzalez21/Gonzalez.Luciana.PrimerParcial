@@ -19,6 +19,7 @@ namespace Entidades
         public static int codigoPasaje;
         public static int idCliente;
         private static Dictionary<string, double> diccionarioDestinos;
+        public static List<Pasaje> listaPasajesConAlojamiento;
 
         static Aerolinea()
         {
@@ -32,6 +33,7 @@ namespace Entidades
             codigoPasaje = 123;
             idCliente = 999;
             InicializarDiccionarioDestinos();
+            //colaPasajesConAlojamiento = new Queue<Pasaje>();
 
             AgregarAviones();
             AgregarUsuarios();
@@ -61,7 +63,7 @@ namespace Entidades
         {
             listaPasajes.Add(new Pasaje(listaPasajeros[0], listaVuelos[0], "Turista"));
             listaPasajes.Add(new Pasaje(listaPasajeros[2], listaVuelos[3], "Turista"));
-            listaPasajes.Add(new Pasaje(listaPasajeros[1], listaVuelos[2], "Premium"));          
+            listaPasajes.Add(new Pasaje(listaPasajeros[1], listaVuelos[2], "Premium", new Hotel(true, 10)));          
             listaPasajes.Add(new Pasaje(listaPasajeros[3], listaVuelos[4], "Premium"));          
         }
 
@@ -88,15 +90,15 @@ namespace Entidades
         {
             listaPasajeros.Add(new Pasajero("Emiliano", "Gomez", nameof(Generos.Masculino), 36123456, 30, true, 20));
             listaPasajeros.Add(new Pasajero("Mariela", "Gomez", nameof(Generos.Femenino), 35157159, 23, true, 15));
-            listaPasajeros.Add(new Pasajero("German", "Gomez", nameof(Generos.Masculino), 20157159, 29, false));
-            listaPasajeros.Add(new Pasajero("Rosa", "Martinez", nameof(Generos.Femenino), 15155406, 60, false));
+            listaPasajeros.Add(new Pasajero("German", "Gomez", nameof(Generos.Masculino), 20157159, 29, false, 0));
+            listaPasajeros.Add(new Pasajero("Rosa", "Martinez", nameof(Generos.Femenino), 15155406, 60, false, 0));
         }
 
         private static void AgregarAviones()
         {
             listaAviones[0] = new Avion("ABC123", 10, 6, 30000, true, true);
             listaAviones[1] = new Avion("DEF456", 350, 8, 28000, true, true);
-            listaAviones[2] = new Avion("GHI789", 250, 8, 30000, true, true);
+            listaAviones[2] = new Avion("GHI789", 250, 8, 30000, true, false);
             listaAviones[3] = new Avion("JKL321", 350, 6, 20000, false, true);
             listaAviones[4] = new Avion("MNO654", 250, 6, 31000, false, true);
             listaAviones[5] = new Avion("PQR987", 300, 6, 28000, true, true);
@@ -125,6 +127,20 @@ namespace Entidades
             listaUsuarios.Add(new Usuario("ornella", "1234", "Ornella", "Curcio"));
             listaUsuarios.Add(new Usuario("ignacio", "1234", "Ignacio", "Smirlian"));
             listaUsuarios.Add(new Usuario("esteban", "1234", "Esteban", "Prieto"));
+        }
+
+        public static List<Pasaje> FiltrarPasajesPorAlojamientos()
+        {
+            listaPasajesConAlojamiento = new List<Pasaje>();
+
+            foreach (Pasaje item in listaPasajes)
+            {
+                if(item.Alojamiento == "Si")
+                {
+                    listaPasajesConAlojamiento.Add(item);
+                }
+            }
+            return listaPasajesConAlojamiento;
         }
 
         /// <summary>
@@ -232,8 +248,7 @@ namespace Entidades
         }
 
         /// <summary>
-        /// crea una nueva lista que tenga las caracteristicas pasadas por parametro:
-        /// origen, destino y si tiene o no wifi y comida
+        /// crea y devuelve una nueva lista de vuelos filtrada por origen, destino, wifi y comida
         /// </summary>
         /// <param name="origen"></param>
         /// <param name="destino"></param>
@@ -267,6 +282,47 @@ namespace Entidades
             foreach (Vuelo item in listaVuelos)
             {
                 if (item.Origen == origen && item.Destino == destino && item.Comida == comidaString && item.Wifi == wifiString)
+                {
+                    listaFiltrada.Add(item);
+                }
+            }
+
+            return listaFiltrada;
+        }
+
+        /// <summary>
+        /// crea y devuelve una nueva lista de vuelos filtrada por wifi y comida
+        /// </summary>
+        /// <param name="wifi"></param>
+        /// <param name="comida"></param>
+        /// <returns>Devuelve una lista con los vuelos que cumplen con esas caracteristicas</returns>
+        public static List<Vuelo> FiltrarVuelos(bool wifi, bool comida)
+        {
+            List<Vuelo> listaFiltrada = new List<Vuelo>();
+            string wifiString;
+            string comidaString;
+
+            if (wifi)
+            {
+                wifiString = "SI";
+            }
+            else
+            {
+                wifiString = "NO";
+            }
+
+            if (comida)
+            {
+                comidaString = "SI";
+            }
+            else
+            {
+                comidaString = "NO";
+            }
+
+            foreach (Vuelo item in listaVuelos)
+            {
+                if (item.Comida == comidaString && item.Wifi == wifiString)
                 {
                     listaFiltrada.Add(item);
                 }

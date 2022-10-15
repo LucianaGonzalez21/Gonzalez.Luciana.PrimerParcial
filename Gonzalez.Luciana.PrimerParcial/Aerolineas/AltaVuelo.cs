@@ -62,11 +62,11 @@ namespace Aerolineas
         {
             if (ValidarDatos())
             {
-                if (cmbDestinosNacionales.Text != null)
+                if (string.IsNullOrWhiteSpace(cmbDestinosNacionales.Text) == false)
                 {
                     destino = cmbDestinosNacionales.Text;
                 }
-                else if (cmbDestinosInternacionales.Text != null)
+                else if (string.IsNullOrWhiteSpace(cmbDestinosInternacionales.Text) == false)
                 {
                     destino = cmbDestinosInternacionales.Text;
                 }
@@ -95,10 +95,15 @@ namespace Aerolineas
 
             sb.AppendLine("Los siguientes datos no son validos:");
 
-            if ((cmbDestinosInternacionales.Text == null || cmbDestinosNacionales.Text == null)
-                && cmbOrigen.Text == null)
+            if (cmbDestinosInternacionales.Text == null || cmbDestinosNacionales.Text == null)
             {
                 sb.AppendLine("Debe seleccionar un destino");
+                esValido = false;
+            }
+
+            if(cmbOrigen.Text == null)
+            {
+                sb.AppendLine("Debe elegir un origen");
                 esValido = false;
             }
 

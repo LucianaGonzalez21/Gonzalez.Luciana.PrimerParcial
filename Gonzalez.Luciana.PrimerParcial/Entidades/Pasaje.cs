@@ -13,6 +13,7 @@ namespace Entidades
         private Vuelo vuelo;
         private double costo;
         private string clase;
+        private Alojamiento alojamiento;
         
         public Pasaje(Pasajero pasajero, Vuelo vuelo, string clase)
         {
@@ -20,6 +21,11 @@ namespace Entidades
             this.vuelo = vuelo;
             this.clase = clase;
             this.costo = CalcularImporteBruto();
+        }
+
+        public Pasaje(Pasajero pasajero, Vuelo vuelo, string clase, Alojamiento alojamiento): this(pasajero, vuelo, clase)
+        {
+            this.alojamiento = alojamiento;
         }
 
         public int Codigo_Pasaje
@@ -103,6 +109,53 @@ namespace Entidades
             get
             {
                 return vuelo.Matricula_Avion;
+            }
+        }
+
+        public string Alojamiento
+        {
+            get
+            {
+                return (alojamiento is null) ? "No" : "Si";
+            }
+        }
+
+        public string Tipo_Alojamiento
+        {
+            get
+            {
+                if(alojamiento is null)
+                {
+                    return "-";
+                }
+                else
+                {
+                    return (alojamiento is Hotel) ? "Hotel" : "Cabania";
+                }
+            }
+        }
+
+        public double Costo_Alojamiento
+        {
+            get
+            {
+                return (alojamiento is null) ? 0 : alojamiento.Costo_Total;
+            }
+        }
+
+        public string Desayuno
+        {
+            get
+            {
+                return (alojamiento is null) ? "-" : alojamiento.Desayuno;
+            }
+        }
+
+        public int Km_Del_Centro
+        {
+            get
+            {
+                return (alojamiento is null) ? 0 : alojamiento.Km_Del_Centro;
             }
         }
 
