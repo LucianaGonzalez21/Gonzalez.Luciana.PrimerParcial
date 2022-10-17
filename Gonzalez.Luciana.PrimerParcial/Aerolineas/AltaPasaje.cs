@@ -108,32 +108,15 @@ namespace Aerolineas
                     bolsoMano = false;
                 }
 
-                if (unVuelo is null)
+                if (Aerolinea.VerificarDisponibilidadAsientos(unVuelo.Avion, clase))
                 {
-                    lbl_textoError.Text = "Primero debe elegir un vuelo";
-                    lbl_textoError.Visible = true;
+                    AgregarPasaje(unPasajero, unVuelo, clase);
                 }
                 else
                 {
-                    if (clase == "Turista" && unVuelo.Asientos_Turista>0)
-                    {
-                        unPasajero = new Pasajero(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value);
-                        ValidarPasaje(unPasajero, unVuelo, clase);
-                    }
-                    else if (clase == "Premium" && unVuelo.Asientos_Premium>0)
-                    {
-                        unPasajero = new PasajeroPremium(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value, (int)numValijaDos.Value);
-
-                        ValidarPasaje(unPasajero, unVuelo, clase);
-
-                    }
-                    else
-                    {
-                        lbl_textoError.Text = "El vuelo seleccionado no cuenta con asientos disponibles";
-                        lbl_textoError.Visible = true;
-                    }
+                    lbl_textoError.Text = "El vuelo seleccionado no cuenta con asientos disponibles";
+                    lbl_textoError.Visible = true;
                 }
-
             }
         }
 
@@ -157,6 +140,18 @@ namespace Aerolineas
                 esValido = true;
             }
 
+            if (unCliente is null)
+            {
+                sb.AppendLine("Debe seleccionar un cliente");
+                esValido = false;
+            }
+
+            if (unVuelo is null)
+            {
+                sb.AppendLine("Primero debe elegir un vuelo");
+                esValido = false;
+            }
+
             if (rdEquipajeManoSi.Checked == false && rdEquipajeManoNo.Checked == false)
             {
                 sb.AppendLine("Equipaje de mano");
@@ -169,19 +164,25 @@ namespace Aerolineas
                 esValido = false;
             }
 
-            if (unCliente is null)
-            {
-                sb.AppendLine("Debe seleccionar un cliente");
-                esValido = false;
-            }
-
             if (rbAlojamientoNo.Checked == false && rbAlojamientoSi.Checked == false)
             {
                 sb.AppendLine("Alojamiento");
                 esValido = false;
             }
 
-            if(rbAlojamientoSi.Checked && nudCantidadDias.Value == 0)
+            if (rbAlojamientoSi.Checked && rbDesayunoSi.Checked == false && rbDesayunoNo.Checked == false)
+            {
+                sb.AppendLine("Desayuno");
+                esValido = false;
+            }
+
+            if (rbAlojamientoSi.Checked && rbCabania.Checked == false && rbHotel.Checked == false)
+            {
+                sb.AppendLine("Tipo de alojamiento");
+                esValido = false;
+            }
+
+            if (rbAlojamientoSi.Checked && nudCantidadDias.Value == 0)
             {
                 sb.AppendLine("La cantidad de dias no puede ser 0");
                 esValido = false;
@@ -203,11 +204,9 @@ namespace Aerolineas
         /// <param name="unPasajero">El pasajero que viajará en el vuelo</param>
         /// <param name="unVuelo">El vuelo elegido por el pasajero</param>
         /// <param name="clase">La clase en la que viajará el pasajero</param>
-        private void ValidarPasaje(Pasajero unPasajero, Vuelo unVuelo, string clase)
+        private void AgregarPasaje(Pasajero unPasajero, Vuelo unVuelo, string clase)
         {
-            nuevoPasaje = new Pasaje(unPasajero, unVuelo, clase, DarAltaAlojamiento());
-
-            if (Aerolinea.EsPasajeroEnElVuelo(nuevoPasaje))
+            if (DarDeAltaPasaje() && Aerolinea.EsPasajeroEnElVuelo(nuevoPasaje))
             {
                 lbl_textoError.Text = "El cliente ya es pasajero en el vuelo seleccionado";
                 lbl_textoError.Visible = true;
@@ -221,11 +220,16 @@ namespace Aerolineas
             }
         }
 
-        private void dgv_clientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private bool DarDeAltaPasaje()
         {
-            indiceCliente = dgv_clientes.CurrentRow.Index;
-            unCliente = Aerolinea.listaClientes[indiceCliente];
-            lbl_clienteSeleccionado.Text = Aerolinea.listaClientes[indiceCliente].Nombre + " " + Aerolinea.listaClientes[indiceCliente].Apellido;
+            unPasajero = new Pasajero(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, bolsoMano, (int)numValijaUno.Value, (int)numValijaDos.Value);
+
+            if (unPasajero is not null && unVuelo is not null)
+            {
+                nuevoPasaje = new Pasaje(unPasajero, unVuelo, clase, DarAltaAlojamiento());
+                return true;
+            }
+            return false;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -246,6 +250,7 @@ namespace Aerolineas
             {
                 unVuelo = frmElegirVuelo.Vuelo;
                 lbl_vueloSeleccionado.Text = unVuelo.ToString();
+                lbl_vueloSeleccionado.Visible = true;
             }
         }
 
@@ -272,6 +277,7 @@ namespace Aerolineas
             rbHotel.Enabled = true;
             rbDesayunoNo.Enabled = true;
             rbDesayunoSi.Enabled = true;
+            nudCantidadDias.Enabled = true;
         }
 
         private void rbAlojamientoNo_CheckedChanged(object sender, EventArgs e)
@@ -280,6 +286,7 @@ namespace Aerolineas
             rbHotel.Enabled = false;
             rbDesayunoNo.Enabled = false;
             rbDesayunoSi.Enabled = false;
+            nudCantidadDias.Enabled = false;
         }
 
         private Alojamiento DarAltaAlojamiento()
@@ -311,5 +318,70 @@ namespace Aerolineas
 
             return alojamiento;
         }
-}
+
+        private void dgv_clientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            indiceCliente = dgv_clientes.CurrentRow.Index;
+            unCliente = Aerolinea.listaClientes[indiceCliente];
+            lbl_clienteSeleccionado.Text = Aerolinea.listaClientes[indiceCliente].Nombre + " " + Aerolinea.listaClientes[indiceCliente].Apellido;
+            lbl_clienteSeleccionado.Visible = true;
+        }
+
+        private void AltaAlojamiento()
+        {
+            alojamiento = null;
+
+            if (rbAlojamientoSi.Checked)
+            {
+                bool desayuno;
+
+                if (rbDesayunoSi.Checked)
+                {
+                    desayuno = true;
+                }
+                else
+                {
+                    desayuno = false;
+                }
+
+                if (rbHotel.Checked)
+                {
+                    alojamiento = new Hotel(desayuno, (int)nudCantidadDias.Value);
+                }
+                else if (rbCabania.Checked)
+                {
+                    alojamiento = new Cabania(desayuno, (int)nudCantidadDias.Value);
+                }
+            }
+        }
+
+        private double CalcularCostoAlojamiento()
+        {
+            AltaAlojamiento();
+
+            if (alojamiento is not null)
+            {
+                return alojamiento.Costo_Total;
+            }
+            return 0;
+        }
+
+        private void btnCalcularCostos_Click(object sender, EventArgs e)
+        {
+            if (ValidarDatos() && DarDeAltaPasaje())
+            {
+                lblImporteAlojamiento.Text = $"$ {CalcularCostoAlojamiento()}";
+                lblImporteAlojamiento.Visible = true;
+                lblImporteVuelo.Text = $"$ {nuevoPasaje.Costo}";
+                lblImporteVuelo.Visible = true;
+                lblImporteTotal.Text = $"$ {CalcularCostoAlojamiento() + nuevoPasaje.Costo}";
+                lblImporteTotal.Visible = true;
+            }
+        }
+
+        private void gbAlojamiento_Enter(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

@@ -139,7 +139,7 @@ namespace Aerolineas
             this.dgv_listaVuelos.RowTemplate.Height = 29;
             this.dgv_listaVuelos.Size = new System.Drawing.Size(751, 188);
             this.dgv_listaVuelos.TabIndex = 8;
-            this.dgv_listaVuelos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_listaVuelos_CellContentClick);
+            this.dgv_listaVuelos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_listaVuelos_CellClick);
             // 
             // btn_buscar
             // 
@@ -220,6 +220,7 @@ namespace Aerolineas
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lbl_destino);
             this.Controls.Add(this.lbl_origen);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmElegirVuelo";

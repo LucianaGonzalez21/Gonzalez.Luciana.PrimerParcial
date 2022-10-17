@@ -12,7 +12,6 @@ namespace Entidades
         public static Avion[] listaAviones;
         public static List<Vuelo> listaVuelos;
         public static List<Pasajero> listaPasajeros;
-        public static List<PasajeroPremium> listaPasajerosPremium;
         public static List<Usuario> listaUsuarios;
         public static List<Pasaje> listaPasajes;
         public static List<Cliente> listaClientes;
@@ -28,12 +27,10 @@ namespace Entidades
             listaVuelos = new List<Vuelo>();
             listaClientes = new List<Cliente>();
             listaPasajeros = new List<Pasajero>();
-            listaPasajerosPremium = new List<PasajeroPremium>();
             listaPasajes = new List<Pasaje>();
             codigoPasaje = 123;
             idCliente = 999;
             InicializarDiccionarioDestinos();
-            //colaPasajesConAlojamiento = new Queue<Pasaje>();
 
             AgregarAviones();
             AgregarUsuarios();
@@ -63,8 +60,8 @@ namespace Entidades
         {
             listaPasajes.Add(new Pasaje(listaPasajeros[0], listaVuelos[0], "Turista"));
             listaPasajes.Add(new Pasaje(listaPasajeros[2], listaVuelos[3], "Turista"));
-            listaPasajes.Add(new Pasaje(listaPasajeros[1], listaVuelos[2], "Premium", new Hotel(true, 10)));          
-            listaPasajes.Add(new Pasaje(listaPasajeros[3], listaVuelos[4], "Premium"));          
+            listaPasajes.Add(new Pasaje(listaPasajeros[1], listaVuelos[2], "Premium", new Hotel(true, 10)));
+            listaPasajes.Add(new Pasaje(listaPasajeros[3], listaVuelos[4], "Premium"));
         }
 
         /// <summary>
@@ -88,10 +85,10 @@ namespace Entidades
 
         private static void AgregarPasajeros()
         {
-            listaPasajeros.Add(new Pasajero("Emiliano", "Gomez", nameof(Generos.Masculino), 36123456, 30, true, 20));
-            listaPasajeros.Add(new Pasajero("Mariela", "Gomez", nameof(Generos.Femenino), 35157159, 23, true, 15));
-            listaPasajeros.Add(new Pasajero("German", "Gomez", nameof(Generos.Masculino), 20157159, 29, false, 0));
-            listaPasajeros.Add(new Pasajero("Rosa", "Martinez", nameof(Generos.Femenino), 15155406, 60, false, 0));
+            listaPasajeros.Add(new Pasajero("Emiliano", "Gomez", nameof(Generos.Masculino), 36123456, 30, true, 20, 10));
+            listaPasajeros.Add(new Pasajero("Mariela", "Gomez", nameof(Generos.Femenino), 35157159, 23, true, 15, 0));
+            listaPasajeros.Add(new Pasajero("German", "Gomez", nameof(Generos.Masculino), 20157159, 29, false, 0, 0));
+            listaPasajeros.Add(new Pasajero("Rosa", "Martinez", nameof(Generos.Femenino), 15155406, 60, false, 0, 0));
         }
 
         private static void AgregarAviones()
@@ -135,7 +132,7 @@ namespace Entidades
 
             foreach (Pasaje item in listaPasajes)
             {
-                if(item.Alojamiento == "Si")
+                if (item.Alojamiento == "Si")
                 {
                     listaPasajesConAlojamiento.Add(item);
                 }
@@ -345,6 +342,43 @@ namespace Entidades
             return idCliente;
         }
 
+        /// <summary>
+        /// Verifica que haya al menos un asiento de la clase disponible en el avion 
+        /// </summary>
+        /// <param name="avion"></param>
+        /// <param name="clase"></param>
+        /// <returns>True si hay al menos un asiento disponible, False si no hay</returns>
+        public static bool VerificarDisponibilidadAsientos(Avion avion, string clase)
+        {
+            if ((clase == "Turista" && avion.AsientosTurista > 0)
+                || (clase == "Premium" && avion.AsientosPremium > 0))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Suma un viaje a la lista de clientes, pasados como pasajeros por parametro
+        /// </summary>
+        /// <param name="listaAuxiliarPasajeros"></param>
+        public static void AcumularViajesDeClientes(List<Pasajero> listaAuxiliarPasajeros)
+        {
+            if (listaAuxiliarPasajeros is not null)
+            {
+                foreach (Pasajero pasajero in listaAuxiliarPasajeros)
+                {
+                    foreach (Cliente cliente in listaClientes)
+                    {
+                        if (pasajero == cliente)
+                        {
+                            cliente.Cantidad_Viajes++;
+                            break;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>
         /// Inicializa el diccionarioDestinos con los enumerados de destinos nacionales
@@ -656,7 +690,10 @@ namespace Entidades
 
             foreach (Cliente item in listaClientes)
             {
-                sb.AppendLine($"{item.Nombre} {item.Apellido} {item.Cantidad_Viajes}");
+                if (item.Cantidad_Viajes > 0)
+                {
+                    sb.AppendLine($"{item.Nombre} {item.Apellido} {item.Cantidad_Viajes}");
+                }
             }
 
             return sb.ToString();

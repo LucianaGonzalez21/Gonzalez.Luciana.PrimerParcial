@@ -20,7 +20,8 @@ namespace Entidades
             this.pasajero = pasajero;
             this.vuelo = vuelo;
             this.clase = clase;
-            this.costo = CalcularImporteBruto();
+            //this.costo = vuelo.CalcularCostoPasaje(vuelo, clase);
+            this.costo = CalcularImporteConImpuestos();
         }
 
         public Pasaje(Pasajero pasajero, Vuelo vuelo, string clase, Alojamiento alojamiento): this(pasajero, vuelo, clase)
@@ -188,9 +189,12 @@ namespace Entidades
             return (vuelo, pasajero).GetHashCode();
         }
 
-        private double CalcularImporteBruto()
+
+
+        //modificar
+        private double CalcularImporteConImpuestos()
         {
-            return pasajero.CalcularCostoPasaje(vuelo) * 1.21;
+            return vuelo.CalcularCostoPasaje(vuelo, clase) * 1.21;
         }
 
         public override string ToString()

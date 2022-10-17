@@ -10,11 +10,13 @@ namespace Entidades
     {
         protected bool bolsoMano;
         protected int pesoValijaUno;
+        protected int pesoValijaDos;        
 
-        public Pasajero(string nombre, string apellido, string genero, int dni, int edad, bool bolsoMano, int pesoValijaUno) : base(nombre, apellido, dni, genero, edad)
+        public Pasajero(string nombre, string apellido, string genero, int dni, int edad, bool bolsoMano, int pesoValijaUno, int pesoValijaDos) : base(nombre, apellido, dni, genero, edad)
         {
             this.bolsoMano = bolsoMano;
             this.pesoValijaUno = pesoValijaUno;
+            this.pesoValijaDos = pesoValijaDos;
         }
 
         public string Nombre
@@ -41,7 +43,7 @@ namespace Entidades
             }
         }
 
-        public int Peso_Valija
+        public int Kg_Valija1
         {
             get
             {
@@ -49,26 +51,34 @@ namespace Entidades
             }
         }
 
-        public virtual double CalcularCostoPasaje(Vuelo vuelo)
+        public int Kg_Valija2
         {
-            double costoPasaje = 0;
-            int duracion = vuelo.Duracion;
-
-            switch (vuelo.Destino)
-            {
-                case nameof(DestinosInternacionales.Acapulco):
-                case nameof(DestinosInternacionales.Miami):
-                case nameof(DestinosInternacionales.Recife):
-                case nameof(DestinosInternacionales.Roma):
-                    costoPasaje = duracion * 100;
-                    break;
-                default:
-                    costoPasaje = duracion * 50;
-                    break;
-
+            get
+            {                  
+                return pesoValijaDos;
             }
-            return costoPasaje;
         }
+
+        //public virtual double CalcularCostoPasaje(Vuelo vuelo)
+        //{
+        //    double costoPasaje = 0;
+        //    int duracion = vuelo.Duracion;
+
+        //    switch (vuelo.Destino)
+        //    {
+        //        case nameof(DestinosInternacionales.Acapulco):
+        //        case nameof(DestinosInternacionales.Miami):
+        //        case nameof(DestinosInternacionales.Recife):
+        //        case nameof(DestinosInternacionales.Roma):
+        //            costoPasaje = duracion * 100;
+        //            break;
+        //        default:
+        //            costoPasaje = duracion * 50;
+        //            break;
+
+        //    }
+        //    return costoPasaje;
+        //}
 
         public static bool operator ==(Pasajero pasajeroUno, Pasajero pasajeroDos)
         {
@@ -115,7 +125,8 @@ namespace Entidades
 
         public override string ToString()
         {
-            return base.ToString() + $"Bolso de mano: {Bolso_De_Mano}{Environment.NewLine}Peso valija 1: {Peso_Valija}";
+            return base.ToString() + $"Bolso de mano: {Bolso_De_Mano}{Environment.NewLine}Peso valija 1: {Kg_Valija1}" +
+                $"{Environment.NewLine}Peso valija 2:{Kg_Valija2}";
         }
     }
 }

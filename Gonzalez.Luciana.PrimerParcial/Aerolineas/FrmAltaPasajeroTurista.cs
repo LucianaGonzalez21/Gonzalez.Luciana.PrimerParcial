@@ -36,7 +36,7 @@ namespace Aerolineas
         {
             dgv_listaClientes.DataSource = Aerolinea.listaClientes;
 
-            if(clase == "Turista")
+            if (clase == "Turista")
             {
                 num_valijaUno.Maximum = 25;
                 num_valijaDos.Enabled = false;
@@ -66,10 +66,16 @@ namespace Aerolineas
 
             sb.AppendLine("Los siguientes datos no son validos:");
 
+            if (unCliente is null)
+            {
+                sb.AppendLine("Debe seleccionar un cliente");
+                esValido = false;
+            }
+
             if (rd_equipajeManoSi.Checked == false && rd_equipajeManoNo.Checked == false)
             {
                 sb.AppendLine("Equipaje de Mano");
-                esValido = true;
+                esValido = false;
             }
 
             if (rd_equipajeBodegaSi.Checked == false && rd_equipajeBodegaNo.Checked == false)
@@ -78,9 +84,10 @@ namespace Aerolineas
                 esValido = false;
             }
 
-            if(unCliente is null)
+            if ((clase == "Turista" && rd_equipajeBodegaSi.Checked && num_valijaUno.Value == 0)
+                || (clase == "Premium" && rd_equipajeBodegaSi.Checked && (num_valijaUno.Value == 0 || num_valijaDos.Value == 0)))
             {
-                sb.AppendLine("Debe seleccionar un cliente");
+                sb.AppendLine("Kilogramos de equipaje");
                 esValido = false;
             }
 
@@ -92,25 +99,12 @@ namespace Aerolineas
             return esValido;
         }
 
-        private void dgv_listaClientes_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            indiceCliente = dgv_listaClientes.CurrentRow.Index;
-            lbl_clienteSeleccionado.Text = Aerolinea.listaClientes[indiceCliente].Nombre + " " + Aerolinea.listaClientes[indiceCliente].Apellido;
-            unCliente = Aerolinea.listaClientes[indiceCliente];
-        }
-
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
-            if(ValidarDatos() && unCliente != null)
+            if (ValidarDatos() && unCliente != null)
             {
-                if (clase == "Turista")
-                {
-                    unPasajero = new Pasajero(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, equipajeMano, (int)num_valijaUno.Value);
-                }
-                else
-                {
-                    unPasajero = new PasajeroPremium(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, equipajeMano, (int)num_valijaUno.Value, (int)num_valijaDos.Value);
-                }
+                unPasajero = new Pasajero(unCliente.Nombre, unCliente.Apellido, unCliente.Genero, unCliente.DNI, unCliente.Edad, equipajeMano, (int)num_valijaUno.Value, (int)num_valijaDos.Value);
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
@@ -120,6 +114,33 @@ namespace Aerolineas
         {
             num_valijaUno.Value = 0;
             num_valijaDos.Value = 0;
+            num_valijaUno.Enabled = false;
+            num_valijaDos.Enabled = false;
+        }
+
+        private void dgv_listaClientes_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            indiceCliente = dgv_listaClientes.CurrentRow.Index;
+            lbl_clienteSeleccionado.Text = Aerolinea.listaClientes[indiceCliente].Nombre + " " + Aerolinea.listaClientes[indiceCliente].Apellido;
+            unCliente = Aerolinea.listaClientes[indiceCliente];
+            lbl_clienteSeleccionado.Visible = true;
+        }
+
+        private void rd_equipajeBodegaSi_CheckedChanged(object sender, EventArgs e)
+        {
+            if (clase == "Turista")
+            {
+                num_valijaUno.Maximum = 25;
+                num_valijaUno.Enabled = true;
+                num_valijaDos.Enabled = false;
+            }
+            else
+            {
+                num_valijaUno.Enabled = true;
+                num_valijaDos.Enabled = true;
+                num_valijaUno.Maximum = 21;
+                num_valijaDos.Maximum = 21;
+            }
         }
     }
 }

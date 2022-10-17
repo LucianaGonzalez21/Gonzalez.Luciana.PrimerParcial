@@ -71,7 +71,7 @@ namespace Aerolineas
             this.dgv_listaClientes.RowTemplate.Height = 29;
             this.dgv_listaClientes.Size = new System.Drawing.Size(507, 163);
             this.dgv_listaClientes.TabIndex = 2;
-            this.dgv_listaClientes.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_listaClientes_CellContentClick);
+            this.dgv_listaClientes.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_listaClientes_CellClick);
             // 
             // grp_equipajeMano
             // 
@@ -143,6 +143,7 @@ namespace Aerolineas
             this.rd_equipajeBodegaSi.TabStop = true;
             this.rd_equipajeBodegaSi.Text = "Si";
             this.rd_equipajeBodegaSi.UseVisualStyleBackColor = true;
+            this.rd_equipajeBodegaSi.CheckedChanged += new System.EventHandler(this.rd_equipajeBodegaSi_CheckedChanged);
             // 
             // num_valijaUno
             // 
@@ -223,6 +224,7 @@ namespace Aerolineas
             this.lbl_clienteSeleccionado.Size = new System.Drawing.Size(176, 18);
             this.lbl_clienteSeleccionado.TabIndex = 12;
             this.lbl_clienteSeleccionado.Text = "Cliente seleccionado";
+            this.lbl_clienteSeleccionado.Visible = false;
             // 
             // FrmAltaPasajeroTurista
             // 
@@ -243,6 +245,7 @@ namespace Aerolineas
             this.Controls.Add(this.grp_equipajeMano);
             this.Controls.Add(this.dgv_listaClientes);
             this.Controls.Add(this.lbl_clientes);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "FrmAltaPasajeroTurista";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta pasajero";

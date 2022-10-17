@@ -20,6 +20,31 @@ namespace Aerolineas
             lblBienvenido.Text = usuario.ToString();
             this.login = login;
 
+            this.ttAyuda.SetToolTip(btnVerClientes, "Muestra la lista de clientes con los siguientes datos: nombre, apellido," +
+                "dni, edad, genero, id y cantidad de viajes que realizo");
+            this.ttAyuda.SetToolTip(btnVerAviones, "Muestra la lista de aviones con los siguientes datos: matricula, cantidad" +
+                "total de asientos, asientos de clase premium y de clase turista, cantidad de banios que posee," +
+                "capacidad en kilogramos de la bodega y si ofrece los servicios de comida y wifi");
+            this.ttAyuda.SetToolTip(btnVerPasajeros, "Muestra la lista de pasajeros con los siguientes datos: nombre, apellido," +
+                "clase en la que viaja, origen y destino de su vuelo, fecha de partida, matricula del avion con " +
+                "el que viaja y tipo de alojamiento si es que tiene");
+            this.ttAyuda.SetToolTip(btnVerVuelos, "Muestra la lista de vuelos con los siguientes datos: origen, destinos, duracion del vuelo" +
+                "en horas, en que estado se encuentra y las caracteristicas del avion en las que se realiza ese vuelo");
+            this.ttAyuda.SetToolTip(btnVerAlojamientos, "Muestra una lista con nombre y apellido de pasajeros que han seleccionado" +
+                "un alojamiento al momento de comprar un pasaje, si eligieron hotel o cabania, a cuantos kilometros del" +
+                "centro se encuentra y el costo por el total de dias de estadia");
+            this.ttAyuda.SetToolTip(btnAgregarCliente, "Se pide los datos de la persona a registrarse como cliente: nombre, apellido," +
+                "dni, genero y fecha de nacimiento. Si los datos son validos, el cliente queda registrado en la base de datos" +
+                "de la aerolinea");
+            this.ttAyuda.SetToolTip(btnAgregarVuelo, "Pide los siguientes datos para dar de alta un vuelo: el avion en el que se va a " +
+                "realizar dicho vuelo, su origen y destino y finalmente la fecha en la que parte");
+            this.ttAyuda.SetToolTip(btnVenderPasaje, "Da de alta un pasaje para un solo cliente, mostrando una lista de aquellos que se" +
+                "encuentran registrados. Se pide la clase en la que se va a viajar, si se lleva o no equipaje de mano y equipaje de bodega, \naclarando" +
+                " el peso de las valijas en el ultimo caso, y si incluye o no estadia en hotel o cabania, pudiendo elegir si es con o sin desayuno");
+            this.ttAyuda.SetToolTip(btnVentaGrupo, "Da de alta pasajes para un grupo de clientes. Se pide la clase en la que van a viajar todos," +
+                "que vuelo tomaran, y si se alojaran durante la estadia. Muestra los costos de alojamiento y vuelo y la suma total para el grupo");
+            this.ttAyuda.SetToolTip(btnEstadisticas, "Abre un nuevo formulario donde se podran apreciar las estadisticas de la empresa, tales" +
+                "como los destinos mas elegidos, la cantidad de viajes de los clientes que han registrado viajes, etc");
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -43,6 +68,7 @@ namespace Aerolineas
                 Aerolinea.listaVuelos.Add(frmAltaVuelo.Vuelo);
                 dgv_principal.DataSource = null;
                 dgv_principal.DataSource = Aerolinea.listaVuelos;
+                dgv_principal.Columns["Avion"].Visible = false;
             }
         }
 
@@ -138,6 +164,7 @@ namespace Aerolineas
                 lbl_tituloDataGridView.Text = "Lista de Vuelos";
                 dgv_principal.DataSource = null;
                 dgv_principal.DataSource = Aerolinea.listaVuelos;
+                dgv_principal.Columns["Avion"].Visible = false;
             }
         }
 
@@ -200,5 +227,11 @@ namespace Aerolineas
                 MessageBox.Show("No hay alojamientos para mostrar");
             }
         }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+  
+        }
+
     }
 }

@@ -131,12 +131,6 @@ namespace Aerolineas
             dgv_listaVuelos.DataSource = null;
         }
 
-        private void dgv_listaVuelos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            indiceVuelo = dgv_listaVuelos.CurrentRow.Index;
-            unVuelo = listaFiltrada[indiceVuelo];   //acaaa
-        }
-
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
             if (unVuelo is null)
@@ -158,6 +152,12 @@ namespace Aerolineas
             {
                 this.Close();
             }
+        }
+
+        private void dgv_listaVuelos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            indiceVuelo = dgv_listaVuelos.CurrentRow.Index;
+            unVuelo = listaFiltrada[indiceVuelo];
         }
     }
 }

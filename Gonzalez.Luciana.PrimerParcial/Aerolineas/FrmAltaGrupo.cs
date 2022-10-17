@@ -19,6 +19,7 @@ namespace Aerolineas
         private List<Pasajero> listaPasajeros;
         private Pasaje unPasaje;
         private Stack<Pasaje> listaPasajes;
+        private Alojamiento alojamiento;
 
         public FrmAltaGrupo()
         {
@@ -37,6 +38,10 @@ namespace Aerolineas
         {
             listaPasajeros = new List<Pasajero>();
             listaPasajes = new Stack<Pasaje>();
+            rbCabania.Enabled = false;
+            rbHotel.Enabled = false;
+            rbDesayunoSi.Enabled = false;
+            rbDesayunoNo.Enabled = false;
         }
 
         private void rd_turista_CheckedChanged(object sender, EventArgs e)
@@ -89,22 +94,17 @@ namespace Aerolineas
 
         private void btn_aceptar_Click(object sender, EventArgs e)
         {
-            if (unPasajero is not null && unVuelo is not null)
+            if (ValidarDatos())
             {
-                if (ValidarDisponibilidadVuelo())
+                if (unVuelo.ValidarDisponibilidadVuelo(clase, unVuelo, listaPasajeros.Count))
                 {
-                    foreach (Pasajero item in listaPasajeros)
-                    {
-                        unPasaje = new Pasaje(item, unVuelo, clase);
-                        listaPasajes.Push(unPasaje);
-                    }
+                    AltaAlojamiento();
+                    AgregarPasajes();
 
                     if (ValidarPasajerosEnVuelo())
                     {
-                        double costoTotal = listaPasajeros.Count * unPasaje.Costo;
-                        MessageBox.Show($"Costo a pagar con impuestos: ${costoTotal}");
-                        DescontarAsientosAvion(clase);
-                        AcumularViajesDeClientes(); 
+                        unVuelo.DescontarAsientosAvion(clase, listaPasajes.Count, unVuelo);
+                        Aerolinea.AcumularViajesDeClientes(listaPasajeros);
                         this.DialogResult = DialogResult.OK;
                         this.Close();
                     }
@@ -122,25 +122,143 @@ namespace Aerolineas
                 }
 
             }
-            else
+        }
+
+        private bool ValidarDatos()
+        {
+            StringBuilder sb = new StringBuilder();
+            bool esValido = true;
+
+            sb.AppendLine("Los siguientes datos no son validos:");
+
+            if (unPasajero is null)
             {
-                lbl_textoError.Visible = true;
-                lbl_textoError.Text = "Debe agregar al menos un cliente y seleccionar un vuelo";
+                sb.AppendLine("Debe agregar al menos un pasajero");
+                esValido = false;
+            }
+
+            if (unVuelo is null)
+            {
+                sb.AppendLine("Debe seleccionar un vuelo");
+                esValido = false;
+            }
+
+            if (rbAlojamientoSi.Checked && rbDesayunoSi.Checked == false &&  rbDesayunoNo.Checked == false)
+            {
+                sb.AppendLine("Desayuno");
+                esValido = false;
+            }
+
+            if (rbAlojamientoSi.Checked && rbCabania.Checked == false && rbHotel.Checked == false)
+            {
+                sb.AppendLine("Tipo de alojamiento");
+                esValido = false;
+            }
+
+            if (rbAlojamientoSi.Checked && nudCantidadDias.Value == 0)
+            {
+                sb.AppendLine("La cantidad de dias de la estadia no puede ser 0");
+                esValido = false;
+            }
+
+            if (!esValido)
+            {
+                MessageBox.Show(sb.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return esValido;
+        }
+
+        private void AgregarPasajes()
+        {
+            bool esPasajeRepetido = false;
+
+            foreach (Pasajero pasajero in listaPasajeros)
+            {
+                unPasaje = new Pasaje(pasajero, unVuelo, clase, alojamiento);
+
+                foreach (Pasaje pasaje in listaPasajes)
+                {
+                    if (pasaje.Equals(unPasaje))
+                    {
+                        esPasajeRepetido = true;
+                    }
+                }
+
+                if (esPasajeRepetido == false)
+                {
+                    listaPasajes.Push(unPasaje);
+                }
+            }
+        }
+
+        private void AltaAlojamiento()
+        {
+            alojamiento = null;
+
+            if (rbAlojamientoSi.Checked)
+            {
+                bool desayuno;
+
+                if (rbDesayunoSi.Checked)
+                {
+                    desayuno = true;
+                }
+                else
+                {
+                    desayuno = false;
+                }
+
+                if (rbHotel.Checked)
+                {
+                    alojamiento = new Hotel(desayuno, (int)nudCantidadDias.Value);
+                }
+                else if (rbCabania.Checked)
+                {
+                    alojamiento = new Cabania(desayuno, (int)nudCantidadDias.Value);
+                }
             }
         }
 
         private void btn_calcular_Click(object sender, EventArgs e)
         {
-            if (unPasajero is not null && unVuelo is not null)
+            if (ValidarDatos())
             {
-                lbl_importeBruto.Text =  "$" + unPasajero.CalcularCostoPasaje(unVuelo).ToString();
-                lbl_importeBruto.Visible = true;
+                AltaAlojamiento();
+                AgregarPasajes();
+
+                if (unPasaje is not null)
+                {
+                    double costoTotal = listaPasajeros.Count * unPasaje.Costo;
+                    lblImporteBruto.Text =  "$ " + unVuelo.CalcularCostoPasaje(unVuelo, clase).ToString();
+                    lblImporteBruto.Visible = true;
+                    lblImporteTotalVuelos.Text = $"$ {costoTotal}";
+                    lblImporteTotalVuelos.Visible = true;
+                    lblImporteAlojamiento.Text = $"$ {CalcularCostoAlojamiento().ToString()}";
+                    lblImporteAlojamiento.Visible = true;
+                    lblImporteTotalAlojamiento.Text = $"$ {(CalcularCostoAlojamiento() * listaPasajeros.Count).ToString()}";
+                    lblImporteTotalAlojamiento.Visible = true;
+                    lblImporteTotal.Text = $"$ {(costoTotal + (CalcularCostoAlojamiento() * listaPasajeros.Count)).ToString()}";
+                    lblImporteTotal.Visible = true;
+                }
+                else
+                {
+                    lbl_textoError.Text = "Primero debe elegir un vuelo y al menos un pasajero";
+                    lbl_textoError.Visible = true;
+                }
+
             }
-            else
+        }
+
+        private double CalcularCostoAlojamiento()
+        {
+            AltaAlojamiento();
+
+            if (alojamiento is not null)
             {
-                lbl_textoError.Visible = true;
-                lbl_textoError.Text = "Primero debe elegir un vuelo y pasajeros";
+                return alojamiento.Costo_Total;
             }
+            return 0;
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
@@ -150,22 +268,6 @@ namespace Aerolineas
             {
                 this.Close();
             }
-        }
-
-
-        /// <summary>
-        /// Valida, segun la clase, que los pasajeros que quieren viajar en el vuelo
-        /// tengan lugar en el avion
-        /// </summary>
-        /// <returns>True si cuenta con disponibilidad. False si el avion ya no tiene asientos disponibles</returns>
-        private bool ValidarDisponibilidadVuelo()
-        {
-            if ((clase == "Turista" && unVuelo.Asientos_Turista - listaPasajeros.Count >= 0)
-                || (clase == "Premium" && unVuelo.Asientos_Premium - listaPasajeros.Count >= 0))
-            {
-                return true;
-            }
-            return false;
         }
 
         /// <summary>
@@ -184,42 +286,25 @@ namespace Aerolineas
             return true;
         }
 
-        /// <summary>
-        /// Segun la clase recibida por parametro, descuenta tantos asientos del avion como 
-        /// el largo de la lista de pasajeros
-        /// </summary>
-        /// <param name="clase">Es la clase elegida por los pasajeros: Turista o Premium</param>
-        private void DescontarAsientosAvion(string clase)
+        private void rbAlojamientoSi_CheckedChanged(object sender, EventArgs e)
         {
-            int cantidadAsientos;
-            cantidadAsientos = listaPasajes.Count;
-
-            if(clase == "Turista")
-            {
-                unVuelo.Asientos_Turista -= cantidadAsientos;
-            }
-            else
-            {
-                unVuelo.Asientos_Premium -= cantidadAsientos;
-            }
+            rbDesayunoSi.Enabled = true;
+            rbDesayunoNo.Enabled = true;
+            rbCabania.Enabled = true;
+            rbHotel.Enabled = true;
+            nudCantidadDias.Enabled = true;
         }
 
-        /// <summary>
-        /// Suma 1 en el cantidad de viajes realizados por los clientes
-        /// </summary>
-        private void AcumularViajesDeClientes()
+        private void rbAlojamientoNo_CheckedChanged(object sender, EventArgs e)
         {
-            foreach(Pasajero pasajero in listaPasajeros)
-            {
-                foreach (Cliente cliente in Aerolinea.listaClientes)
-                {
-                    if(pasajero == cliente)
-                    {
-                        cliente.Cantidad_Viajes++;
-                        break;
-                    }
-                }
-            }
+            rbCabania.Enabled = false;
+            rbHotel.Enabled = false;
+            rbDesayunoSi.Enabled = false;
+            rbDesayunoNo.Enabled = false;
+            rbCabania.Checked = false;
+            rbHotel.Checked = false;
+            nudCantidadDias.Value = 0;
+            nudCantidadDias.Enabled = false;
         }
     }
 }

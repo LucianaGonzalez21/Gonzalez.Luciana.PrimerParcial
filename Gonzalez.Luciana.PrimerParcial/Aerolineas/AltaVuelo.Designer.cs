@@ -193,7 +193,7 @@ namespace Aerolineas
             this.dgv_aviones.RowTemplate.Height = 29;
             this.dgv_aviones.Size = new System.Drawing.Size(762, 188);
             this.dgv_aviones.TabIndex = 16;
-            this.dgv_aviones.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_aviones_CellContentClick);
+            this.dgv_aviones.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_aviones_CellClick);
             // 
             // lblAvionSeleccionado
             // 
@@ -253,6 +253,7 @@ namespace Aerolineas
             this.Controls.Add(this.cmbOrigen);
             this.Controls.Add(this.lblOrigen);
             this.Controls.Add(this.lblDatosVuelo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "AltaVuelo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Alta vuelo";

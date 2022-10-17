@@ -12,7 +12,7 @@ namespace Entidades
         private string destino;
         private string origen;
         private DateTime fechaInicio;
-        private int duracion;   
+        private int duracion;
         private string estadoVuelo;
         Avion avion;
         int cantidadAsientosTurista;
@@ -27,7 +27,7 @@ namespace Entidades
             this.duracion = CalcularDuracionVuelo(destino);
             this.estadoVuelo = DefinirEstadoVuelo();
             this.avion = avion;
-            this.cantidadAsientosTurista = avion.AsientosTurista;   
+            this.cantidadAsientosTurista = avion.AsientosTurista;
             this.cantidadAsientosPremium = avion.AsientosPremium;
             this.cantidadAsientosTotal = avion.Asientos;
         }
@@ -121,12 +121,19 @@ namespace Entidades
 
         public string Comida
         {
-            get 
+            get
             {
                 return avion.Comida;
             }
         }
 
+        public Avion Avion
+        {
+            get
+            {
+                return avion;
+            }
+        }
         private int CalcularDuracionVuelo(string destino)
         {
             Random random = new Random();
@@ -139,20 +146,20 @@ namespace Entidades
                 case nameof(DestinosInternacionales.Roma):
                 case nameof(DestinosInternacionales.Acapulco):
                     duracionCalculada = random.Next(8, 13);
-            break;
-            default:
+                    break;
+                default:
                     duracionCalculada = random.Next(2, 5);
-            break;
-        }
+                    break;
+            }
 
             return duracionCalculada;
         }
 
-    private string DefinirEstadoVuelo()
+        private string DefinirEstadoVuelo()
         {
             Random random = new Random();
             EstadoDeVuelo estadoVueloAleatorio = EstadoDeVuelo.Cancelado;
-            
+
             switch (random.Next(0, 3))
             {
                 case 0:
@@ -167,6 +174,74 @@ namespace Entidades
             }
 
             return estadoVueloAleatorio.ToString();
+        }
+
+        public virtual double CalcularCostoPasaje(Vuelo vuelo, string clase)
+        {
+            double costoPasaje = 0;
+            int duracion = vuelo.Duracion;
+
+            switch (vuelo.Destino)
+            {
+                case nameof(DestinosInternacionales.Acapulco):
+                case nameof(DestinosInternacionales.Miami):
+                case nameof(DestinosInternacionales.Recife):
+                case nameof(DestinosInternacionales.Roma):
+                    costoPasaje = duracion * 100;
+                    break;
+                default:
+                    costoPasaje = duracion * 50;
+                    break;
+            }
+
+            if (clase == "Premium")
+            {
+                costoPasaje *= 1.15;
+            }
+
+            return costoPasaje;
+        }
+
+        /// <summary>
+        /// Valida si hay asientos disponibles para la cantidad de pasajeros segun la clase pasada,
+        /// estableciendo si la diferencia entre la cantidad de asientos de esa clase y 
+        /// la cantidad de pasajeros que pretenden viajar es mayor o igual a cero
+        /// </summary>
+        /// <param name="clase"></param>
+        /// <param name="vuelo"></param>
+        /// <param name="cantidadPasajeros"></param>
+        /// <returns>True si hay lugar para la cantidad de pasajeros recibida por parametro
+        /// False si no hay</returns>
+        public bool ValidarDisponibilidadVuelo(string clase, Vuelo vuelo, int cantidadPasajeros)
+        {
+            if ((clase == "Turista" && vuelo.Asientos_Turista - cantidadPasajeros >= 0)
+                || (clase == "Premium" && vuelo.Asientos_Premium - cantidadPasajeros >= 0))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Descuenta la cantidad de asientos recibida por parametro en el avion del vuelo
+        /// segun la clase recibida por parametro
+        /// </summary>
+        /// <param name="clase"></param>
+        /// <param name="cantidadAsientos">Numero entero de asientos a descontar</param>
+        /// <param name="vuelo"></param>
+        public void DescontarAsientosAvion(string clase, int cantidadAsientos, Vuelo vuelo)
+        {
+            if (string.IsNullOrEmpty(clase) == false && cantidadAsientos > 0 && vuelo is not null)
+            {
+                if (clase == "Turista")
+                {
+                    vuelo.Asientos_Turista -= cantidadAsientos;
+                }
+                else
+                {
+                    vuelo.Asientos_Premium -= cantidadAsientos;
+                }
+            }
         }
 
         public static bool operator ==(Vuelo vueloUno, Vuelo vueloDos)
@@ -195,7 +270,7 @@ namespace Entidades
 
         public override int GetHashCode()
         {
-            return (avion.Matricula, fechaInicio).GetHashCode();  
+            return (avion.Matricula, fechaInicio).GetHashCode();
         }
 
         public override string ToString()

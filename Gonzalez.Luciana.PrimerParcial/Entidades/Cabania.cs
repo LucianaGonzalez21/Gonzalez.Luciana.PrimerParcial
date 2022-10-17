@@ -12,7 +12,7 @@ namespace Entidades
         {
             this.desayuno = desayuno;
             this.kilometrosDesdeElCentroTuristico = CalcularKilometrosDesdeElCentro();
-            this.precio = DefinirCosto(cantidadDias);   //pedir en el form
+            this.precio = DefinirCosto(cantidadDias);   
         }
 
         protected override double DefinirCosto(int cantidadDias)

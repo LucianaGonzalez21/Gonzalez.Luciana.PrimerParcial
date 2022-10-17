@@ -134,14 +134,6 @@ namespace Aerolineas
             return esValido;
         }
 
-        private void dgv_aviones_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            indice = dgv_aviones.CurrentRow.Index;
-            avionSeleccionado = Aerolinea.listaAviones[indice];
-            lblMatriculaAvion.Text = avionSeleccionado.Matricula;
-            lblMatriculaAvion.Visible = true;
-        }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             DialogResult respuesta = MessageBox.Show("Esta seguro que desea cancelar?", "Cancelar", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
@@ -149,6 +141,14 @@ namespace Aerolineas
             {
                 this.Close();
             }
+        }
+
+        private void dgv_aviones_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            indice = dgv_aviones.CurrentRow.Index;
+            avionSeleccionado = Aerolinea.listaAviones[indice];
+            lblMatriculaAvion.Text = avionSeleccionado.Matricula;
+            lblMatriculaAvion.Visible = true;
         }
     }
 }
