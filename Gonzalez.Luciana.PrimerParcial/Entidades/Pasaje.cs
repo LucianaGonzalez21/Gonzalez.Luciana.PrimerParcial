@@ -13,8 +13,8 @@ namespace Entidades
         private Vuelo vuelo;
         private double costo;
         private string clase;
-        private Alojamiento alojamiento;
-        
+        public Alojamiento alojamiento;
+
         public Pasaje(Pasajero pasajero, Vuelo vuelo, string clase)
         {
             this.pasajero = pasajero;
@@ -24,7 +24,7 @@ namespace Entidades
             this.costo = CalcularImporteConImpuestos();
         }
 
-        public Pasaje(Pasajero pasajero, Vuelo vuelo, string clase, Alojamiento alojamiento): this(pasajero, vuelo, clase)
+        public Pasaje(Pasajero pasajero, Vuelo vuelo, string clase, Alojamiento alojamiento) : this(pasajero, vuelo, clase)
         {
             this.alojamiento = alojamiento;
         }
@@ -125,7 +125,7 @@ namespace Entidades
         {
             get
             {
-                if(alojamiento is null)
+                if (alojamiento is null)
                 {
                     return "-";
                 }

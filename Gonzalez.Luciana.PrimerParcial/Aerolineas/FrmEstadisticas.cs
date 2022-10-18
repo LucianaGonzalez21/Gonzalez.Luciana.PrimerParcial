@@ -26,7 +26,6 @@ namespace Aerolineas
         private void btn_destinoMasElegido_Click(object sender, EventArgs e)
         {
             rtbInformacion.Text = Aerolinea.CalcularDestinosMasElegidos();
-            lbl_informacion.Visible = true;
         }
 
         private void btn_salir_Click(object sender, EventArgs e)
@@ -41,20 +40,16 @@ namespace Aerolineas
         private void button1_Click(object sender, EventArgs e)
         {
             rtbInformacion.Text = Aerolinea.InformarHorasDeVueloPorAvion();
-            lbl_informacion.Visible = true;
         }
 
         private void btn_facturacionDestinos_Click(object sender, EventArgs e)
         {
             rtbInformacion.Text = Aerolinea.InformarDestinosConFacturacion();
-            lbl_informacion.Visible = true;
-
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             rtbInformacion.Text = Aerolinea.InformarCantidadDeVuelosPorPasajero();
-            lbl_informacion.Visible = true; 
         }
     }
 }

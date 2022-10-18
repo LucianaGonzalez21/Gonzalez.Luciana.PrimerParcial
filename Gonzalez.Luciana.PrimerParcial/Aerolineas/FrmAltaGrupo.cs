@@ -100,6 +100,7 @@ namespace Aerolineas
                 {
                     AltaAlojamiento();
                     AgregarPasajes();
+                    AgregarAlojamientoAPasajeros();
 
                     if (ValidarPasajerosEnVuelo())
                     {
@@ -140,6 +141,12 @@ namespace Aerolineas
             if (unVuelo is null)
             {
                 sb.AppendLine("Debe seleccionar un vuelo");
+                esValido = false;
+            }
+
+            if (rbAlojamientoNo.Checked == false && rbAlojamientoSi.Checked == false)
+            {
+                sb.AppendLine("Alojamiento");
                 esValido = false;
             }
 
@@ -188,6 +195,17 @@ namespace Aerolineas
                 if (esPasajeRepetido == false)
                 {
                     listaPasajes.Push(unPasaje);
+                }
+            }
+        }
+
+        private void AgregarAlojamientoAPasajeros()
+        {
+            if (listaPasajes.Count > 0)
+            {
+                foreach (Pasaje item in listaPasajes)
+                {
+                    item.alojamiento = alojamiento;
                 }
             }
         }
