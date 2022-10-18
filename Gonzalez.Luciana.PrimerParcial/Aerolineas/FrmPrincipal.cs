@@ -38,10 +38,7 @@ namespace Aerolineas
                 "de la aerolinea");
             this.ttAyuda.SetToolTip(btnAgregarVuelo, "Pide los siguientes datos para dar de alta un vuelo: el avion en el que se va a " +
                 "realizar dicho vuelo, su origen y destino y finalmente la fecha en la que parte");
-            this.ttAyuda.SetToolTip(btnVenderPasaje, "Da de alta un pasaje para un solo cliente, mostrando una lista de aquellos que se" +
-                "encuentran registrados. Se pide la clase en la que se va a viajar, si se lleva o no equipaje de mano y equipaje de bodega, \naclarando" +
-                " el peso de las valijas en el ultimo caso, y si incluye o no estadia en hotel o cabania, pudiendo elegir si es con o sin desayuno");
-            this.ttAyuda.SetToolTip(btnVentaGrupo, "Da de alta pasajes para un grupo de clientes. Se pide la clase en la que van a viajar todos," +
+            this.ttAyuda.SetToolTip(btnVentaPasaje, "Da de alta pasajes para un grupo de clientes. Se pide la clase en la que van a viajar todos," +
                 "que vuelo tomaran, y si se alojaran durante la estadia. Muestra los costos de alojamiento y vuelo y la suma total para el grupo");
             this.ttAyuda.SetToolTip(btnEstadisticas, "Abre un nuevo formulario donde se podran apreciar las estadisticas de la empresa, tales" +
                 "como los destinos mas elegidos, la cantidad de viajes de los clientes que han registrado viajes, etc");
@@ -89,18 +86,18 @@ namespace Aerolineas
 
         private void btnVenderPasaje_Click(object sender, EventArgs e)
         {
-            AltaPasaje frmAltaPasaje = new AltaPasaje();
-            DialogResult retorno = frmAltaPasaje.ShowDialog();
+            //AltaPasaje frmAltaPasaje = new AltaPasaje();
+            //DialogResult retorno = frmAltaPasaje.ShowDialog();
 
-            if (retorno == DialogResult.OK)
-            {
-                lbl_tituloDataGridView.Text = "Lista de Pasajes";
-                (frmAltaPasaje.Pasaje).Codigo_Pasaje = Aerolinea.GenerarCodigoPasaje();
-                Aerolinea.listaPasajes.Add(frmAltaPasaje.Pasaje);
-                dgv_principal.DataSource = null;
-                dgv_principal.DataSource = Aerolinea.listaPasajes;
+            //if (retorno == DialogResult.OK)
+            //{
+            //    lbl_tituloDataGridView.Text = "Lista de Pasajes";
+            //    (frmAltaPasaje.Pasaje).Codigo_Pasaje = Aerolinea.GenerarCodigoPasaje();
+            //    Aerolinea.listaPasajes.Add(frmAltaPasaje.Pasaje);
+            //    dgv_principal.DataSource = null;
+            //    dgv_principal.DataSource = Aerolinea.listaPasajes;
 
-            }
+            //}
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

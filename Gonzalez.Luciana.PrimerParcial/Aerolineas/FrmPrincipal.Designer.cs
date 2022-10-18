@@ -37,8 +37,7 @@ namespace Aerolineas
             this.lblBienvenido = new System.Windows.Forms.Label();
             this.btnAgregarCliente = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.btnVenderPasaje = new System.Windows.Forms.Button();
-            this.btnVentaGrupo = new System.Windows.Forms.Button();
+            this.btnVentaPasaje = new System.Windows.Forms.Button();
             this.btnVerVuelos = new System.Windows.Forms.Button();
             this.btnVerClientes = new System.Windows.Forms.Button();
             this.lbl_tituloDataGridView = new System.Windows.Forms.Label();
@@ -52,7 +51,7 @@ namespace Aerolineas
             // 
             this.btnAgregarVuelo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAgregarVuelo.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAgregarVuelo.Location = new System.Drawing.Point(280, 61);
+            this.btnAgregarVuelo.Location = new System.Drawing.Point(12, 158);
             this.btnAgregarVuelo.Name = "btnAgregarVuelo";
             this.btnAgregarVuelo.Size = new System.Drawing.Size(126, 84);
             this.btnAgregarVuelo.TabIndex = 0;
@@ -64,7 +63,7 @@ namespace Aerolineas
             // 
             this.dgv_principal.BackgroundColor = System.Drawing.Color.LightSalmon;
             this.dgv_principal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_principal.Location = new System.Drawing.Point(150, 240);
+            this.dgv_principal.Location = new System.Drawing.Point(149, 190);
             this.dgv_principal.Name = "dgv_principal";
             this.dgv_principal.RowHeadersWidth = 51;
             this.dgv_principal.RowTemplate.Height = 29;
@@ -76,7 +75,7 @@ namespace Aerolineas
             this.btnVerPasajeros.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnVerPasajeros.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnVerPasajeros.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnVerPasajeros.Location = new System.Drawing.Point(12, 151);
+            this.btnVerPasajeros.Location = new System.Drawing.Point(282, 59);
             this.btnVerPasajeros.Name = "btnVerPasajeros";
             this.btnVerPasajeros.Size = new System.Drawing.Size(126, 84);
             this.btnVerPasajeros.TabIndex = 2;
@@ -88,7 +87,7 @@ namespace Aerolineas
             // 
             this.btnEstadisticas.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEstadisticas.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnEstadisticas.Location = new System.Drawing.Point(652, 61);
+            this.btnEstadisticas.Location = new System.Drawing.Point(12, 363);
             this.btnEstadisticas.Name = "btnEstadisticas";
             this.btnEstadisticas.Size = new System.Drawing.Size(126, 84);
             this.btnEstadisticas.TabIndex = 3;
@@ -115,7 +114,7 @@ namespace Aerolineas
             this.btnAgregarCliente.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnAgregarCliente.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAgregarCliente.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnAgregarCliente.Location = new System.Drawing.Point(148, 61);
+            this.btnAgregarCliente.Location = new System.Drawing.Point(12, 59);
             this.btnAgregarCliente.Name = "btnAgregarCliente";
             this.btnAgregarCliente.Size = new System.Drawing.Size(126, 84);
             this.btnAgregarCliente.TabIndex = 5;
@@ -127,7 +126,7 @@ namespace Aerolineas
             // 
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalir.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSalir.Location = new System.Drawing.Point(842, 516);
+            this.btnSalir.Location = new System.Drawing.Point(841, 476);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(94, 29);
             this.btnSalir.TabIndex = 7;
@@ -135,36 +134,24 @@ namespace Aerolineas
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // btnVenderPasaje
+            // btnVentaPasaje
             // 
-            this.btnVenderPasaje.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnVenderPasaje.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnVenderPasaje.Location = new System.Drawing.Point(412, 61);
-            this.btnVenderPasaje.Name = "btnVenderPasaje";
-            this.btnVenderPasaje.Size = new System.Drawing.Size(114, 84);
-            this.btnVenderPasaje.TabIndex = 8;
-            this.btnVenderPasaje.Text = "Vender Pasaje Individual";
-            this.btnVenderPasaje.UseVisualStyleBackColor = true;
-            this.btnVenderPasaje.Click += new System.EventHandler(this.btnVenderPasaje_Click);
-            // 
-            // btnVentaGrupo
-            // 
-            this.btnVentaGrupo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnVentaGrupo.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnVentaGrupo.Location = new System.Drawing.Point(532, 61);
-            this.btnVentaGrupo.Name = "btnVentaGrupo";
-            this.btnVentaGrupo.Size = new System.Drawing.Size(114, 84);
-            this.btnVentaGrupo.TabIndex = 9;
-            this.btnVentaGrupo.Text = "Vender Pasajes (Grupo familiar)";
-            this.btnVentaGrupo.UseVisualStyleBackColor = true;
-            this.btnVentaGrupo.Click += new System.EventHandler(this.button1_Click);
+            this.btnVentaPasaje.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnVentaPasaje.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnVentaPasaje.Location = new System.Drawing.Point(12, 259);
+            this.btnVentaPasaje.Name = "btnVentaPasaje";
+            this.btnVentaPasaje.Size = new System.Drawing.Size(126, 84);
+            this.btnVentaPasaje.TabIndex = 9;
+            this.btnVentaPasaje.Text = "Vender Pasajes ";
+            this.btnVentaPasaje.UseVisualStyleBackColor = true;
+            this.btnVentaPasaje.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnVerVuelos
             // 
             this.btnVerVuelos.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnVerVuelos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnVerVuelos.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnVerVuelos.Location = new System.Drawing.Point(12, 330);
+            this.btnVerVuelos.Location = new System.Drawing.Point(550, 59);
             this.btnVerVuelos.Name = "btnVerVuelos";
             this.btnVerVuelos.Size = new System.Drawing.Size(126, 84);
             this.btnVerVuelos.TabIndex = 10;
@@ -177,7 +164,7 @@ namespace Aerolineas
             this.btnVerClientes.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnVerClientes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnVerClientes.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnVerClientes.Location = new System.Drawing.Point(12, 61);
+            this.btnVerClientes.Location = new System.Drawing.Point(150, 59);
             this.btnVerClientes.Name = "btnVerClientes";
             this.btnVerClientes.Size = new System.Drawing.Size(126, 84);
             this.btnVerClientes.TabIndex = 11;
@@ -189,7 +176,7 @@ namespace Aerolineas
             // 
             this.lbl_tituloDataGridView.AutoSize = true;
             this.lbl_tituloDataGridView.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbl_tituloDataGridView.Location = new System.Drawing.Point(470, 208);
+            this.lbl_tituloDataGridView.Location = new System.Drawing.Point(469, 158);
             this.lbl_tituloDataGridView.Name = "lbl_tituloDataGridView";
             this.lbl_tituloDataGridView.Size = new System.Drawing.Size(133, 18);
             this.lbl_tituloDataGridView.TabIndex = 12;
@@ -201,7 +188,7 @@ namespace Aerolineas
             this.btnVerAviones.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnVerAviones.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnVerAviones.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnVerAviones.Location = new System.Drawing.Point(12, 240);
+            this.btnVerAviones.Location = new System.Drawing.Point(414, 59);
             this.btnVerAviones.Name = "btnVerAviones";
             this.btnVerAviones.Size = new System.Drawing.Size(126, 84);
             this.btnVerAviones.TabIndex = 13;
@@ -214,7 +201,7 @@ namespace Aerolineas
             this.btnVerAlojamientos.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnVerAlojamientos.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnVerAlojamientos.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnVerAlojamientos.Location = new System.Drawing.Point(12, 420);
+            this.btnVerAlojamientos.Location = new System.Drawing.Point(682, 59);
             this.btnVerAlojamientos.Name = "btnVerAlojamientos";
             this.btnVerAlojamientos.Size = new System.Drawing.Size(126, 84);
             this.btnVerAlojamientos.TabIndex = 14;
@@ -231,15 +218,14 @@ namespace Aerolineas
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSalmon;
-            this.ClientSize = new System.Drawing.Size(948, 557);
+            this.ClientSize = new System.Drawing.Size(948, 513);
             this.ControlBox = false;
             this.Controls.Add(this.btnVerAlojamientos);
             this.Controls.Add(this.btnVerAviones);
             this.Controls.Add(this.lbl_tituloDataGridView);
             this.Controls.Add(this.btnVerClientes);
             this.Controls.Add(this.btnVerVuelos);
-            this.Controls.Add(this.btnVentaGrupo);
-            this.Controls.Add(this.btnVenderPasaje);
+            this.Controls.Add(this.btnVentaPasaje);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnAgregarCliente);
             this.Controls.Add(this.lblBienvenido);
@@ -270,8 +256,7 @@ namespace Aerolineas
         private System.Windows.Forms.Label lblBienvenido;
         private System.Windows.Forms.Button btnAgregarCliente;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.Button btnVenderPasaje;
-        private System.Windows.Forms.Button btnVentaGrupo;
+        private System.Windows.Forms.Button btnVentaPasaje;
         private System.Windows.Forms.Button btnVerVuelos;
         private System.Windows.Forms.Button btnVerClientes;
         private System.Windows.Forms.Label lbl_tituloDataGridView;

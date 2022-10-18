@@ -4,9 +4,6 @@
     <Compile Update="AltaCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="AltaPasaje.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="AltaVuelo.cs">
       <SubType>Form</SubType>
     </Compile>
