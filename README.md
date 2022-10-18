@@ -18,19 +18,33 @@ Además, los empleados podrán vender pasajes tanto individuales como a un grupo
 
 También cuenta con un apartado donde se pueden ver algunas estadísticas de la empresa: los destinos más elegidos, la cantidad de viajes que realizó cada cliente o las horas de vuelo de cada aeronave de la empresa.
 
+Verificaciones:
+* Alta Cliente: no se podrán registrar personas que ya se encuentren en el sistema. La validación es por el DNI.
+* Alta Vuelo: si un avión tiene un vuelo en determinada fecha, no podrá elegirse para otro vuelo en ese mismo día.
+* Alta Pasaje: si un cliente ya se encuentra asociado a un vuelo, no podrá sacar otro pasaje para el mismo.
+
+Ayuda (Tool Tip): en el formulario principal, al apoyar el cursor sobre cada botón, se muestra un mensaje que informa acerca de la función de cada uno.
+
 **Diagrama de clases**
 
-![](../diagrama.png)
 
+**Justificación de técnica**: 
 
-**Justificación de técnica**: implementé una clase estática para el core de la aplicación, la aerolinea, ya que no se instancian objetos de este tipo, la aerolínea es una sola y es el negocio. Esta clase funciona como administradora de las demás: verifica si los clientes ya existen, si al dar de alta un vuelo el avión seleccionado se encuentra en otro, los destinos más elegidos por los clientes, etc. 
+* **Clases estáticas**: el core de la aplicación, Aerolinea, es una clase estática ya que no se instancian objetos de este tipo; la aerolínea es una sola y es el negocio. Esta clase funciona como administradora de las demás: verifica si los clientes ya existen, si al dar de alta un vuelo el avión seleccionado se encuentra en otro, los destinos más elegidos por los clientes, etc. 
 
-La aplicación usa como interfaz gráfica a los formularios de Windows: a través de ellos se pueden visualizar las listas antes mencionadas, vender pasajes y dar de alta a nuevos clientes. Estos formularios toman la información ingresada por el empleado, la valida y a su vez, la clase administradora (Aerolinea) hace sus propias validaciones. Así implementé el encapsulamiento: no es tarea del Windows Form saber  los clientes que están registrados en la empresa o recorrer la lista de usuarios para dejar que el empleado se registre.
+* **Windows Form**: la aplicación usa como interfaz gráfica a los formularios de Windows: a través de ellos se pueden visualizar las listas antes mencionadas, vender pasajes y dar de alta a nuevos clientes. Estos formularios toman la información ingresada por el empleado, la valida y a su vez, la clase administradora (Aerolinea) hace sus propias validaciones. 
 
+* **Colecciones**: la clase Aerolínea posee listas de usuarios, vuelos, pasajes, etc. También cuenta con un diccionario donde la clave representa los destinos y el valor es un contador que va sumando en uno cada vez que se da de alta un pasaje. Dentro del formulario donde se da de alta un grupo de pasajes, tiene un Stack de pasajes. Cada objeto instanciado se agrega a la pila, antes validando que no exista ya en la lista de pasajes.
 
-Para tener a los objetos del mismo tipo agrupados (usuarios, vuelos, pasajes, etc) hice uso de colecciones genéricas: listas, stack y dictionary. La clase administradora cuenta con listas de pasajeros, clientes, usuarios, etc. También con un diccionario donde la key es el destino y el value puede usarse tanto como para contador de la cantidad de veces que tal lugar se elegió o como acumulador de costos para calcular la facturación de cada destino. Una de las desventajas que presentó esto para mi nivel de conocimientos es no saber ordenar el diccionario por los valores. 
+* **Clases abstractas y herencia**: la clase Persona es abstracta y funciona como la base de una jerarquía de herencia. No se instanciarán objetos del tipo Persona pero sirve como molde para las clases que heredan de ella: Cliente, Pasajero y PasajeroPremium.
 
-Por otra parte, implementé herencia a través de una clase abstracta Persona, que funciona como la base de una jerarquía de herencia. No se instanciarán objetos del tipo Persona pero sirve como molde para las clases que heredan de ella: Cliente, Pasajero y PasajeroPremium. Por la forma en que establecí las características del Pasajero (turista) me pareció correcto hacer que PasajeroPremium heredara de el: cuenta con los mismos atributos y métodos y los redefine para adaptarlos a los beneficios de un pasajero que viaja en clase premium. En ese punto, apliqué polimorfismo para sobrescribir el método CalcularCosto(). El precio es el del pasaje común más un 15%. 
+* **Sobrecarga de métodos**: en el formulario para elegir vuelo, se puede filtrar por origen, destino y servicios de wifi y comida o sólo por los servicios de wifi y comida, por la sobrecarga del método FiltrarVuelos(), que devuelve una lista que cumpla con los parámetros recibidos.
 
-Para poder llevar a cabo el hardcodeo de los clientes empleé sobrecarga de constructores, y así poder construirlos directamente con su propio id. Además, por medio de la sobrecarga de operadores, pude efectuar comparaciones entre Clientes o Pasajes, para así poder saber si un cliente ya está cargado en el sistema, o si un pasajero está intentando comprar un boleto para un vuelo en el que ya se encuentra registrado.
+* **Sobrecarga de operadores**: para efectuar comparaciones entre Clientes o Pasajes, y así poder saber si un cliente ya está cargado en el sistema, o si un pasajero está intentando comprar un boleto para un vuelo en el que ya se encuentra registrado, utilicé sobrecarga del operador == y !=
+
+* **Polimorfismo**: La clase abstracta Alojamiento declara la firma del método abstracto DefinirCosto(), sus clases derivadas, Hotel y Cabania, lo sobrescriben para devolver el costo del alojamiento según el tipo que sea.
+
+**Funcionalidad extra**
+
+Los clientes que deseen adquirir un pasaje podrán elegir también un alojamiento: hotel o cabaña. Deberá elegirse el tipo y la cantidad de días de la estadía. Antes de dar de alta un pasaje, se podrán calcular y visualizar los costos por el vuelo y por el alojamiento, si es que se eligió.
 
